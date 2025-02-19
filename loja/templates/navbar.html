@@ -1,0 +1,38 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'homepage' %}">
+            <img src="{% static 'imgs/logo_white.svg' %}" style="width:69px;" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto me-5">
+                {% if request.session.user_id %}
+                <!--User com login-->
+                <li class="nav-item me-5">
+                    <a class="nav-link btn rounded-5" href="{% url 'upload_product' %}" style="background-color: white;color: black;">Vender</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user' %}"><img src="{% static 'imgs/icons/iconperson.svg' %}" style="width: 20px; height: 20px;" alt=""></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="{% url 'logout' %}"><img src="{% static 'imgs/icons/logout.svg' %}" style="width: 25px; height: 25px;"alt=""></a>
+                </li>
+                
+                {% else %}
+                <!-- Sem login  -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'signup' %}">Registar</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Produto</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts/customfonts.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <style>
+        .image-upload-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .image-upload-box {
+            width: 100%;
+            height: 100px;
+            background-color: #f3f3f3;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+        }
+        .image-upload-box img {
+            width: 50px;
+            height: 50px;
+            opacity: 0.5;
+        }
+        .image-upload-box input {
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        .uploaded-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+{% include 'navbar.html' %}
+
+<div class="container mt-5">
+    <div class="card p-4 shadow">
+        <h2 class="text-center jomhuria-regular fs-1">Adicionar Produto</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Nome do produto -->
+            <div class="mb-3">
+                <label class="jomhuria-regular fs-2" for="nome" class="form-label">Nome do Produto</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+
+            <!-- Preço -->
+            <div class="mb-3 ">
+                <label for="preco" class="form-label jomhuria-regular fs-2">Preço (€)</label>
+                <input type="text" class="form-control" id="preco" name="preco" pattern="^\d+([.,]\d{1,2})?$" inputmode="decimal" required>
+                <small class="text-muted">Use "." ou "," para separar os cêntimos.</small>
+            </div>
+            
+
+            <!-- Dropdown das categorias -->
+            <div class="mb-3 jomhuria-regular fs-2">
+                <label for="categoria" class="form-label">Categoria</label>
+                <select class="form-select jomhuria-regular fs-3" id="categoria" name="categoria" required>
+                    <option selected disabled>Selecione uma Categoria</option>
+                    {% for categoria in categorias %}
+                        <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3 ">
+                <label for="descricao" class="form-label jomhuria-regular fs-2">Descrição</label>
+                <textarea class="form-control" id="descricao" name="descricao" rows="4" required></textarea>
+            </div>
+
+            <!-- Multiple Image Upload Grid -->
+            <div class="mb-3 jomhuria-regular fs-2">
+                <label class="form-label">Imagens do Produto</label>
+                <p class="text-muted">A primeira imagem será a principal do produto.</p>
+                <div class="image-upload-container">
+                    <label class="image-upload-box">
+                        <input type="file" id="image-upload" name="images" multiple accept="image/*" onchange="previewImages()">
+                        <img src="{% static 'imgs/icons/upload_icon.svg' %}" alt="">
+                    </label>
+                    <!-- Empty placeholders for previewing uploaded images -->
+                    {% for _ in "123456789" %}
+                        <div class="image-upload-box"></div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Butão de adicionar -->
+            <button type="submit" class="btn jomhuria-regular fs-1 w-100" style="background-color: black; color: white;">Adicionar Produto</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function previewImages() {
+        let input = document.getElementById("image-upload");
+        let container = document.querySelector(".image-upload-container");
+        let files = input.files;
+        container.innerHTML = "";
+
+        
+        let addImageBox = document.createElement("label");
+        addImageBox.classList.add("image-upload-box");
+        addImageBox.innerHTML = `<input type="file" id="image-upload" name="images" multiple accept="image/*" onchange="previewImages()">
+                                <img src="{% static 'imgs/icons/upload_icon.svg' %}" alt="Upload">`;
+        container.appendChild(addImageBox);
+
+        for (let i = 0; i < files.length; i++) {
+            let reader = new FileReader();
+            let box = document.createElement("div");
+            box.classList.add("image-upload-box");
+
+            reader.onload = function (e) {
+                let img = document.createElement("img");
+                img.src = e.target.result;
+                img.classList.add("uploaded-image");
+                box.appendChild(img);
+            };
+            reader.readAsDataURL(files[i]);
+            container.appendChild(box);
+        }
+    }
+</script>
+
+</body>
+</html>

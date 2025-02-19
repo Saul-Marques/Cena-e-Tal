@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <h2 class="text-center">Contacte-nos</h2>
+  <form method="post" action="{% url 'contactos' %}">
+      {% csrf_token %}
+      
+      <div class="mb-3">
+          <label class="form-label">Nome</label>
+          <input type="text" class="form-control" name="nome" required>
+      </div>
+
+      <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" name="email" required>
+      </div>
+
+      <div class="mb-3">
+          <label class="form-label">Mensagem</label>
+          <textarea class="form-control" name="mensagem" rows="4" required></textarea>
+      </div>
+
+      <button type="submit" class="btn border-1" style="background-color: black; border-color: white; color: white;">Enviar</button>
+  </form>
+</div>

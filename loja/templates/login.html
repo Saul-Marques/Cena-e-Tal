@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts/customfonts.css' %}">
+    
+    <link rel="icon" type="image/x-icon" href="{% static 'imgs/favicon.svg' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: #EAEAEA;">
+    
+    <!-- Navbar -->
+    {% include 'navbar.html' %}
+    
+    <div class="container p-0 rounded mt-5" style="background-color: white; height: 698px; overflow: hidden;">
+        <div class="row row-cols-1 row-cols-xxl-2 row-cols-lg-2 row-cols-sm-1">
+            
+            <!-- Image Column -->
+            <div class="col-6 d-none d-lg-block">
+                <img class="img-fluid d-none d-lg-block p-0 g-0 rounded-end object-fit-cover" 
+                     style="object-fit:fill; transform: rotate(180deg);" 
+                     src="{% static 'imgs/imgswebsite/noise3' %}" alt="">
+            </div>
+
+            <!-- Login Form -->
+            <div class="col-12">
+                <form action="{% url 'login' %}" class="ms-5" method="post">
+                    {% csrf_token %}
+                    
+                    <h3 class="jomhuria-regular fs-custom mt-5">Login</h3>
+
+                    <h4 class="jomhuria-regular fs-1">Email</h4>
+                    <div class="container ms-0 me-5 p-0">
+                        <div class="input-group">
+                            <input type="email" class="form-control rounded-4 border-0 jomhuria-regular fs-3 align-self-center me-5" 
+                                   style="background-color: #D9D9D9;" name="username" required>
+                        </div>
+                    </div>
+
+                    <h4 class="jomhuria-regular fs-1 mt-3">Password</h4>
+                    <div class="container ms-0 p-0">
+                        <div class="input-group">
+                            <input type="password" class="form-control rounded-4 border-0 jomhuria-regular fs-3 align-self-center me-5" 
+                                   style="background-color: #D9D9D9;" name="password" required>
+                        </div>
+                    </div>
+                    
+                    <br>
+                    
+                    <button class="btn jomhuria-regular fs-1 rounded-4 text-center" type="submit" 
+                            style="background-color: black; color: white; width: 300px; height: 70px;">
+                        Login.
+                    </button>
+                    
+                    {% if messages %}
+                        <div class="alert alert-danger mt-3">
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </form>
+                
+                <div class="div jomhuria-regular fs-3 ms-5" style="color: gray;">
+                    Não tem conta?
+                    <a href="{% url 'signup' %}" style="color: black; text-decoration: none;">Registar</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
