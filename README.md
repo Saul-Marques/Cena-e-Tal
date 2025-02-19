@@ -16,8 +16,6 @@ Este projeto é a continuação do projeto da cadeira de DPWEB do primeiro semes
 - [ ] Tratamento de erros
 - [X] Login
 - [X] Signup
-- [ ] 
-
 ---
 
 ## 🛠️ Tecnologias Utilizadas
@@ -90,7 +88,7 @@ Este projeto é a continuação do projeto da cadeira de DPWEB do primeiro semes
 │   │   ├── /fonts/
 │   │   │   ├── Jomhuria-Regular.ttf
 │   │   │
-│   │   ├── /imgs/  # Images and icons
+│   │   ├── /imgs/  # Imagens e icons
 │   │   │   ├── logo.svg
 │   │   │   ├── favicon.svg
 │   │   │   ├── imgswebsite/
