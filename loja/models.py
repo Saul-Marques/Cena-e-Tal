@@ -51,12 +51,15 @@ class Product(models.Model):
     def __str__(self):
         return self.nome
 
-class ProductImage(models.Model):
-    product = models.ForeignKey(Product, related_name="images", on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="uploads/products/")
+def product_image_upload_path(instance, filename):
+    """Retorna o caminho correto para armazenar imagens de produtos."""
+    return f"uploads/products/{instance.product.id}/{filename}"
 
+class ProductImage(models.Model):
+    product = models.ForeignKey("Product", related_name="images", on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=product_image_upload_path)
     def __str__(self):
-        return f"Image for {self.product.nome}"
+        return f"Imagem para {self.product.nome}"
 
 class Mensagens_de_Contactos(models.Model):
     nome = models.CharField(max_length=100)

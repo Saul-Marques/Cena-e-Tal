@@ -55,23 +55,23 @@
 <div class="container mt-5">
     <div class="card p-4 shadow">
         <h2 class="text-center jomhuria-regular fs-1">Adicionar Produto</h2>
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">  <!-- Obrigatório para upload de arquivos -->
             {% csrf_token %}
-            <!-- Nome do produto -->
+        
+            <!-- Nome do Produto -->
             <div class="mb-3">
-                <label class="jomhuria-regular fs-2" for="nome" class="form-label">Nome do Produto</label>
+                <label class="jomhuria-regular fs-2" for="nome">Nome do Produto</label>
                 <input type="text" class="form-control" id="nome" name="nome" required>
             </div>
-
+        
             <!-- Preço -->
-            <div class="mb-3 ">
+            <div class="mb-3">
                 <label for="preco" class="form-label jomhuria-regular fs-2">Preço (€)</label>
                 <input type="text" class="form-control" id="preco" name="preco" pattern="^\d+([.,]\d{1,2})?$" inputmode="decimal" required>
                 <small class="text-muted">Use "." ou "," para separar os cêntimos.</small>
             </div>
-            
-
-            <!-- Dropdown das categorias -->
+        
+            <!-- Categoria -->
             <div class="mb-3 jomhuria-regular fs-2">
                 <label for="categoria" class="form-label">Categoria</label>
                 <select class="form-select jomhuria-regular fs-3" id="categoria" name="categoria" required>
@@ -81,48 +81,37 @@
                     {% endfor %}
                 </select>
             </div>
-
-            <!-- Description -->
-            <div class="mb-3 ">
+        
+            <!-- Descrição -->
+            <div class="mb-3">
                 <label for="descricao" class="form-label jomhuria-regular fs-2">Descrição</label>
                 <textarea class="form-control" id="descricao" name="descricao" rows="4" required></textarea>
             </div>
-
-            <!-- Multiple Image Upload Grid -->
+        
+            <!-- Upload de Imagens -->
             <div class="mb-3 jomhuria-regular fs-2">
                 <label class="form-label">Imagens do Produto</label>
                 <p class="text-muted">A primeira imagem será a principal do produto.</p>
+                
+                <input type="file" id="image-upload" name="images" multiple accept="image/*">  <!-- Input visível -->
+        
+                <!-- Container para preview das imagens -->
                 <div class="image-upload-container">
-                    <label class="image-upload-box">
-                        <input type="file" id="image-upload" name="images" multiple accept="image/*" onchange="previewImages()">
-                        <img src="{% static 'imgs/icons/upload_icon.svg' %}" alt="">
-                    </label>
-                    <!-- Empty placeholders for previewing uploaded images -->
-                    {% for _ in "123456789" %}
-                        <div class="image-upload-box"></div>
-                    {% endfor %}
+                    <!-- As imagens carregadas pelo user aparecem aqui -->
                 </div>
             </div>
-
-            <!-- Butão de adicionar -->
+        
+            <!-- Botão de Enviar -->
             <button type="submit" class="btn jomhuria-regular fs-1 w-100" style="background-color: black; color: white;">Adicionar Produto</button>
         </form>
     </div>
 </div>
 
 <script>
-    function previewImages() {
-        let input = document.getElementById("image-upload");
+    document.getElementById("image-upload").addEventListener("change", function() {
         let container = document.querySelector(".image-upload-container");
-        let files = input.files;
+        let files = this.files;
         container.innerHTML = "";
-
-        
-        let addImageBox = document.createElement("label");
-        addImageBox.classList.add("image-upload-box");
-        addImageBox.innerHTML = `<input type="file" id="image-upload" name="images" multiple accept="image/*" onchange="previewImages()">
-                                <img src="{% static 'imgs/icons/upload_icon.svg' %}" alt="Upload">`;
-        container.appendChild(addImageBox);
 
         for (let i = 0; i < files.length; i++) {
             let reader = new FileReader();
@@ -138,7 +127,7 @@
             reader.readAsDataURL(files[i]);
             container.appendChild(box);
         }
-    }
+    });
 </script>
 
 </body>

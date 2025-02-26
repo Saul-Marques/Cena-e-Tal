@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'imgs/favicon.svg' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/fonts/customfonts.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    
 </head>
-<body>
+<body style="background-color: #EAEAEA;">
 
     <!-- Navbar -->
     {% include 'navbar.html' %}
@@ -38,7 +40,7 @@
         <div class="row gy-4 mb-5" id="productList">
             {% for produto in produtos %}
             <div class="col-md-4 product-item">
-                <div class="card rounded-2" style="width: 100%;height:400px">
+                <div class="card rounded-2" style="width: 100%;height:400px; background-color: white;">
                     <div class="container p-0" style="width: 100%; height: 250px; background-color: white;">
                         {% with produto.images.all|first as image %}
                             {% if image %}
@@ -50,9 +52,10 @@
                     </div>
             
                     <div class="card-body">
-                        <h5 class="card-title">{{ produto.nome }}</h5>
-                        <p class="card-text">{{ produto.descricao }}</p>
-                        <p class="card-text"><strong>Preço:</strong> €{{ produto.preco }}</p>
+                        <h5 class="card-title jomhuria-regular fs-1">{{ produto.nome }}</h5>
+                        <p class="card-text jomhuria-regular fs-2" style="line-height: 0;"><strong>Preço:</strong> €{{ produto.preco }}</p>
+                        <p class="text-muted mt-5 jomhuria-regular fs-3">Adicionado por: <strong>{{ produto.user.primeiro_nome }} {{ produto.user.ultimo_nome }}</strong></p>
+
                     </div>
                 </div>
             </div>
@@ -60,7 +63,6 @@
             
         </div>
     </div>
-
     <h1 class="text-center mt-5 mb-5 jomhuria-regular fs-custom3" style="color: rgba(150, 150, 150, 0.425);">Chegou ao fim...</h1>
 
     <!-- Footer -->

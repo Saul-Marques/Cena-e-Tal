@@ -1,8 +1,12 @@
 import os
+import logging
 from django.conf import settings
 from django.shortcuts import render, redirect
 from loja.models import Product, Categoria, ProductImage
 from decimal import Decimal
+from loja.forms import ProductForm
+
+logger = logging.getLogger(__name__)  # Logger para debug
 
 def upload_product_view(request):
     if "user_id" not in request.session:
@@ -13,7 +17,7 @@ def upload_product_view(request):
         preco = request.POST.get("preco").replace(",", ".")
         descricao = request.POST.get("descricao")
         categoria_id = request.POST.get("categoria")
-        images = request.FILES.getlist("images")
+        images = request.FILES.getlist("images")  # Obtém todas as imagens enviadas
 
         try:
             preco = Decimal(preco)
@@ -33,22 +37,30 @@ def upload_product_view(request):
         )
         product.save()
 
-        # Criar a pasta para o produto dentro de MEDIA_ROOT/uploads/products/{id}
+        # Criar a pasta do produto se não existir
         product_folder = os.path.join(settings.MEDIA_ROOT, "uploads", "products", str(product.id))
         os.makedirs(product_folder, exist_ok=True)
 
-        # Salvar as imagens dentro da pasta do produto
+        # Verificar se imagens foram enviadas
+        if not images:
+            logger.warning(f"⚠ Nenhuma imagem foi enviada para o produto {product.id}")
+
+        # Guardar as imagens dentro da pasta correta
         for image in images:
             image_name = image.name.replace(" ", "_")  # Evita espaços nos nomes dos arquivos
-            image_path = f"uploads/products/{product.id}/{image_name}"
-            full_image_path = os.path.join(settings.MEDIA_ROOT, image_path)
+            image_path = os.path.join(product_folder, image_name)  # Caminho absoluto
+            relative_image_path = f"uploads/products/{product.id}/{image_name}"  # Caminho relativo
 
-            with open(full_image_path, "wb+") as destination:
-                for chunk in image.chunks():
-                    destination.write(chunk)
+            try:
+                # Gravar a imagem no sistema de arquivos
+                with open(image_path, "wb+") as destination:
+                    for chunk in image.chunks():
+                        destination.write(chunk)
 
-            # Salvar o caminho RELATIVO no banco de dados
-            ProductImage.objects.create(product=product, image=image_path)
+                product_image = ProductImage.objects.create(product=product, image=relative_image_path)
+
+            except Exception as e:
+                logger.error(f" Erro ao guardar imagem {image_name}: {e}")
 
         return redirect("homepage")
 
