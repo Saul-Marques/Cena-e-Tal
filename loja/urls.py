@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from loja.views.home import Index
 from loja.views.login import Login
 from loja.views.signup import Signup
@@ -19,4 +19,6 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('contactos/', contactos_view, name='contactos'),  
     path("upload-product/", upload_product_view, name="upload_product"),
+    path('api/', include('chat.urls'))
+
     ]

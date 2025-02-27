@@ -41,25 +41,28 @@ class Categoria(models.Model):
     def __str__(self):
         return self.nome
 
-class Product(models.Model):
-    nome = models.CharField(max_length=60)
-    preco = models.DecimalField(max_digits=7, decimal_places=2)
-    categoria = models.ForeignKey("Categoria", on_delete=models.CASCADE, default=1)
-    descricao = models.CharField(max_length=250, blank=True, null=True)
-    user = models.ForeignKey("User", on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.nome
 
 def product_image_upload_path(instance, filename):
     """Retorna o caminho correto para armazenar imagens de produtos."""
     return f"uploads/products/{instance.product.id}/{filename}"
 
-class ProductImage(models.Model):
-    product = models.ForeignKey("Product", related_name="images", on_delete=models.CASCADE)
-    image = models.ImageField(upload_to=product_image_upload_path)
+class Product(models.Model):
+    nome = models.CharField(max_length=60)
+    preco = models.DecimalField(max_digits=7, decimal_places=2)
+    categoria = models.ForeignKey("Categoria", on_delete=models.CASCADE, default=1)
+    descricao = models.CharField(max_length=250, blank=True, null=True)
+    user = models.ForeignKey("User", on_delete=models.CASCADE)  # ✅ Ligação com o usuário
+
     def __str__(self):
-        return f"Imagem para {self.product.nome}"
+        return self.nome
+
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, related_name="images", on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="uploads/products/")
+
+    def __str__(self):
+        return f"Image for {self.product.nome}"
 
 class Mensagens_de_Contactos(models.Model):
     nome = models.CharField(max_length=100)
