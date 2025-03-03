@@ -26,5 +26,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('loja.urls')), 
     path("upload-product/", upload_product_view, name="upload_product"),
-    path('api/', include('chat.urls'))
+    path("chat/", include("chat.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

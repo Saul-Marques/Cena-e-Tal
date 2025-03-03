@@ -19,6 +19,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-danger" href="{% url 'logout' %}"><img src="{% static 'imgs/icons/logout.svg' %}" style="width: 25px; height: 25px;"alt=""></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'chat' %}"> <img src="{% static 'imgs/icons/enviar_branco.svg' %}" height="20px" width="20px" alt=""></a>
+                </li>
                 
                 {% else %}
                 <!-- Sem login  -->

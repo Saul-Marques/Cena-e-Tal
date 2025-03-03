@@ -19,6 +19,5 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('contactos/', contactos_view, name='contactos'),  
     path("upload-product/", upload_product_view, name="upload_product"),
-    path('api/', include('chat.urls'))
-
+    
     ]
