@@ -32,8 +32,11 @@ Este projeto é a continuação do projeto da cadeira de DPWEB do primeiro semes
 (Passos em Linux)
 ```plaintext
 python -m venv <venv>
-```
+pip install django
+pip install django-cors-headers
 
+
+```
 
 ## 📂 Estrutura do Repositório
 
