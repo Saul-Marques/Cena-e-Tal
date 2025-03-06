@@ -40,6 +40,29 @@ pip install mysqlclient
 pip install pusher
 pip install Pillow
 ```
+Instalar e iniciar uma engine de base de dados, neste projeto foi usada a mariaDB
+Archlinux:
+```plaintext
+sudo pacman -S mariadb
+sudo systemctl start mariadb
+```
+Alterar a ligação à base de dados, se necessário ("projetoPDI/settings.py")
+```plaintext
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'projetoPDI',
+        'USER': 'saul',
+        'PASSWORD': 'projetopdi',
+        'HOST': 'localhost',
+        'PORT': '3306',  # Default MariaDB port
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    }
+}
+```
+
 Clonar o repositório e iniciar o servidor
 ```plaintext
 git clone https://github.com/Saul-Marques/projetoPDI
