@@ -28,6 +28,12 @@ Este projeto é a continuação do projeto da cadeira de DPWEB do primeiro semes
 - **Bootstrap**: Framework para os elementos do design.
 
 ---
+# Setup
+(Passos em Linux)
+```plaintext
+python -m venv <venv>
+```
+
 
 ## 📂 Estrutura do Repositório
 
