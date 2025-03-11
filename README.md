@@ -28,6 +28,47 @@ Este projeto é a continuação do projeto da cadeira de DPWEB do primeiro semes
 - **Bootstrap**: Framework para os elementos do design.
 
 ---
+# Setup
+(Passos em Linux)
+
+Criar um _Virtual Environment _ python e instalar as packages necessárias 
+```plaintext
+python -m venv <venv>
+pip install django
+pip install django-cors-headers
+pip install mysqlclient
+pip install pusher
+pip install Pillow
+```
+Instalar e iniciar uma engine de base de dados, neste projeto foi usada a mariaDB
+Archlinux:
+```plaintext
+sudo pacman -S mariadb
+sudo systemctl start mariadb
+```
+Alterar a ligação à base de dados, se necessário ("projetoPDI/settings.py")
+```plaintext
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'projetoPDI',
+        'USER': 'saul',
+        'PASSWORD': 'projetopdi',
+        'HOST': 'localhost',
+        'PORT': '3306',  # Default MariaDB port
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    }
+}
+```
+
+Clonar o repositório e iniciar o servidor
+```plaintext
+git clone https://github.com/Saul-Marques/projetoPDI
+cd projetoPDI
+python manage.py runserver
+```
 
 ## 📂 Estrutura do Repositório
 
