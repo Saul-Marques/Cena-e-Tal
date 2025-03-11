@@ -7,21 +7,31 @@
             <img src="{% static 'imgs/logo_white.svg' %}" style="width:69px;" alt="Logo">
         </a>
         <div class="" id="navbarNav">
-            <ul class="navbar-nav ms-auto me-5">
+            <ul class="navbar-nav ms-auto">
                 {% if request.session.user_id %}
                 <!--User com login-->
-                <li class="nav-item me-5">
-                    <a class="nav-link buttonvender rounded-5" href="{% url 'upload_product' %}"> <strong>Vender</strong></a>
+                <li class="nav-item">
+                    <a class="nav-link mt-2 me-3 chatbutton" href="{% url 'chat' %}"> <img src="" alt=""></a>
+                </li>
+                <li class="nav-item me-4">
+                    <a class="nav-link buttonvender border border-2 rounded-5 mt-1" href="{% url 'upload_product' %}"> <strong>Vender</strong></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'user' %}"><img src="{% static 'imgs/icons/iconperson.svg' %}" style="width: 20px; height: 20px;" alt=""></a>
+
+                    <a class="nav-link" href="{% url 'user' %}">
+                        {% if user.profile_picture %}
+                            <img src="{{ user.profile_picture.url }}" alt="Foto de Perfil" 
+                                 style="width: 40px; height: 40px; border-radius: 50%;">
+                        {% else %}
+                            <img src="{% static 'imgs/icons/iconperson.svg' %}" 
+                                 style="width: 20px; height: 20px;" alt="">
+                        {% endif %}
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger" href="{% url 'logout' %}"><img src="{% static 'imgs/icons/logout.svg' %}" style="width: 25px; height: 25px;"alt=""></a>
+                    <a class="nav-link ms-3 text-danger" href="{% url 'logout' %}"><img src="{% static 'imgs/icons/logout.svg' %}" style="width: 40px; height: 40px;"alt=""></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'chat' %}"> <img src="{% static 'imgs/icons/enviar_branco.svg' %}" height="20px" width="20px" alt=""></a>
-                </li>
+
                 
                 {% else %}
                 <!-- Sem login  -->

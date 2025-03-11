@@ -18,14 +18,21 @@ class UserManager(BaseUserManager):
     def get_user_by_email(self, email):
         return self.filter(email=email).first()
 
+def user_directory_path(instance, filename):
+    return f'uploads/profiles/{instance.id}/{filename}'
+
 class User(AbstractBaseUser):
     primeiro_nome = models.CharField(max_length=50)
     ultimo_nome = models.CharField(max_length=50)
     telemovel = models.CharField(max_length=10)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=255)
-
+    profile_picture = models.ImageField(upload_to=user_directory_path, blank=True, null=True)    
     objects = UserManager()
+    # Novos campos necessários para o Django Admin
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["primeiro_nome", "ultimo_nome", "telemovel"]
@@ -43,19 +50,28 @@ class Categoria(models.Model):
 
 
 def product_image_upload_path(instance, filename):
-    """Retorna o caminho correto para armazenar imagens de produtos."""
     return f"uploads/products/{instance.product.id}/{filename}"
 
 class Product(models.Model):
+    ESTADO_CHOICES = [
+        ('novo', 'Como novo'),
+        ('bom', 'Bom'),
+        ('mau', 'Mau'),
+    ]
+
+    estado = models.CharField(
+        max_length=10,
+        choices=ESTADO_CHOICES,
+        default='bom'  # Define "Bom" como o padrão, pode alterar conforme necessário
+    )
     nome = models.CharField(max_length=60)
     preco = models.DecimalField(max_digits=7, decimal_places=2)
     categoria = models.ForeignKey("Categoria", on_delete=models.CASCADE, default=1)
     descricao = models.CharField(max_length=250, blank=True, null=True)
-    user = models.ForeignKey("User", on_delete=models.CASCADE)  # ✅ Ligação com o usuário
+    user = models.ForeignKey("User", on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.nome
-
+        return f"{self.nome} - {self.get_estado_display()}"
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, related_name="images", on_delete=models.CASCADE)

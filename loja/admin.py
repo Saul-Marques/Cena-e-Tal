@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import format_html
 from loja.models import User, Product, Categoria
 from loja.models import Mensagens_de_Contactos
 from loja.models import ProductImage
@@ -6,10 +7,25 @@ from loja.models import ProductImage
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ("id", "primeiro_nome", "ultimo_nome", "email", "telemovel")
+    list_display = ("id", "primeiro_nome", "ultimo_nome", "email", "telemovel", "profile_picture_preview")
     search_fields = ("email", "primeiro_nome", "ultimo_nome")
     list_filter = ("email",)
     ordering = ("id",)
+    readonly_fields = ["profile_picture_preview"]
+
+
+    fieldsets = (
+        (None, {"fields": ("email", "password")}),
+        ("Informações Pessoais", {"fields": ("primeiro_nome", "ultimo_nome", "telemovel", "profile_picture")}),
+        ("Permissões", {"fields": ("is_active", "is_staff", "is_superuser")}),
+    )
+
+    def profile_picture_preview(self, obj):
+        if obj.profile_picture:
+            return format_html('<img src="{}" width="50" height="50" style="border-radius: 50%;">', obj.profile_picture.url)
+        return "Sem imagem"
+    
+    profile_picture_preview.short_description = "Foto de Perfil"
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ("id", "nome", "preco", "categoria")

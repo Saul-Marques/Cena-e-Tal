@@ -1,12 +1,30 @@
 
-buttonvender{
+.buttonvender{
     background-color: white;
     color: black;
+    border-color: black;
+    border: 5px;
 }
 
-buttonvender:hover {
+.buttonvender:hover {
     background-color: black;
     color: white;
     border-color: white;
 }
+
+
+
+.chatbutton{
+    /*Display static/imgs/icons/chat_branco.svg */
+    width: 40px;  /* Define o tamanho do botão */
+    height: 40px;
+    background-image: url("/static/imgs/icons/chat_branco.svg"); /* ✅ Ícone padrão */
+    background-size: cover;
+}
+
+.chatbutton:hover {
+    /*Display static/imgs/icons/chat.svg */
+    background-image: url("/static/imgs/icons/chat.svg"); /* ✅ Ícone no hover */
+}
+
 

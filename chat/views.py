@@ -11,26 +11,34 @@ from chat.pusher import pusher_client  # Importa a configuração do Pusher
 logger = logging.getLogger(__name__)  # Ativa logs para debugging
 
 def chat_view(request):
-    users = User.objects.exclude(id=request.session.get("user_id"))  # Exclui o próprio utilizador
-    return render(request, "chat.html", {"users": users})
+    """Renderiza a página do chat com utilizadores da loja e mensagens antigas"""
+    user_id = request.session.get("user_id")  # Obtém o ID do utilizador autenticado
+    users = User.objects.exclude(id=user_id)  # Lista de utilizadores disponíveis para chat
+    
+    # Carregar todas as mensagens enviadas e recebidas pelo utilizador autenticado
+    messages = Message.objects.filter(sender_id=user_id) | Message.objects.filter(receiver_id=user_id)
+    messages = messages.order_by("timestamp")  # Ordenar mensagens pela data
+
+    return render(request, "chat.html", {"users": users, "messages": messages})
+
 
 @csrf_exempt
 def send_private_message(request):
     """Processa o envio de mensagens privadas entre utilizadores"""
     if request.method == "POST":
         data = json.loads(request.body)
-        sender = get_object_or_404(User, id=request.session.get("user_id"))  # ✅ Obtém o utilizador autenticado
+        sender = get_object_or_404(User, id=request.session.get("user_id"))  # Obtém o utilizador autenticado
         receiver = get_object_or_404(User, id=data.get("receiver_id"))
         message = data.get("message", "")
 
-        # ✅ Guardar a mensagem no banco de dados
+        # Guardar a mensagem no banco de dados
         msg = Message.objects.create(sender=sender, receiver=receiver, content=message)
 
-        # ✅ Log para verificar se Django está a processar a mensagem
+        # Log para verificar se Django está a processar a mensagem
         logger.info(f"📨 Mensagem enviada: {sender.primeiro_nome} {sender.ultimo_nome} -> {receiver.primeiro_nome} {receiver.ultimo_nome}: {message}")
         print(f"📨 Enviando mensagem para Pusher: {message}")
 
-        # ✅ Enviar para o canal certo
+        # Enviar para o canal certo
         channel_name = f"private-chat-{receiver.id}"
         event_name = "new-message"
 

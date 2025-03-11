@@ -5,9 +5,16 @@ from django.views import View
 # Create your views here.
 class Index(View):
     def get(self, request):
-        categorias = Categoria.objects.all()  # ✅ Use `.objects.all()`
+        categorias = Categoria.objects.all()
         produtos = Product.objects.all()
-        return render(request, "index.html", {"categorias": categorias, "produtos": produtos})
+        
+        
+        user = None
+        if 'user_id' in request.session:  
+            user = User.objects.filter(id=request.session['user_id']).first()  
+
+        return render(request, "index.html", {"categorias": categorias, "produtos": produtos, "user": user})
+
 
         
 def loja(request):

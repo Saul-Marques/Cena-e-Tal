@@ -44,7 +44,7 @@
                     <div class="p-0" style="width: 100%; height: 250px; background-color: white;">
                         {% with produto.images.all|first as image %}
                             {% if image %}
-                                <img src="{{ image.image.url }}" class="img-fluid" style="width: 100%; height: 100%; object-fit:cover;" alt="{{ produto.nome }}">
+                                <img src="{{ image.image.url }}" class="img-fluid" style="width: 100%; height: 250px; object-fit:cover;" alt="{{ produto.nome }}">
                             {% else %}
                                 <img src="{% static 'imgs/default-product.jpg' %}" class="img-fluid" style="width: 100%; height: 100%; object-fit:cover;" alt="Sem imagem">
                             {% endif %}
