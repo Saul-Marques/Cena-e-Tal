@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import chat_view, send_private_message
+from chat.views import chat_list_view, chat_view
 
 urlpatterns = [
-    path("", chat_view, name="chat"),
-    path("send_message/", send_private_message, name="send_message"),  # Envio de mensagens privadas
+    path("", chat_list_view, name="chat_list"),  # Lista de conversas
+    path("<str:username>/", chat_view, name="chat"),  # Chat privado
 ]

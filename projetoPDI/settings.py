@@ -39,8 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'loja',
     'chat',
-    'corsheaders'
+    'channels'
 ]
+ASGI_APPLICATION = "projetoPDI.asgi.application"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",  # Usa Redis depois de testar
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
