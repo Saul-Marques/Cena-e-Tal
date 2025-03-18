@@ -28,6 +28,11 @@ class User(AbstractBaseUser):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=255)
     profile_picture = models.ImageField(upload_to=user_directory_path, blank=True, null=True)    
+    localidade = models.CharField(max_length=255, blank=True, null=True)
+    cidade = models.CharField(max_length=255, blank=True, null=True)
+    cp = models.CharField(max_length=20, blank=True, null=True)
+    biografia = models.TextField(blank=True, null=True)
+    
     objects = UserManager()
     # Novos campos necessários para o Django Admin
     is_active = models.BooleanField(default=True)

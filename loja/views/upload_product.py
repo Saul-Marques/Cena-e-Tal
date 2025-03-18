@@ -9,7 +9,6 @@ from loja.forms import ProductForm
 logger = logging.getLogger(__name__)  # Logger para debug
 
 def upload_product_view(request):
-    """ Página de upload de produto com a imagem do utilizador """
     
     if "user_id" not in request.session:
         return redirect("login")
@@ -68,4 +67,4 @@ def upload_product_view(request):
         return redirect("homepage")
 
     categorias = Categoria.objects.all()
-    return render(request, "upload_product.html", {"categorias": categorias, "user": user})  # ✅ Passa o utilizador para o template
+    return render(request, "upload_product.html", {"categorias": categorias, "user": user})

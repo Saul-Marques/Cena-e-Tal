@@ -4,31 +4,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversas</title>
+    <title>Chat</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'imgs/favicon.svg' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts/customfonts.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class="container mt-5">
-        <h2>Conversas Recentes</h2>
-        <ul>
-            {% for conversation in conversations %}
-                {% if conversation.user1 == request.user %}
-                    <li>
-                        <a href="{% url 'chat' username=conversation.user2.username %}">
-                            {{ conversation.user2.username }}
-                        </a>
-                    </li>
+<body style="background-color: #EAEAEA;">
+    {% include 'navbar.html' %}
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Coluna Esquerda - Lista de Conversas -->
+        <div class="col-md-4">
+            <div class="card p-4 shadow">
+                <h2 class="jomhuria-regular fs-custom">Conversas</h2>
+                <ul class="list-group">
+                    {% for conversation in conversations %}
+                        {% with conversation.user2 as other_user %}
+                            {% if conversation.user1 == user %}
+                                {% with conversation.user2 as other_user %}
+                                <li class="list-group-item">
+                                    <a href="{% url 'chat_detail' conversation.id %}">
+                                        {{ other_user.primeiro_nome }} {{ other_user.ultimo_nome }}
+                                    </a>
+                                </li>
+                                {% endwith %}
+                            {% else %}
+                                {% with conversation.user1 as other_user %}
+                                <li class="list-group-item">
+                                    <a href="{% url 'chat_detail' conversation.id %}">
+                                        {{ other_user.primeiro_nome }} {{ other_user.ultimo_nome }}
+                                    </a>
+                                </li>
+                                {% endwith %}
+                            {% endif %}
+                        {% endwith %}
+                    {% empty %}
+                        <li class="list-group-item">Sem conversas ativas</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Coluna Direita - Chat -->
+        <div class="col-md-8">
+            <div class="card p-4 shadow">
+                {% if active_conversation %}
+                    <h2 class="jomhuria-regular fs-custom">
+                        Conversa com 
+                        {% if active_conversation.user1 == user %}
+                            {% with active_conversation.user2 as other_user %}
+                            {{ other_user.primeiro_nome }}
+                            {% endwith %}
+                        {% else %}
+                            {% with active_conversation.user1 as other_user %}
+                            {{ other_user.primeiro_nome }}
+                            {% endwith %}
+                        {% endif %}
+                    </h2>
+                    <ul id="messagesList" class="list-group mb-3">
+                        {% for message in messages %}
+                            <li class="list-group-item">
+                                <strong>{{ message.sender.primeiro_nome }}:</strong> {{ message.text }}
+                            </li>
+                        {% empty %}
+                            <li class="list-group-item">Nenhuma mensagem ainda.</li>
+                        {% endfor %}
+                    </ul>
+                    <!-- Formulário de envio -->
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="conversation_id" value="{{ active_conversation.id }}">
+                        <div class="input-group">
+                            <textarea name="message" id="messageInput" class="form-control" placeholder="Escreve uma mensagem..."></textarea>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </form>
                 {% else %}
-                    <li>
-                        <a href="{% url 'chat' username=conversation.user1.username %}">
-                            {{ conversation.user1.username }}
-                        </a>
-                    </li>
+                    <h2 class="jomhuria-regular fs-custom">Conversa</h2>
+                    <p>Selecione um chat à esquerda para começar uma conversa.</p>
                 {% endif %}
-            {% empty %}
-                <p>Ainda não tens conversas ativas.</p>
-            {% endfor %}
-        </ul>
+            </div>
+        </div>
     </div>
+</div>
+
+<script>
+    {% if active_conversation %}
+        const username = "{{ user.primeiro_nome }}";
+        const conversationId = "{{ active_conversation.id }}";
+        const chatSocket = new WebSocket("ws://" + window.location.host + "/ws/chat/" + conversationId + "/");
+
+        // Debug the WebSocket connection
+        chatSocket.onopen = function(e) {
+            console.log("WebSocket connection established");
+        };
+
+        chatSocket.onerror = function(e) {
+            console.error("WebSocket error:", e);
+        };
+
+        chatSocket.onclose = function(e) {
+            console.log("WebSocket connection closed", e.code, e.reason);
+        };
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            document.querySelector("#messagesList").innerHTML += `<li class='list-group-item'><strong>${data.username}:</strong> ${data.message}</li>`;
+        };
+
+        // Handle form submission via WebSocket
+        document.querySelector("form").addEventListener("submit", function(e) {
+            e.preventDefault(); // Stop the form from submitting via HTTP
+            const messageInput = document.querySelector("#messageInput");
+            const message = messageInput.value.trim();
+            
+            if (message) {
+                // Send via WebSocket
+                chatSocket.send(JSON.stringify({
+                    "message": message
+                }));
+                
+                messageInput.value = "";
+            }
+        });
+    {% endif %}
+</script>
+
 </body>
 </html>

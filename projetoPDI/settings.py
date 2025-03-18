@@ -31,21 +31,28 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'loja',
     'chat',
-    'channels'
+    
+    
 ]
+SESSION_ENGINE = "django.contrib.sessions.backends.db"  # Armazena sessões na BD
+SESSION_COOKIE_NAME = 'sessionid'
+SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_HTTPONLY = True
 ASGI_APPLICATION = "projetoPDI.asgi.application"
 
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer",  # Usa Redis depois de testar
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
     },
 }
 
@@ -148,3 +155,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'chat.consumers': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    },
+}
