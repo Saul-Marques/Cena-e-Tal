@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     
     
 ]
+AUTH_USER_MODEL = "loja.User"
 SESSION_ENGINE = "django.contrib.sessions.backends.db"  # Armazena sessões na BD
 SESSION_COOKIE_NAME = 'sessionid'
 SESSION_COOKIE_SECURE = False

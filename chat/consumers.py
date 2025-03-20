@@ -25,6 +25,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             )
             
             # Accept the connection
+            print(f"WebSocket connection attempt by {self.scope['user']}")
             await self.accept()
             
             # Debug log - only access email if user is authenticated
@@ -48,7 +49,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         )
         
         logger.debug(f"WebSocket accepted for user {self.user.email} in room {self.room_group_name}")
-        await self.accept()
 
     async def disconnect(self, close_code):
         # Verifica se `room_group_name` existe antes de tentar remover do grupo

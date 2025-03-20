@@ -15,6 +15,21 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+
+    def create_superuser(self, email, primeiro_nome, ultimo_nome, telemovel, password=None):
+        """ Cria e retorna um superusuário com todas as permissões """
+        user = self.create_user(
+            email=email,
+            primeiro_nome=primeiro_nome,
+            ultimo_nome=ultimo_nome,
+            telemovel=telemovel,
+            password=password
+        )
+        user.is_staff = True
+        user.is_superuser = True
+        user.save(using=self._db)
+        return user
+
     def get_user_by_email(self, email):
         return self.filter(email=email).first()
 
@@ -41,6 +56,13 @@ class User(AbstractBaseUser):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["primeiro_nome", "ultimo_nome", "telemovel"]
+    def has_perm(self, perm, obj=None):
+        """Return True if user has a specific permission."""
+        return True  # Modify as needed
+
+    def has_module_perms(self, app_label):
+        """Return True if user has permissions to view the app `app_label`."""
+        return True
 
 class Categoria(models.Model):
     nome = models.CharField(max_length=50)
