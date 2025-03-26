@@ -22,12 +22,12 @@
         <div class="col-md-6">
             <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    {% for imagem in produto.imagens.all %}
+                    {% for image in produto.images.all %}
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                            <img src="{{ imagem.image_path.url }}" class="d-block w-100" alt="Imagem do produto">
+                            <img src="{{ image.image.url }}" class="d-block w-100 rounded-3" style="height: 517px; object-fit: contain;" alt="Imagem do produto">
                         </div>
                     {% endfor %}
-                </div>
+                </div> 
                 <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </button>
@@ -38,7 +38,7 @@
         </div>
 
         <!-- Coluna dos detalhes -->
-        <div class="col-md-6">
+        <div class="col-md-6 rounded-3" style="background-color: white;">
             <h1 class="jomhuria-regular fs-custom">{{ produto.titulo }}</h1>
             <p class="jomhuria-regular fs-3">Publicado em: {{ produto.adicionado_a|date:"d/m/Y H:i" }}</p>
             <p class="jomhuria-regular fs-1">Vendedor: 
@@ -63,7 +63,7 @@
 
     <!-- Descrição do produto -->
     <div class="row mt-4">
-        <div class="col">
+        <div class="col rounded-3" style="background-color: white;">
             <h3 class="jomhuria-regular fs-1">Descrição</h3>
             <p class="fs-3">{{ produto.descricao }}</p>
         </div>
@@ -76,7 +76,7 @@
             <ul class="list-group">
                 {% for bid in produto.licitacoes.all %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{ bid.user.username }} - {{ bid.valor }}€
+                        {{ bid.user.primeiro_nome }} {{ bid.user.ultimo_nome }} - {{ bid.valor }}€
                         <span class="badge bg-secondary">{{ bid.licitado_a|timesince }} atrás</span>
                     </li>
                 {% empty %}
