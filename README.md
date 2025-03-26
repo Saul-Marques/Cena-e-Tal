@@ -37,7 +37,7 @@ python -m venv <venv>
 pip install django
 pip install django-cors-headers
 pip install mysqlclient
-pip install pusher
+pip install django-channels
 pip install Pillow
 ```
 Instalar e iniciar uma engine de base de dados, neste projeto foi usada a mariaDB
