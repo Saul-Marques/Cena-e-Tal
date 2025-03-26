@@ -1,11 +1,94 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produto</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts/customfonts.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: #EAEAEA;">
     
+{% include 'navbar.html' %}
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Coluna das imagens -->
+        <div class="col-md-6">
+            <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for imagem in produto.imagens.all %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{ imagem.image_path.url }}" class="d-block w-100" alt="Imagem do produto">
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Coluna dos detalhes -->
+        <div class="col-md-6">
+            <h1 class="jomhuria-regular fs-custom">{{ produto.titulo }}</h1>
+            <p class="jomhuria-regular fs-3">Publicado em: {{ produto.adicionado_a|date:"d/m/Y H:i" }}</p>
+            <p class="jomhuria-regular fs-1">Vendedor: 
+                <a href="" class="text-dark">{{ produto.user.username }}</a>
+            </p>
+            <p class="jomhuria-regular fs-1">Preço: <strong>{{ produto.preco }}€</strong></p>
+            <p class="jomhuria-regular fs-1">Licitação Atual: <strong>€</strong></p>
+
+            {% if user.is_authenticated %}
+                <form method="POST" action="{% url 'fazer_licitacao' produto.id %}">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" name="valor" min="" step="0.01" required>
+                        <button type="submit" class="btn btn-dark">Licitar</button>
+                    </div>
+                </form>
+            {% else %}
+                <p class="text-muted">Faça <a href="{% url 'login' %}">login</a> para licitar.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Descrição do produto -->
+    <div class="row mt-4">
+        <div class="col">
+            <h3 class="jomhuria-regular fs-1">Descrição</h3>
+            <p class="fs-3">{{ produto.descricao }}</p>
+        </div>
+    </div>
+
+    <!-- Histórico de licitações -->
+    <div class="row mt-4">
+        <div class="col">
+            <h3 class="jomhuria-regular fs-1">Últimas Licitações</h3>
+            <ul class="list-group">
+                {% for bid in produto.licitacoes.all %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ bid.user.username }} - {{ bid.valor }}€
+                        <span class="badge bg-secondary">{{ bid.licitado_a|timesince }} atrás</span>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item text-muted">Ainda não há licitações.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

@@ -97,8 +97,21 @@ class Product(models.Model):
     descricao = models.CharField(max_length=250, blank=True, null=True)
     user = models.ForeignKey("User", on_delete=models.CASCADE)
 
+    @property
+    def maior_licitacao(self):
+        maior = self.licitacoes.aggregate(models.Max('valor'))['valor__max']
+        return maior if maior else self.preco  # Se não houver licitações, retorna o preço base
+
     def __str__(self):
         return f"{self.nome} - {self.get_estado_display()}"
+
+
+class Licitacao(models.Model):
+    produto = models.ForeignKey(Product, related_name='licitacoes', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    valor = models.DecimalField(max_digits=10, decimal_places=2)
+    licitado_a = models.DateTimeField(auto_now_add=True)
+
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, related_name="images", on_delete=models.CASCADE)
