@@ -19,14 +19,14 @@
     <div class="col-2 d-none d-lg-block"></div>
 
     <div class="col">
-      <p class="jomhuria-regular fs-custom">Bem-vindo ao seu perfil, {{ userData.username }}!</p>
-      <div class="row rounded" style="background-color: white;">
+      <p class="jomhuria-regular fs-custom">Bem-vindo ao seu perfil, {{ user.primeiro_nome }}!</p>
+      <div class="row rounded-top" style="background-color: white;">
         <div class="col-10 ms-4">
-          <p class="jomhuria-regular fs-1 mt-4" style="line-height: 1;">{{ userData.username }}</p>
-          <p class="jomhuria-regular fs-2" style="line-height: 1;">{{ userData.email }}</p>
-          <p class="jomhuria-regular fs-3" style="line-height: 1;">{{ userData.localidade }}, {{ userData.cidade }}</p>
+          <p class="jomhuria-regular fs-1 mt-4" style="line-height: 1;">{{ user.username }}</p>
+          <p class="jomhuria-regular fs-2" style="line-height: 1;">{{ user.email }}</p>
+          <p class="jomhuria-regular fs-3" style="line-height: 1;">{{ user.localidade }}, {{ user.cidade }}</p>
           <div class="div rounded mb-4" style="background-color: #D9D9D9; height: 127px">
-            <p class="jomhuria-regular fs-3 ms-3" style="line-height: 1;">{{ userData.biografia }}</p>
+            <p class="jomhuria-regular fs-3 ms-3" style="line-height: 1;">{{ user.biografia }}</p>
           </div>
         </div>
 
@@ -41,21 +41,21 @@
 
       <form method="POST">
         {% csrf_token %}
-        <div class="row mt-5 rounded" style="background-color: white;">
+        <div class="row rounded" style="background-color: white;">
           <p class="jomhuria-regular fs-1 mt-4" style="line-height: 1;">Editar Perfil</p>
-          <div class="col-4 ms-4">
-            <p class="jomhuria-regular fs-2 mt-4">Nome: </p>
-            <p class="jomhuria-regular fs-2 mt-5">Biografia: </p>
-            <p class="jomhuria-regular fs-2 mt-4">Email: </p>
+          <div class="col-4 ms-4 mt-2" style="line-height: 1;">
+            <p class="jomhuria-regular fs-2 ">Nome: </p>
+            <p class="jomhuria-regular fs-2 ">Biografia: </p>
+            <p class="jomhuria-regular fs-2">Email: </p>
           </div>
-          <div class="col mt-3">
-            <input type="text" class="form-control rounded-4" name="nome" value="{{ userData.username }}">
-            <input type="text" class="form-control rounded-4 mt-4" name="biografia" value="{{ userData.biografia }}">
-            <input type="email" class="form-control rounded-4 mt-4" name="email" value="{{ userData.email }}">
+          <div class="col">
+            <input type="text" class="form-control rounded-4" name="nome" value="{{ user.primeiro_nome }}">
+            <input type="text" class="form-control rounded-4 mt-1" name="biografia" value="{{ user.biografia }}">
+            <input type="email" class="form-control rounded-4 mt-1" name="email" value="{{ user.email }}">
           </div>
           <div class="col d-none d-lg-block"></div>
-          <div class="col mt-4">
-            <button type="submit" class="btn rounded-4" style="background-color: black; color: white;">
+          <div class="col mt-5">
+            <button type="submit" class="btn rounded-4 jomhuria-regular fs-1" style="background-color: black; color: white; line-height: 1;">
               Atualizar
             </button>
           </div>

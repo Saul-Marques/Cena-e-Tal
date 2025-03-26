@@ -4,50 +4,30 @@ from chat.models import Conversation, Message
 from loja.models import User
 from asgiref.sync import sync_to_async
 import logging
+from django.contrib.auth import get_user_model
 
 logger = logging.getLogger(__name__)
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
+        print("User model being used:", get_user_model())
+        print("User in scope:", self.scope.get("user"))
 
         self.conversation_id = self.scope['url_route']['kwargs']['conversation_id']
-        self.room_group_name = f'chat_{self.conversation_id}'
-        
-        # Get the user from the scope
-        self.user = self.scope["user"]
-        
-        # Check if the user is authenticated
-        if self.user.is_authenticated:
-            # Join the room group
-            await self.channel_layer.group_add(
-                self.room_group_name,
-                self.channel_name
-            )
-            
-            # Accept the connection
-            print(f"WebSocket connection attempt by {self.scope['user']}")
-            await self.accept()
-            
-            # Debug log - only access email if user is authenticated
-            logger.debug(f"WebSocket accepted for user {self.user.email} in room {self.room_group_name}")
-        else:
-            # Debug log for anonymous users
-            logger.debug(f"WebSocket rejected - user not authenticated")
-            
-            # Reject the connection
-            await self.close()
-        logger.debug(f"URL route: {self.scope['url_route']}")
-        
-        self.conversation_id = self.scope["url_route"]["kwargs"]["conversation_id"]
-        logger.debug(f"Conversation ID from URL: {self.conversation_id}")
-        
         self.room_group_name = f"chat_{self.conversation_id}"
-        
+        self.user = self.scope["user"]
+
+        if not self.user.is_authenticated:
+            logger.debug("WebSocket rejected - user not authenticated")
+            await self.close()
+            return
+
         await self.channel_layer.group_add(
             self.room_group_name,
             self.channel_name
         )
-        
+
+        await self.accept()
         logger.debug(f"WebSocket accepted for user {self.user.email} in room {self.room_group_name}")
 
     async def disconnect(self, close_code):
@@ -62,13 +42,16 @@ class ChatConsumer(AsyncWebsocketConsumer):
         data = json.loads(text_data)
         message = data["message"]
 
-        # Enviar mensagem para o grupo WebSocket
+        # Guarda a mensagem na BD
+        await self.save_message(message)
+
+        # Envia para o grupo
         await self.channel_layer.group_send(
             self.room_group_name,
             {
                 "type": "chat_message",
                 "message": message,
-                "username": self.user.primeiro_nome,  # Usar o nome do utilizador autenticado
+                "username": self.user.primeiro_nome,
             }
         )
 
@@ -85,11 +68,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
             user2=max(self.user, other_user, key=lambda u: u.id),
         )
         return conversation
-
+    @sync_to_async
     def save_message(self, text):
-        message = Message.objects.create(
-            conversation=self.conversation,
+        conversation = Conversation.objects.get(id=self.conversation_id)
+        Message.objects.create(
+            conversation=conversation,
             sender=self.user,
             text=text
         )
-        return message

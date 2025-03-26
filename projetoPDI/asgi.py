@@ -9,15 +9,13 @@ from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
 from channels.security.websocket import AllowedHostsOriginValidator
 import chat.routing
-from projetoPDI.middleware import WebSocketAuthMiddleware 
+from projetoPDI.middleware import WebSocketSessionUserMiddleware
 
 application = ProtocolTypeRouter({
     "http": get_asgi_application(),
     "websocket": AllowedHostsOriginValidator(
-        AuthMiddlewareStack(
-            URLRouter(
-                chat.routing.websocket_urlpatterns
-            )
+        WebSocketSessionUserMiddleware(
+            URLRouter(chat.routing.websocket_urlpatterns)
         )
     ),
 })
