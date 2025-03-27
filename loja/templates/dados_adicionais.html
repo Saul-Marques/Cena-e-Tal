@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Completar Perfil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">Vamos conhecer-nos melhor?</h2>
+        <p class="text-center">Pode adicionar estes dados agora ou mais tarde na sua área pessoal.</p>
+
+        <form action="/completar-perfil/" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="cidade" class="form-label">Cidade</label>
+                <input type="text" class="form-control" id="cidade" name="cidade">
+            </div>
+            <div class="mb-3">
+                <label for="codigo_postal" class="form-label">Código Postal</label>
+                <input type="text" class="form-control" id="codigo_postal" name="codigo_postal">
+            </div>
+            <div class="mb-3">
+                <label for="morada" class="form-label">Morada</label>
+                <input type="text" class="form-control" id="morada" name="morada">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Categorias Preferidas</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="categorias[]" value="tecnologia" id="cat1">
+                    <label class="form-check-label" for="cat1">Tecnologia</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="categorias[]" value="moda" id="cat2">
+                    <label class="form-check-label" for="cat2">Moda</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="categorias[]" value="livros" id="cat3">
+                    <label class="form-check-label" for="cat3">Livros</label>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success">Guardar</button>
+                <a href="/dashboard/" class="btn btn-secondary">Agora não</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
