@@ -1,20 +1,21 @@
+{% load static %}
 <div class="container mt-5">
-  <h2 class="text-center">Contacte-nos</h2>
+  <h2 class="text-center jomhuria-regular fs-custom">Contacte-nos</h2>
   <form method="post" action="{% url 'contactos' %}">
       {% csrf_token %}
       
       <div class="mb-3">
-          <label class="form-label">Nome</label>
+          <label class="form-label jomhuria-regular fs-2" style="line-height: 1;">Nome</label>
           <input type="text" class="form-control" name="nome" required>
       </div>
 
       <div class="mb-3">
-          <label class="form-label">Email</label>
+          <label class="form-label jomhuria-regular fs-2" style="line-height: 1;">Email</label>
           <input type="email" class="form-control" name="email" required>
       </div>
 
       <div class="mb-3">
-          <label class="form-label">Mensagem</label>
+          <label class="form-label jomhuria-regular fs-2" style="line-height: 1;">Mensagem</label>
           <textarea class="form-control" name="mensagem" rows="4" required></textarea>
       </div>
 

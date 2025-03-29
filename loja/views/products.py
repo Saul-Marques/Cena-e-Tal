@@ -1,11 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from loja.models import Product, Licitacao
+from loja.models import Product, Licitacao, User
 
 def produto_detail(request, id):
-    produto = get_object_or_404(Product, id=id)
-    return render(request, 'produto.html', {'produto': produto})
 
+    user = User.objects.filter(id=request.session["user_id"]).first()  # Obtém o utilizador autenticado
+
+
+    produto = get_object_or_404(Product, id=id)
+    licitacoes = produto.licitacoes.order_by('-licitado_a')  # Ordena por data descrescente (mais recente primeiro)
+    return render(request, 'produto.html', {
+        'produto': produto,
+        'licitacoes': licitacoes,
+        'user': user
+    })
 @login_required
 def fazer_licitacao(request, id):
     produto = get_object_or_404(Product, id=id)

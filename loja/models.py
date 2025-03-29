@@ -36,6 +36,28 @@ class UserManager(BaseUserManager):
 def user_directory_path(instance, filename):
     return f'uploads/profiles/{instance.id}/{filename}'
 
+# Lista de opções para a cidade
+CIDADES_CHOICES = [
+    ('aveiro', 'Aveiro'),
+    ('beja', 'Beja'),
+    ('braga', 'Braga'),
+    ('braganca', 'Bragança'),
+    ('castelo_branco', 'Castelo Branco'),
+    ('coimbra', 'Coimbra'),
+    ('evora', 'Évora'),
+    ('faro', 'Faro'),
+    ('guarda', 'Guarda'),
+    ('leiria', 'Leiria'),
+    ('lisboa', 'Lisboa'),
+    ('portalegre', 'Portalegre'),
+    ('porto', 'Porto'),
+    ('santarem', 'Santarém'),
+    ('setubal', 'Setúbal'),
+    ('viana_do_castelo', 'Viana do Castelo'),
+    ('vila_real', 'Vila Real'),
+    ('viseu', 'Viseu'),
+]
+
 class User(AbstractBaseUser):
     primeiro_nome = models.CharField(max_length=50)
     ultimo_nome = models.CharField(max_length=50)
@@ -44,7 +66,12 @@ class User(AbstractBaseUser):
     password = models.CharField(max_length=255)
     profile_picture = models.ImageField(upload_to=user_directory_path, blank=True, null=True)    
     localidade = models.CharField(max_length=255, blank=True, null=True)
-    cidade = models.CharField(max_length=255, blank=True, null=True)
+    cidade = models.CharField(
+        max_length=255,
+        choices=CIDADES_CHOICES,
+        blank=True,
+        null=True
+    )
     cp = models.CharField(max_length=20, blank=True, null=True)
     biografia = models.TextField(blank=True, null=True)
     

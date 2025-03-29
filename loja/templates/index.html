@@ -19,6 +19,7 @@
     <!-- Navbar -->
     {% include 'navbar.html' %}
 
+
     <!-- Imagem principal -->
     <div class="container-fluid p-0 rounded" style="background-color: transparent;">
         <img class="object-fit-contain" src="{% static 'imgs/cover2.png' %}" style="width: 100%; height: 100%;" alt="">
@@ -44,10 +45,12 @@
                     <div class="p-0" style="width: 100%; height: 250px; background-color: white;">
                         {% with produto.images.all|first as image %}
                             {% if image %}
+                            <a href="{% url 'produto_detail' produto.id %}">
                                 <img src="{{ image.image.url }}" class="img-fluid" style="width: 100%; height: 250px; object-fit:cover;" alt="{{ produto.nome }}">
                             {% else %}
                                 <img src="{% static 'imgs/default-product.jpg' %}" class="img-fluid" style="width: 100%; height: 100%; object-fit:cover;" alt="Sem imagem">
                             {% endif %}
+                            </a>
                         {% endwith %}
                     </div>
             

@@ -24,7 +24,7 @@
                 <div class="carousel-inner">
                     {% for image in produto.images.all %}
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                            <img src="{{ image.image.url }}" class="d-block w-100 rounded-3" style="height: 517px; object-fit: contain;" alt="Imagem do produto">
+                            <img src="{{ image.image.url }}" class="d-block w-100 rounded-3" style="height: 517px; object-fit: cover;" alt="Imagem do produto">
                         </div>
                     {% endfor %}
                 </div> 
@@ -45,7 +45,7 @@
                 <a href="" style="text-decoration: none;" class="text-dark">{{ produto.user.primeiro_nome }} {{ produto.user.ultimo_nome }}</a>
             </p>
             <p class="jomhuria-regular fs-1">Preço: <strong>{{ produto.preco }}€</strong></p>
-            <p class="jomhuria-regular fs-1">Licitação Atual: <strong>€</strong></p>
+            <p class="jomhuria-regular fs-1">Licitação Atual: <strong> {{ produto.maior_licitacao }} €</strong ></p>
 
             {% if user.is_authenticated %}
                 <form method="POST" action="{% url 'fazer_licitacao' produto.id %}">
@@ -64,19 +64,19 @@
     <!-- Descrição do produto -->
     <div class="row mt-4">
         <div class="col rounded-3" style="background-color: white;">
-            <h3 class="jomhuria-regular fs-1">Descrição</h3>
-            <p class="fs-3">{{ produto.descricao }}</p>
+            <h3 class="jomhuria-regular fs-custom">Descrição.</h3>
+            <p class="fs-2 jomhuria-regular">{{ produto.descricao }}</p>
         </div>
     </div>
 
     <!-- Histórico de licitações -->
     <div class="row mt-4">
-        <div class="col">
-            <h3 class="jomhuria-regular fs-1">Últimas Licitações</h3>
-            <ul class="list-group">
-                {% for bid in produto.licitacoes.all %}
+        <div class="col rounded-3 mb-5" style="background-color: white;">
+            <h3 class="jomhuria-regular fs-1 mt-1">Últimas Licitações:</h3>
+            <ul class="list-group mb-3">
+                {% for bid in licitacoes %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{ bid.user.primeiro_nome }} {{ bid.user.ultimo_nome }} - {{ bid.valor }}€
+                        {{ bid.user.primeiro_nome }} {{ bid.user.ultimo_nome }} - {{ bid.valor }}€    {% if bid.user.cidade %} {{bid.user.get_cidade_display}} {% else %} {% endif %} 
                         <span class="badge bg-secondary">{{ bid.licitado_a|timesince }} atrás</span>
                     </li>
                 {% empty %}

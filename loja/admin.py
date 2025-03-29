@@ -7,7 +7,7 @@ from loja.models import ProductImage
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ("id", "primeiro_nome", "ultimo_nome", "email", "telemovel", "profile_picture_preview")
+    list_display = ("id", "primeiro_nome", "ultimo_nome", "email", "telemovel", "profile_picture_preview", "cidade")
     search_fields = ("email", "primeiro_nome", "ultimo_nome")
     list_filter = ("email",)
     ordering = ("id",)
@@ -16,7 +16,7 @@ class UserAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {"fields": ("email", "password")}),
-        ("Informações Pessoais", {"fields": ("primeiro_nome", "ultimo_nome", "telemovel", "profile_picture")}),
+        ("Informações Pessoais", {"fields": ("primeiro_nome", "ultimo_nome", "telemovel", "profile_picture", "cidade")}),
         ("Permissões", {"fields": ("is_active", "is_staff", "is_superuser")}),
     )
 

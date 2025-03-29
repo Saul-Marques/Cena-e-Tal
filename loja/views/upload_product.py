@@ -6,8 +6,6 @@ from loja.models import Product, Categoria, ProductImage, User
 from decimal import Decimal
 from loja.forms import ProductForm
 
-logger = logging.getLogger(__name__)  # Logger para debug
-
 def upload_product_view(request):
     
     if "user_id" not in request.session:
