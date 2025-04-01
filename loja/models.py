@@ -17,7 +17,6 @@ class UserManager(BaseUserManager):
 
 
     def create_superuser(self, email, primeiro_nome, ultimo_nome, telemovel, password=None):
-        """ Cria e retorna um superusuário com todas as permissões """
         user = self.create_user(
             email=email,
             primeiro_nome=primeiro_nome,
@@ -84,11 +83,9 @@ class User(AbstractBaseUser):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["primeiro_nome", "ultimo_nome", "telemovel"]
     def has_perm(self, perm, obj=None):
-        """Return True if user has a specific permission."""
         return True  # Modify as needed
 
     def has_module_perms(self, app_label):
-        """Return True if user has permissions to view the app `app_label`."""
         return True
 
 class Categoria(models.Model):

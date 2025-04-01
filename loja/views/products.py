@@ -4,9 +4,7 @@ from loja.models import Product, Licitacao, User
 
 def produto_detail(request, id):
 
-    user = User.objects.filter(id=request.session["user_id"]).first()  # Obtém o utilizador autenticado
-
-
+    user = request.user
     produto = get_object_or_404(Product, id=id)
     licitacoes = produto.licitacoes.order_by('-licitado_a')  # Ordena por data descrescente (mais recente primeiro)
     return render(request, 'produto.html', {

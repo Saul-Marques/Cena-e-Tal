@@ -5,13 +5,12 @@ from django.shortcuts import render, redirect
 from loja.models import Product, Categoria, ProductImage, User
 from decimal import Decimal
 from loja.forms import ProductForm
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def upload_product_view(request):
     
-    if "user_id" not in request.session:
-        return redirect("login")
-
-    user = User.objects.filter(id=request.session["user_id"]).first()  # Obtém o utilizador autenticado
+    user = request.user
 
     if request.method == "POST":
         nome = request.POST.get("nome")

@@ -9,10 +9,7 @@ class Index(View):
         produtos = Product.objects.all()
         
         
-        user = None
-        if 'user_id' in request.session:  
-            user = User.objects.filter(id=request.session['user_id']).first()  
-
+        user = request.user
         return render(request, "index.html", {"categorias": categorias, "produtos": produtos, "user": user})
 
 

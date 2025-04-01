@@ -8,7 +8,7 @@
         </a>
         <div class="" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                {% if request.session.user_id %}
+                {% if request.user.is_authenticated %}
                 <!--User com login-->
                 <li class="nav-item">
                     <a class="nav-link mt-2 me-3 chatbutton" href="{% url 'chat_list' %}"> <img src="" alt=""></a>
@@ -19,12 +19,10 @@
                 <li class="nav-item">
 
                     <a class="nav-link" href="{% url 'user' %}">
-                        {% if user.profile_picture %}
-                            <img src="{{ user.profile_picture.url }}" alt="Foto de Perfil" 
-                                 style="width: 40px; height: 40px; border-radius: 50%;">
+                        {% if request.user.profile_picture %}
+                            <img src="{{ user.profile_picture.url }}" alt="Foto de Perfil" style="width: 40px; height: 40px; border-radius: 50%; background-color: white;">
                         {% else %}
-                            <img src="{% static 'imgs/icons/iconperson.svg' %}" 
-                                 style="width: 20px; height: 20px;" alt="">
+                            <img src="{% static 'imgs/icons/iconperson.svg' %}" style="width: 20px; height: 20px;" alt="">
                         {% endif %}
                     </a>
                 </li>

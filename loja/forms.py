@@ -1,8 +1,5 @@
 from django import forms
 from loja.models import Product
-
-from django import forms
-from loja.models import Product
 from decimal import Decimal
 
 class ProductForm(forms.ModelForm):

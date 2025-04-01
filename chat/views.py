@@ -1,18 +1,13 @@
 from django.shortcuts import render, redirect
 from loja.models import User
 from chat.models import Conversation
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
 def chat_list_view(request, conversation_id=None):
-    """ Página de chat com lista à esquerda e conversa ativa à direita """
-
-    if "user_id" not in request.session:
-        return redirect("login")
-
-    try:
-        user = User.objects.get(id=request.session["user_id"])
-    except User.DoesNotExist:
-        return redirect("login")
-
+    
+    user = request.user
     # 🔍 DEBUG: Verificar o ID do utilizador logado
     print(f"DEBUG: Utilizador logado -> {user.id} - {user.email}")
 
