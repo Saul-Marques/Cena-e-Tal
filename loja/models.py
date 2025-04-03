@@ -124,7 +124,7 @@ class Product(models.Model):
     @property
     def maior_licitacao(self):
         maior = self.licitacoes.aggregate(models.Max('valor'))['valor__max']
-        return maior if maior else self.preco  # Se não houver licitações, retorna o preço base
+        return maior if maior else 0  # Se não houver licitações, retorna o preço base
 
     def __str__(self):
         return f"{self.nome} - {self.get_estado_display()}"

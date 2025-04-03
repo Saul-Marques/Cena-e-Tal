@@ -1,48 +1,54 @@
 import os
 import logging
+from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import render, redirect
-from loja.models import Product, Categoria, ProductImage, User
-from decimal import Decimal
-from loja.forms import ProductForm
 from django.contrib.auth.decorators import login_required
+from loja.models import Product, Categoria, ProductImage
+from loja.forms import ProductForm
+
+logger = logging.getLogger(__name__)
 
 @login_required
 def upload_product_view(request):
-    
     user = request.user
 
     if request.method == "POST":
         nome = request.POST.get("nome")
-        preco = request.POST.get("preco").replace(",", ".")
+        preco = request.POST.get("preco", "").replace(",", ".")
         descricao = request.POST.get("descricao")
         categoria_id = request.POST.get("categoria")
         images = request.FILES.getlist("images")
 
         try:
             preco = Decimal(preco)
-        except ValueError:
+        except Exception:
             return render(request, "upload_product.html", {
                 "categorias": Categoria.objects.all(),
-                "user": user,  # Passa o utilizador para o template
+                "user": user,
                 "error": "O preço inserido é inválido. Use números com até duas casas decimais."
             })
 
-        categoria = Categoria.objects.get(id=categoria_id)
-        product = Product(
+        try:
+            categoria = Categoria.objects.get(id=categoria_id)
+        except Categoria.DoesNotExist:
+            return render(request, "upload_product.html", {
+                "categorias": Categoria.objects.all(),
+                "user": user,
+                "error": "Categoria inválida."
+            })
+
+        product = Product.objects.create(
             nome=nome,
             preco=preco,
             descricao=descricao,
             categoria=categoria,
-            user_id=request.session["user_id"]
+            user=user 
         )
-        product.save()
 
-        # Criar a pasta do produto se não existir
         product_folder = os.path.join(settings.MEDIA_ROOT, "uploads", "products", str(product.id))
         os.makedirs(product_folder, exist_ok=True)
 
-        # Verificar se imagens foram enviadas
         if not images:
             logger.warning(f"⚠ Nenhuma imagem foi enviada para o produto {product.id}")
 
@@ -56,10 +62,10 @@ def upload_product_view(request):
                     for chunk in image.chunks():
                         destination.write(chunk)
 
-                product_image = ProductImage.objects.create(product=product, image=relative_image_path)
+                ProductImage.objects.create(product=product, image=relative_image_path)
 
             except Exception as e:
-                logger.error(f" Erro ao guardar imagem {image_name}: {e}")
+                logger.error(f"❌ Erro ao guardar imagem {image_name}: {e}")
 
         return redirect("homepage")
 

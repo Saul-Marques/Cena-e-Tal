@@ -6,16 +6,10 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def chat_list_view(request, conversation_id=None):
-    
-    user = request.user
-    # 🔍 DEBUG: Verificar o ID do utilizador logado
-    print(f"DEBUG: Utilizador logado -> {user.id} - {user.email}")
 
-    # 🚀 Buscar todas as conversas onde o utilizador está envolvido
+    user = request.user
     conversations = Conversation.objects.filter(user1=user) | Conversation.objects.filter(user2=user)
 
-    # 🔍 DEBUG: Verificar se conversas foram encontradas
-    print(f"DEBUG: Conversas encontradas -> {list(conversations)}")
 
     active_conversation = None
     messages = []

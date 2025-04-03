@@ -13,7 +13,6 @@ class UserView(View):
     @method_decorator(login_required)
     def post(self, request):
         user = request.user
-        user = User.objects.filter(id=request.session["user_id"]).first()
         user.primeiro_nome = request.POST.get("primeiro_nome", user.primeiro_nome)
         if request.FILES.get("profile_picture"):
             user.profile_picture = request.FILES["profile_picture"]        

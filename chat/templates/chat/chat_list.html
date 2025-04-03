@@ -46,7 +46,7 @@
                                 <li class="list-group-item">
                                     <div class="row">
                                         <div class="col-2">
-                                            <img  src="{{ other_user.profile_picture.url }}" style="width: 40px; height: 40px; border-radius: 50%;" alt="">
+                                            <img  src="{% if other_user.profile_picture %}{{ other_user.profile_picture.url }}{% else %}{% static 'imgs/icons/account_circle.svg' %}{% endif %}" style="width: 40px; height: 40px; border-radius: 50%;" alt="">
                                         </div>
                                         <div class="col mt-2">
                                             <a class="jomhuria-regular fs-2" href="{% url 'chat_detail' conversation.id %}" style="text-decoration: none; line-height: 0; color: black;">
@@ -67,7 +67,7 @@
 
         <!-- Coluna Direita - Chat -->
         <div class="col-md-8">
-            <div class="card p-4 shadow">
+            <div class="card p-4 shadow" style="height: 600px;">
                 {% if active_conversation %}
                     <h2 class="jomhuria-regular fs-custom">
                         Conversa com 
@@ -81,21 +81,46 @@
                             {% endwith %}
                         {% endif %}
                     </h2>
-                    <ul id="messagesList" class="list-group mb-3">
+                    <!--
+                    <ul id="messagesList" style="overflow-y: scroll;" class="list-group mb-3">
                         {% for message in messages %}
                             <li class="list-group-item">
+                                {% if message.sender.primeiro_nome != user.primeiro_nome %}
                                 <strong>{{ message.sender.primeiro_nome }}:</strong> {{ message.text }}
+                                {% else %}
+                                <strong>{{ message.sender.primeiro_nome }}: </strong> {{ message.text }}
+                                {% endif %}
+                                
                             </li>
                         {% empty %}
                             <li class="list-group-item">Nenhuma mensagem ainda.</li>
                         {% endfor %}
-                    </ul>
+                        -->
+                        <div style="overflow-y: scroll;" id="messagesList" class="mb-3">
+                            {% for message in messages %}
+                            {% if message.sender.primeiro_nome != user.primeiro_nome %}
+                            <div class="mb-1">
+                                <p class="jomhuria-regular fs-2 list-group-item" style="line-height: 1;">{{ message.sender.primeiro_nome }}: {{ message.text }}</p> 
+                            </div>
+                            {% else %}
+                            <div style="display: flex;justify-content: flex-end; height: 40px;">
+                                <div class="border rounded-4 mb-1">
+                                    <p class="jomhuria-regular fs-2 ms-2 " style="line-height: 1;">{{ message.sender.primeiro_nome }}: {{ message.text }} </p>
+                                </div>
+                            </div>
+
+                            
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+
+                        
                     <!-- Formulário de envio -->
                     <form method="POST">
                         {% csrf_token %}
                         <input type="hidden" name="conversation_id" value="{{ active_conversation.id }}">
                         <div class="input-group">
-                            <textarea name="message" id="messageInput" class="form-control" placeholder="Escreve uma mensagem..."></textarea>
+                            <input name="message" id="messageInput" class="form-control" placeholder="Escreve uma mensagem..."></input>
                             <button type="submit" class="btn btn-primary">Enviar</button>
                         </div>
                     </form>
@@ -129,7 +154,7 @@
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            document.querySelector("#messagesList").innerHTML += `<li class='list-group-item'><strong>${data.username}:</strong> ${data.message}</li>`;
+            document.querySelector("#messagesList").innerHTML += `<p class="jomhuria-regular fs-2 ms-2" style="line-height: 1;">${data.username}: ${data.message}</p>`;
         };
 
         // Handle form submission via WebSocket
