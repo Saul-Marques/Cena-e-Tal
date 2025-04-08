@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registar</title>
+    <title>Registar step-1</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/fonts/customfonts.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'imgs/favicon.svg' %}">
@@ -18,7 +18,7 @@
     <!-- Navbar -->
     {% include 'navbar.html' %}
     
-    <div class="container p-0 rounded mt-5 mb-5" style="background-color: white; height: 950px; overflow: hidden;">
+    <div class="container p-0 rounded mt-5 mb-5" style="background-color: white; height: 500px; overflow: hidden;">
         <div class="row row-cols-1 row-cols-xxl-2 row-cols-lg-2 row-cols-sm-1">
             
             <!-- Colun da imagem -->
@@ -30,7 +30,7 @@
 
             <!-- Form -->
             <div class="col-12">
-                <form action="{% url 'signup' %}" class="ms-5" method="post">
+                <form class="ms-5" method="post">
                     {% csrf_token %}
                     
                     <h3 class="jomhuria-regular fs-custom mt-5">Registar</h3>
@@ -38,31 +38,6 @@
                     {% if error %}
                         <div class="alert alert-danger">{{ error }}</div>
                     {% endif %}
-
-                    <h4 class="jomhuria-regular fs-1">Primeiro Nome</h4>
-                    <div class="container ms-0 p-0">
-                        <div class="input-group">
-                            <input type="text" class="form-control rounded-4 border-0 jomhuria-regular fs-3 align-self-center me-5" 
-                                   style="background-color: #D9D9D9;" name="primeironome" value="{{ values.primeiro_nome }}" required>
-                        </div>
-                    </div>
-
-                    <h4 class="jomhuria-regular fs-1 mt-3">Último Nome</h4>
-                    <div class="container ms-0 p-0">
-                        <div class="input-group">
-                            <input type="text" class="form-control rounded-4 border-0 jomhuria-regular fs-3 align-self-center me-5" 
-                                   style="background-color: #D9D9D9;" name="ultimonome" value="{{ values.ultimo_nome }}" required>
-                        </div>
-                    </div>
-
-                    <h4 class="jomhuria-regular fs-1 mt-3">Telemóvel</h4>
-                    <div class="container ms-0 p-0">
-                        <div class="input-group">
-                            <input type="text" class="form-control rounded-4 border-0 jomhuria-regular fs-3 align-self-center me-5" 
-                                   style="background-color: #D9D9D9;" name="telemovel" value="{{ values.telemovel }}" required>
-                        </div>
-                    </div>
-
                     <h4 class="jomhuria-regular fs-1 mt-3">Email</h4>
                     <div class="container ms-0 p-0">
                         <div class="input-group">
@@ -70,18 +45,7 @@
                                    style="background-color: #D9D9D9;" name="email" value="{{ values.email }}" required>
                         </div>
                     </div>
-
-                    <h4 class="jomhuria-regular fs-1 mt-3">Password</h4>
-                    <div class="container ms-0 p-0">
-                        <div class="input-group">
-                            <input type="password" class="form-control rounded-4 border-0 jomhuria-regular fs-3 align-self-center me-5" 
-                                   style="background-color: #D9D9D9;" name="password" required>
-                        </div>
-                    </div>
-                    
-                    <br>
-                    
-                    <button class="btn jomhuria-regular fs-1 rounded-4 text-center" type="submit" 
+                    <button class="btn jomhuria-regular mt-5 fs-1 rounded-4 text-center" type="submit" 
                             style="background-color: black; color: white; width: 300px; height: 70px;">
                         Registar.
                     </button>

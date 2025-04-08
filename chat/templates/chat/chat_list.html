@@ -173,29 +173,35 @@
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
             let messageHTML = '';
+            // *** Get the formatted time from the data ***
+            let timestampHTML = `<span class="message-timestamp" style="font-size: 0.8em; color: #777; margin-left: 5px;">${data.time}</span>`;
 
-            if (data.username === username) {
-                messageHTML = `
-                <div style="display: flex; justify-content: flex-end; height: auto; margin-bottom: 5px;">
-                    <div class="border rounded-4 p-2" style="background-color:aliceblue">
-                        <p class="jomhuria-regular fs-2 ms-2" style="line-height: 1; margin-bottom: 0;">${data.message}</p>
-                        <span style="font-size: 0.8em; color: #777; margin-left: 5px;">
-                        ${data.timestamp}
-                        </span>
-                    </div>
-                </div>`;
-            } else {
+            // Check if the message sender is the current user
+            if (data.username === username) { // Or better: if (data.user_id === currentUserId)
+                 // Right alignment for own messages
+                 timestampHTML = `<span class="message-timestamp-own" style="font-size: 0.8em; color: #eee; margin-left: 5px;">${data.time}</span>`;
                  messageHTML = `
-                 <div style="display: flex; justify-content: flex-start; height: auto; margin-bottom: 5px;">
-                     <div class="border rounded-4 bg-light p-2" style="background-color: rgb(240, 240, 240);">
-                         <p class="jomhuria-regular fs-2 ms-2" style="line-height: 1; margin-bottom: 0;">${data.message}</p>
+                 <div style="display: flex; justify-content: flex-end; height: auto; margin-bottom: 5px;">
+                     <div class="border rounded-4 bg-primary text-white p-2" style="background-color:aliceblue ">
+                         <p class="jomhuria-regular fs-2 ms-2" style="line-height: 1; margin-bottom: 0;">
+                             ${data.message}${timestampHTML} {# Append timestamp #}
+                         </p>
                      </div>
                  </div>`;
-                 
+            } else {
+                 // Left alignment for other user's messages
+                 messageHTML = `
+                 <div class="mb-1">
+                      <p class="jomhuria-regular fs-2 list-group-item" style="line-height: 1; margin-bottom: 0;">
+                          ${data.message}${timestampHTML} {# Append timestamp #}
+                      </p>
+                 </div>`;
             }
 
+            // Append the correctly styled message HTML
             messagesList.innerHTML += messageHTML;
 
+            // Scroll to the bottom after adding the new message
             scrollToBottom();
         };
 

@@ -60,7 +60,7 @@ CIDADES_CHOICES = [
 class User(AbstractBaseUser):
     primeiro_nome = models.CharField(max_length=50)
     ultimo_nome = models.CharField(max_length=50)
-    telemovel = models.CharField(max_length=10)
+    telemovel = models.CharField(max_length=10, blank=True, null=True)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=255)
     profile_picture = models.ImageField(upload_to=user_directory_path, blank=True, null=True)    
