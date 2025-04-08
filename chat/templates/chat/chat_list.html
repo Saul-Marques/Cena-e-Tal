@@ -99,13 +99,21 @@
                         <div style="overflow-y: scroll;" id="messagesList" class="mb-3">
                             {% for message in messages %}
                             {% if message.sender.primeiro_nome != user.primeiro_nome %}
-                            <div class="mb-1">
-                                <p class="jomhuria-regular fs-2 list-group-item" style="line-height: 1;">{{ message.sender.primeiro_nome }}: {{ message.text }}</p> 
+                            <div style="display: flex; justify-content: flex-start; height: auto; margin-bottom: 5px;">
+                                <div class="border rounded-3 p-2" style="background-color: rgb(240, 240, 240);">
+                                    <p class="jomhuria-regular fs-2 ms-2" style="line-height: 1; margin-bottom: 0;">{{ message.text }}</p>
+                                    <span style="font-size: 0.8em; color: #777; margin-left: 5px;">
+                                        {{ message.timestamp|date:"H:i" }} {# Format: HH:MM #}
+                                    </span>
+                                </div>
                             </div>
                             {% else %}
-                            <div style="display: flex;justify-content: flex-end; height: 40px;">
-                                <div class="border rounded-4 mb-1">
-                                    <p class="jomhuria-regular fs-2 ms-2 " style="line-height: 1;">{{ message.sender.primeiro_nome }}: {{ message.text }} </p>
+                            <div style="display: flex; justify-content: flex-end; height: auto; margin-bottom: 5px;">
+                                <div class="border rounded-3 p-2" style="background-color:aliceblue ">
+                                    <p class="jomhuria-regular fs-2 ms-2" style="line-height: 1; margin-bottom: 0; display: flex; justify-content: flex-start;">{{ message.text }}</p>
+                                    <span style="font-size: 0.8em; color: #777; margin-left: 5px;">
+                                        {{ message.timestamp|date:"H:i" }} {# Format: HH:MM #}
+                                    </span>
                                 </div>
                             </div>
 
@@ -133,13 +141,23 @@
     </div>
 </div>
 
+      
 <script>
     {% if active_conversation %}
-        const username = "{{ user.primeiro_nome }}";
+        const username = "{{ user.primeiro_nome }}"; // Current user's name
         const conversationId = "{{ active_conversation.id }}";
+        const messagesList = document.querySelector("#messagesList"); // Get the messages container
+
+        // Function to scroll to the bottom of the chat
+        function scrollToBottom() {
+            messagesList.scrollTop = messagesList.scrollHeight;
+        }
+
+        // Initial scroll to bottom when page loads
+        scrollToBottom();
+
         const chatSocket = new WebSocket("ws://" + window.location.host + "/ws/chat/" + conversationId + "/");
 
-        // Debug the WebSocket connection
         chatSocket.onopen = function(e) {
             console.log("WebSocket connection established");
         };
@@ -154,26 +172,50 @@
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            document.querySelector("#messagesList").innerHTML += `<p class="jomhuria-regular fs-2 ms-2" style="line-height: 1;">${data.username}: ${data.message}</p>`;
+            let messageHTML = '';
+
+            if (data.username === username) {
+                messageHTML = `
+                <div style="display: flex; justify-content: flex-end; height: auto; margin-bottom: 5px;">
+                    <div class="border rounded-4 p-2" style="background-color:aliceblue">
+                        <p class="jomhuria-regular fs-2 ms-2" style="line-height: 1; margin-bottom: 0;">${data.message}</p>
+                        <span style="font-size: 0.8em; color: #777; margin-left: 5px;">
+                        ${data.timestamp}
+                        </span>
+                    </div>
+                </div>`;
+            } else {
+                 messageHTML = `
+                 <div style="display: flex; justify-content: flex-start; height: auto; margin-bottom: 5px;">
+                     <div class="border rounded-4 bg-light p-2" style="background-color: rgb(240, 240, 240);">
+                         <p class="jomhuria-regular fs-2 ms-2" style="line-height: 1; margin-bottom: 0;">${data.message}</p>
+                     </div>
+                 </div>`;
+                 
+            }
+
+            messagesList.innerHTML += messageHTML;
+
+            scrollToBottom();
         };
 
-        // Handle form submission via WebSocket
         document.querySelector("form").addEventListener("submit", function(e) {
-            e.preventDefault(); // Stop the form from submitting via HTTP
+            e.preventDefault();
             const messageInput = document.querySelector("#messageInput");
             const message = messageInput.value.trim();
-            
+
             if (message) {
-                // Send via WebSocket
                 chatSocket.send(JSON.stringify({
                     "message": message
                 }));
-                
+
                 messageInput.value = "";
             }
         });
     {% endif %}
 </script>
+
+    
 
 </body>
 </html>
