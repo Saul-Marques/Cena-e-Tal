@@ -51,18 +51,62 @@
 
             <h1 class="jomhuria-regular fs-custom mt-4" style="line-height: 0.5;">{{ produto.nome }}</h1>
             <p class="jomhuria-regular fs-1">Preço: <strong>{{ produto.preco }}€</strong></p>
+            <div class="row">
+                <div class="col-3">
+                    <p class="jomhuria-regular fs-1 mb-1">Estado:</p>
+                </div>
+                <div class="col">
+                    <div style="font-size: 1.5rem; color: gold; margin-top: 5px;">
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= produto.estado|add:"0" %}
+                                ★
+                            {% else %}
+                                <span style="color: #ccc;">★</span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-3">
+                    <button 
+                    class="btn btn-sm btn-outline-secondary mt-2 ms-2 py-0 px-2" type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#estadoExplicacao" 
+                    aria-expanded="false" 
+                    aria-controls="estadoExplicacao" 
+                    style="font-size: 1.2rem;"
+                >
+                    🛈
+                </button>
+            </div>
+            <div class="collapse mt-2" id="estadoExplicacao">
+                <div class="card card-body p-2 fs-2 jomhuria-regular" style="line-height: 1;">
+                    1 estrela = Danificado<br>
+                    2 estrelas = Desgastado<br>
+                    3 estrelas = Razoável<br>
+                    4 estrelas = Bom estado<br>
+                    5 estrelas = Como novo
+                </div>
+            </div>
+            </div>
+
+            {% if produto.tipo_venda == "leilao" %}
             <p class="jomhuria-regular fs-1">Licitação Atual: <strong> {{ produto.maior_licitacao }} €</strong ></p>
 
-            {% if user.is_authenticated %}
-                <form method="POST" action="{% url 'fazer_licitacao' produto.id %}">
-                    {% csrf_token %}
-                    <div class="input-group mb-3">
-                        <input type="number" class="form-control" name="valor" min="" step="0.01" required>
-                        <button type="submit" class="btn btn-dark">Licitar</button>
-                    </div>
-                </form>
+
+                {% if user.is_authenticated %}
+                    <form method="POST" action="{% url 'fazer_licitacao' produto.id %}">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" name="valor" min="" step="0.01" required>
+                            <button type="submit" class="btn btn-dark">Licitar</button>
+                        </div>
+                    </form>
+                    <a href="{% url 'iniciar_conversa_produto' produto.id %}" class="btn btn-dark">Enviar Mensagem</a>
+                {% else %}
+                    <p class="text-muted">Faça <a href="{% url 'login' %}">login</a> para licitar.</p>
+                {% endif %}
             {% else %}
-                <p class="text-muted">Faça <a href="{% url 'login' %}">login</a> para licitar.</p>
+            <a href="{% url 'iniciar_conversa_produto' produto.id %}" class="btn btn-dark">Enviar Mensagem</a>
             {% endif %}
         </div>
     </div>

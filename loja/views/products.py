@@ -10,7 +10,8 @@ def produto_detail(request, id):
     return render(request, 'produto.html', {
         'produto': produto,
         'licitacoes': licitacoes,
-        'user': user
+        'user': user,
+        'tipo_venda': produto.tipo_venda,
     })
 @login_required
 def fazer_licitacao(request, id):

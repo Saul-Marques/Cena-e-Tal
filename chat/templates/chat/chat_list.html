@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat</title>
+    <title>Conversas</title>
     <link rel="icon" type="image/x-icon" href="{% static 'imgs/favicon.svg' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
@@ -24,39 +24,38 @@
                 <h2 class="jomhuria-regular fs-custom">Conversas</h2>
                 <ul class="list-group">
                     {% for conversation in conversations %}
-                        {% with conversation.user2 as other_user %}
-                            {% if conversation.user1 == user %}
-                                {% with conversation.user2 as other_user %}
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <img src="{% if other_user.profile_picture %}{{ other_user.profile_picture.url }}{% else %}{% static 'imgs/icons/account_circle.svg' %}{% endif %}" 
-                                            style="width: 40px; height: 40px; border-radius: 50%;" 
-                                            alt="Foto de perfil">                                        </div>
-                                        <div class="col mt-2">
-                                            <a class="jomhuria-regular fs-2" href="{% url 'chat_detail' conversation.id %}" style="text-decoration: none; line-height: 0; color: black;">
-                                                {{ other_user.primeiro_nome }} {{ other_user.ultimo_nome }}
-                                            </a>
+                        {% with conversation.product as produto %}
+                            <li class="list-group-item py-2 px-3" style="background-color: #f8f9fa; border: none; border-bottom: 1px solid #dee2e6;">
+                                <a href="{% url 'chat_detail' conversation.id %}" style="text-decoration: none; color: inherit;">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex">
+                                            <img src="{{ produto.images.first.image.url }}" 
+                                                 class="rounded-circle me-3" 
+                                                 style="width: 48px; height: 48px; object-fit: cover;" 
+                                                 alt="{{ produto.nome }}">
+                                            <div>
+                                                <small class="text-muted">{{ produto.user.primeiro_nome }} {{ produto.user.ultimo_nome }}</small>
+                                                <h6 class="mb-0" style="font-weight: bold;">{{ produto.nome|truncatechars:40 }}</h6>                                                <small class="text-muted">
+                                                    {% with conversation.messages.last as last_msg %}
+                                                        {% if last_msg %}
+                                                            {{ last_msg.text|truncatechars:50 }}
+                                                        {% else %}
+                                                            Sem mensagens ainda.
+                                                        {% endif %}
+                                                    {% endwith %}
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="text-end">
+                                            {% with conversation.messages.last as last_msg %}
+                                                {% if last_msg %}
+                                                    <small class="text-muted">{{ last_msg.timestamp|date:"d/m" }}</small>
+                                                {% endif %}
+                                            {% endwith %}
                                         </div>
                                     </div>
-                                </li>
-                                {% endwith %}
-                            {% else %}
-                                {% with conversation.user1 as other_user %}
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <img  src="{% if other_user.profile_picture %}{{ other_user.profile_picture.url }}{% else %}{% static 'imgs/icons/account_circle.svg' %}{% endif %}" style="width: 40px; height: 40px; border-radius: 50%;" alt="">
-                                        </div>
-                                        <div class="col mt-2">
-                                            <a class="jomhuria-regular fs-2" href="{% url 'chat_detail' conversation.id %}" style="text-decoration: none; line-height: 0; color: black;">
-                                                {{ other_user.primeiro_nome }} {{ other_user.ultimo_nome }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li> 
-                                {% endwith %}
-                            {% endif %}
+                                </a>
+                            </li>
                         {% endwith %}
                     {% empty %}
                         <li class="list-group-item">Sem conversas ativas</li>
@@ -98,6 +97,7 @@
                         -->
                         <div style="overflow-y: scroll;" id="messagesList" class="mb-3">
                             {% for message in messages %}
+                            <!--Mensagem do outro user-->
                             {% if message.sender.primeiro_nome != user.primeiro_nome %}
                             <div style="display: flex; justify-content: flex-start; height: auto; margin-bottom: 5px;">
                                 <div class="border rounded-3 p-2" style="background-color: rgb(240, 240, 240);">
@@ -108,10 +108,11 @@
                                 </div>
                             </div>
                             {% else %}
+                            <!--Mensagem do próprio-->
                             <div style="display: flex; justify-content: flex-end; height: auto; margin-bottom: 5px;">
-                                <div class="border rounded-3 p-2" style="background-color:aliceblue ">
+                                <div class="border rounded-4 bg-primary text-white p-2">
                                     <p class="jomhuria-regular fs-2 ms-2" style="line-height: 1; margin-bottom: 0; display: flex; justify-content: flex-start;">{{ message.text }}</p>
-                                    <span style="font-size: 0.8em; color: #777; margin-left: 5px;">
+                                    <span style="font-size: 0.8em; color: #eee; margin-left: 5px;">
                                         {{ message.timestamp|date:"H:i" }} {# Format: HH:MM #}
                                     </span>
                                 </div>
@@ -174,7 +175,7 @@
             const data = JSON.parse(e.data);
             let messageHTML = '';
             // *** Get the formatted time from the data ***
-            let timestampHTML = `<span class="message-timestamp" style="font-size: 0.8em; color: #777; margin-left: 5px;">${data.time}</span>`;
+            let timestampHTML = `<span class="message-timestamp" style="font-size: 0.8em; color: #eee; margin-left: 5px;">${data.time}</span>`;
 
             // Check if the message sender is the current user
             if (data.username === username) { // Or better: if (data.user_id === currentUserId)
@@ -191,11 +192,14 @@
             } else {
                  // Left alignment for other user's messages
                  messageHTML = `
-                 <div class="mb-1">
-                      <p class="jomhuria-regular fs-2 list-group-item" style="line-height: 1; margin-bottom: 0;">
-                          ${data.message}${timestampHTML} {# Append timestamp #}
-                      </p>
-                 </div>`;
+                 <div style="display: flex; justify-content: flex-start; height: auto; margin-bottom: 5px;">
+                            <div class="border rounded-3 p-2" style="background-color: rgb(240, 240, 240);">
+                                <p class="jomhuria-regular fs-2 ms-2" style="line-height: 1; margin-bottom: 0;">${data.message}</p>
+                                <span style="font-size: 0.8em; color: #777; margin-left: 5px;">
+                                    ${timestampHTML} {# Append timestamp #}
+                                </span>
+                            </div>
+                        </div>`;
             }
 
             // Append the correctly styled message HTML

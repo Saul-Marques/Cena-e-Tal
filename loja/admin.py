@@ -3,6 +3,7 @@ from django.utils.html import format_html
 from loja.models import User, Product, Categoria
 from loja.models import Mensagens_de_Contactos
 from loja.models import ProductImage
+from loja.models import Licitacao
 # Register your models here.
 
 
@@ -32,6 +33,12 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ("nome",)
     list_filter = ("categoria",)
     ordering = ("id",)
+class LicitacaoInline(admin.TabularInline):
+    model = Licitacao
+    extra = 0  # Não mostrar linhas em branco por defeito
+    readonly_fields = ("user", "valor", "licitado_a")
+    can_delete = False
+
 
 class CategoriaAdmin(admin.ModelAdmin):
     list_display = ("id", "nome")

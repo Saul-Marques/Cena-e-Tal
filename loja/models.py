@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.utils import timezone
 
 class UserManager(BaseUserManager):
     def create_user(self, email, primeiro_nome, ultimo_nome, telemovel, password=None):
@@ -105,15 +106,36 @@ def product_image_upload_path(instance, filename):
 
 class Product(models.Model):
     ESTADO_CHOICES = [
-        ('novo', 'Como novo'),
-        ('bom', 'Bom'),
-        ('mau', 'Mau'),
+        ('1', '⭐'),
+        ('2', '⭐⭐'),
+        ('3', '⭐⭐⭐'),
+        ('4', '⭐⭐⭐⭐'),
+        ('5', '⭐⭐⭐⭐⭐'),
     ]
+    TIPO_VENDA_CHOICES = [
+    ('venda', 'Venda Direta'),
+    ('leilao', 'Leilão'),
+    ]
+
+    tipo_venda = models.CharField(
+        max_length=10,
+        choices=TIPO_VENDA_CHOICES,
+        default='venda'
+    )
+    inicio_leilao = models.DateTimeField(null=True, blank=True)
+    fim_leilao = models.DateTimeField(null=True, blank=True)
+    localidade = models.CharField(
+        max_length=255,
+        choices = CIDADES_CHOICES,
+        blank = True,
+        null = True
+
+    )
 
     estado = models.CharField(
         max_length=10,
         choices=ESTADO_CHOICES,
-        default='bom'  # Define "Bom" como o padrão, pode alterar conforme necessário
+        default='3'  # Define "Bom" como o padrão, pode alterar conforme necessário
     )
     nome = models.CharField(max_length=60)
     preco = models.DecimalField(max_digits=7, decimal_places=2)

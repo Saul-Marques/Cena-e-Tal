@@ -6,8 +6,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from loja.models import Product, Categoria, ProductImage
 from loja.forms import ProductForm
+from datetime import timedelta
+from django.utils import timezone
 
 logger = logging.getLogger(__name__)
+
+
 
 @login_required
 def upload_product_view(request):
@@ -17,8 +21,14 @@ def upload_product_view(request):
         nome = request.POST.get("nome")
         preco = request.POST.get("preco", "").replace(",", ".")
         descricao = request.POST.get("descricao")
+        estado = request.POST.get("estado")
         categoria_id = request.POST.get("categoria")
+        localidade = request.POST.get("localidade")
+        if not localidade:
+            localidade = request.user.cidade
         images = request.FILES.getlist("images")
+        tipo_venda = request.POST.get("tipo_venda")
+
 
         try:
             preco = Decimal(preco)
@@ -38,12 +48,25 @@ def upload_product_view(request):
                 "error": "Categoria inválida."
             })
 
+        if tipo_venda == "leilao":
+            inicio_leilao = timezone.now()
+            fim_leilao = inicio_leilao + timedelta(days=7)
+        else:
+            inicio_leilao = None
+            fim_leilao = None
+    
+
         product = Product.objects.create(
             nome=nome,
             preco=preco,
             descricao=descricao,
             categoria=categoria,
-            user=user 
+            localidade=localidade,
+            estado=estado,
+            user=user,
+            tipo_venda=tipo_venda,
+            inicio_leilao=inicio_leilao,
+            fim_leilao=fim_leilao
         )
 
         product_folder = os.path.join(settings.MEDIA_ROOT, "uploads", "products", str(product.id))
