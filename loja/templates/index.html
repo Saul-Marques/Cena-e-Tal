@@ -59,7 +59,7 @@
                         <p class="text-muted mt-5 jomhuria-regular fs-3" style="line-height: 1;">Adicionado por: <strong>{{ produto.user.primeiro_nome }} {{ produto.user.ultimo_nome }}</strong></p>
                         {% if produto.user.cidade != empty %}
                         <p class="text-muted jomhuria-regular fs-3" style="line-height: 0;">          
-                            {{ produto.user.cidade }}
+                            {{ produto.user.get_cidade_display }}
                         </p>   
                         {% else %}
                         <p class="text-muted jomhuria-regular fs-3" style="line-height: 0;"></p>   

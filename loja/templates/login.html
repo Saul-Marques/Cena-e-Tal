@@ -60,12 +60,16 @@
                     </button>
                     
                     {% if messages %}
-                        <div class="alert alert-danger mt-3">
-                            {% for message in messages %}
+                        {% for message in messages %}
+                            {% if "login" in message.message|lower or "senha" in message.message|lower or "email" in message.message|lower %}
+                            <div class="alert alert-danger alert-dismissible fade show mt-3 me-5" role="alert">
                                 {{ message }}
-                            {% endfor %}
-                        </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
                     {% endif %}
+
                 </form>
                 
                 <div class="div jomhuria-regular fs-3 ms-5" style="color: gray;">

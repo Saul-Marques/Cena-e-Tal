@@ -122,6 +122,7 @@ class Product(models.Model):
         choices=TIPO_VENDA_CHOICES,
         default='venda'
     )
+    data_adicionado = models.DateTimeField(auto_now_add=True)
     inicio_leilao = models.DateTimeField(null=True, blank=True)
     fim_leilao = models.DateTimeField(null=True, blank=True)
     localidade = models.CharField(

@@ -21,7 +21,7 @@
     </div>
 
     <div class="col">
-      <p class="jomhuria-regular fs-custom">Bem-vindo ao seu perfil, {{ user.primeiro_nome }}!</p>
+      <p class="jomhuria-regular fs-custom" style="line-height: 1;">Bem-vindo ao seu perfil, {{ user.primeiro_nome }}!</p>
       <div class="row rounded-top" style="background-color: white;">
         <div class="col-10 ms-4">
           <p class="jomhuria-regular fs-1 mt-4" style="line-height: 1;">{{ user.username }}</p>
@@ -49,7 +49,7 @@
               }
           </style>
         
-          <label for="profile_picture" style="border-color: black;" class="custom-file-label rounded-pill jomhuria-regular border fs-4">Alterar Imagem de Perfil</label>
+          <label for="profile_picture" style="border-color: black; line-height: 1;" class="custom-file-label rounded-pill jomhuria-regular border fs-4">Alterar Imagem de Perfil</label>
      <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
         <input type="file" name="profile_picture" id="profile_picture">
@@ -91,6 +91,17 @@
               <input type="email" class="form-control rounded-4 mt-1" name="email" value="{{ user.email }}">
             </div>
           </div> <!--Email-->
+          <!--Informação adicional-->
+          <p class="jomhuria-regular fs-1 mt-4" style="line-height: 1;">Localidade</p>
+          <div class="row"> <!--Cidade-->
+            <select class="form-select jomhuria-regular fs-3" id="localidade" name="localidade" required>
+              <option selected disabled>Selecione uma Localidade</option>
+              {% for valor, nome in CIDADES_CHOICES %}
+              <option value="{{ valor }}">{{ nome }}</option>
+              {% endfor %}
+          </select>
+          </div> <!--Cidade-->
+
             <button type="submit" class="rounded-bottom-3 border-0 p-2 jomhuria-regular fs-1" style="background-color: black; color: white; line-height: 1;">
               Atualizar
             </button>

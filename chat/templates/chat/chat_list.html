@@ -34,8 +34,15 @@
                                                  style="width: 48px; height: 48px; object-fit: cover;" 
                                                  alt="{{ produto.nome }}">
                                             <div>
-                                                <small class="text-muted">{{ produto.user.primeiro_nome }} {{ produto.user.ultimo_nome }}</small>
-                                                <h6 class="mb-0" style="font-weight: bold;">{{ produto.nome|truncatechars:40 }}</h6>                                                <small class="text-muted">
+                                                {% if conversation.user1 == user %}
+                                                {% with conversation.user2 as other_user %}
+                                                    <small class="text-muted">{{ other_user.primeiro_nome }} {{ other_user.ultimo_nome }}</small>
+                                                {% endwith %}
+                                            {% else %}
+                                                {% with conversation.user1 as other_user %}
+                                                    <small class="text-muted">{{ other_user.primeiro_nome }} {{ other_user.ultimo_nome }}</small>
+                                                {% endwith %}
+                                            {% endif %}                                                <h6 class="mb-0" style="font-weight: bold;">{{ produto.nome|truncatechars:40 }}</h6>                                                <small class="text-muted">
                                                     {% with conversation.messages.last as last_msg %}
                                                         {% if last_msg %}
                                                             {{ last_msg.text|truncatechars:50 }}
