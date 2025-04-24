@@ -38,7 +38,6 @@ env/
 Thumbs.db
 
 # MySQL/MariaDB dumps
-*.sql
 
 # Google credentials
 *.json
