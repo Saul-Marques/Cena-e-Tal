@@ -42,6 +42,5 @@ Thumbs.db
 # Google credentials
 *.json
 
-# Migrations (opcional, se não quiser versionar)
 **/migrations/*.py
 !**/migrations/__init__.py
