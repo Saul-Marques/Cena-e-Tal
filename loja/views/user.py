@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View
+from loja.models import User, CIDADES_CHOICES
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -8,7 +9,12 @@ class UserView(View):
     @method_decorator(login_required)
     def get(self, request):
         user = request.user
-        return render(request, "users.html", {"user": user})
+        cidades = User._meta.get_field("cidade").choices
+
+        return render(request, "users.html", {
+            "user": user,
+            "cidades": CIDADES_CHOICES
+})
     
     @method_decorator(login_required)
     def post(self, request):
@@ -27,4 +33,7 @@ class UserView(View):
         user.save()
         messages.success(request, "Perfil atualizado com sucesso!")
 
-        return render(request, "users.html", {"user": user})
+        return render(request, "users.html", {
+            "user": user,
+            "cidades": CIDADES_CHOICES
+            })

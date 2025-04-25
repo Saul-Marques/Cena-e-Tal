@@ -26,7 +26,7 @@
         <div class="col-10 ms-4">
           <p class="jomhuria-regular fs-1 mt-4" style="line-height: 1;">{{ user.username }}</p>
           <p class="jomhuria-regular fs-2" style="line-height: 1;">{{ user.email }}</p>
-          <p class="jomhuria-regular fs-3" style="line-height: 1;">{{ user.localidade }}, {{ user.get_cidade_display }}</p>
+          <p class="jomhuria-regular fs-3" style="line-height: 1;">{{ user.get_cidade_display }}</p>
           <div class="div rounded mb-4" style="background-color: #D9D9D9; height: 127px;">
             <p class="ms-2" style="line-height: 2;"><strong>{{ user.biografia }} </strong></p>
           </div>
@@ -55,7 +55,7 @@
         <input type="file" name="profile_picture" id="profile_picture">
         </div>
       </div>
-        <div class="row rounded-bottom" style="background-color: white;">
+        <div class="row rounded-bottom mb-5" style="background-color: white;">
           <p class="jomhuria-regular fs-1 mt-4" style="line-height: 1;">Editar Perfil</p>
           <div class="col-4 ms-4 mt-2" style="line-height: 1;">
           </div>
@@ -92,14 +92,19 @@
             </div>
           </div> <!--Email-->
           <!--Informação adicional-->
-          <p class="jomhuria-regular fs-1 mt-4" style="line-height: 1;">Localidade</p>
+          <p class="jomhuria-regular fs-1 mt-4" style="line-height: 1;">Localização</p>
           <div class="row"> <!--Cidade-->
-            <select class="form-select jomhuria-regular fs-3" id="localidade" name="localidade" required>
-              <option selected disabled>Selecione uma Localidade</option>
-              {% for valor, nome in CIDADES_CHOICES %}
-              <option value="{{ valor }}">{{ nome }}</option>
+            <div class="col">
+              <p class="jomhuria-regular fs-2">Cidade: </p>
+            </div>
+            <div class="col">
+              <select class="form-select jomhuria-regular fs-3" id="cidade" name="cidade" required>
+                <option selected disabled>Selecione uma Zona Metropolitana</option>
+                {% for value, label in cidades %}
+                <option value="{{ value }}" {% if user.cidade == value %}selected{% endif %}>{{ label }}</option>
               {% endfor %}
-          </select>
+            </select>
+            </div>
           </div> <!--Cidade-->
 
             <button type="submit" class="rounded-bottom-3 border-0 p-2 jomhuria-regular fs-1" style="background-color: black; color: white; line-height: 1;">
