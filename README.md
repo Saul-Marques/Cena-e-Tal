@@ -34,11 +34,8 @@ Este projeto é a continuação do projeto da cadeira de DPWEB do primeiro semes
 Criar um _Virtual Environment _ python e instalar as packages necessárias 
 ```plaintext
 python -m venv <venv>
-pip install django
-pip install django-cors-headers
-pip install mysqlclient
-pip install django-channels
-pip install Pillow
+git clone https://github.com/Saul-Marques/projetoPDI/
+pip install requirements.txt
 ```
 Instalar e iniciar uma engine de base de dados, neste projeto foi usada a mariaDB
 Archlinux:
