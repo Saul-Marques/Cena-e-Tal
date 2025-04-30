@@ -1,0 +1,28 @@
+<div class="container py-3 mt-3">
+    <div class="d-flex overflow-auto gap-5 px-2 scroll-categorias">
+        {% for categoria in categorias %}
+            <a style="text-decoration: none; color: black;" class="btn text-center flex-shrink-0 snap-center">
+                <img src="{{ categoria.icon.url }}" alt="{{ categoria.nome }}" class="categoria-icon mb-1">
+                <div class="fw-semibold small">{{ categoria.nome }}</div>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .categoria-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        object-fit: contain;
+    }
+
+    .scroll-categorias {
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        justify-content:center;
+    }
+
+    .snap-center {
+        scroll-snap-align: center;
+    }
+</style>

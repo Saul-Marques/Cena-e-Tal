@@ -1,98 +1,69 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
-    <link rel="icon" type="image/x-icon" href="{% static 'imgs/favicon.svg' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/fonts/customfonts.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
-    
-</head>
-<body style="background-color: #EAEAEA;">
+{% extends 'base.html' %}
+{% load static%}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container-fluid p-0 rounded" style="background-color: transparent;">
+    <img class="object-fit-contain" src="{% static 'imgs/cover2.png' %}" style="width: 100%; height: 100%;" alt="">
 
-    <!-- Navbar -->
-    {% include 'navbar.html' %}
-
-
-    <!-- Imagem principal -->
-    <div class="container-fluid p-0 rounded" style="background-color: transparent;">
-        <img class="object-fit-contain" src="{% static 'imgs/cover2.png' %}" style="width: 100%; height: 100%;" alt="">
-
-        <div class="input-group mt-3" style="position: absolute; bottom: 80%; left: 10%; width: 75%;">
-            <input type="text" id="searchInput" class="form-control rounded-start-pill border-end-0 border-black" placeholder="Pesquisa" aria-label="Pesquisa" onkeyup="filterProducts()">
-            <button class="btn rounded-end-pill border-black border-start-0" type="button" style="background-color: white; height: 55px;">
-                <img src="{% static 'imgs/icons/iconpesquisa.svg' %}" style="margin-bottom: 3px;" alt="">
-            </button>
-        </div>
+    <div class="input-group mt-3" style="position: absolute; bottom: 80%; left: 10%; width: 75%;">
+        <input type="text" id="searchInput" class="form-control rounded-start-pill border-end-0 border-black" placeholder="Pesquisa" aria-label="Pesquisa" onkeyup="filterProducts()">
+        <button class="btn rounded-end-pill border-black border-start-0" type="button" style="background-color: white; height: 55px;">
+            <img src="{% static 'imgs/icons/iconpesquisa.svg' %}" style="margin-bottom: 3px;" alt="">
+        </button>
     </div>
+</div>
 
-    <div class="container">
-        Categorias
-    </div>
-
-    <div class="container-fluid p-5 mt-5">
-        <div class="row gy-4 mb-5" id="productList">
-            {% for produto in produtos %}
-            <div class="col-xl-3 col-md-4 col-sm-6 product-item">
-                <div class="card shadow rounded-2" style="width: 100%;height:470px; background-color: white;">
-                    <div class="p-0" style="width: 100%; height: 250px; background-color: white;">
-                        {% with produto.images.all|first as image %}
-                            {% if image %}
-                            <a href="{% url 'produto_detail' produto.id %}">
-                                <img src="{{ image.image.url }}" class="img-fluid" style="width: 100%; height: 250px; object-fit:cover;" alt="{{ produto.nome }}">
-                            {% else %}
-                                <img src="{% static 'imgs/default-product.jpg' %}" class="img-fluid" style="width: 100%; height: 100%; object-fit:cover;" alt="Sem imagem">
-                            {% endif %}
-                            </a>
-                        {% endwith %}
-                    </div>
-            
-                    <div class="card-body" style="overflow: hidden;">
-                        <a href="{% url 'produto_detail' produto.id %}" class="h5 card-title jomhuria-regular fs-1" style="text-decoration: none; line-height: 0;">{{ produto.nome }}</a>
-                        <p class="card-text jomhuria-regular fs-2" style="line-height: 1;"><strong>Preço:</strong> €{{ produto.preco }}</p>
-                        <p class="text-muted mt-5 jomhuria-regular fs-3" style="line-height: 1;">Adicionado por: <strong>{{ produto.user.primeiro_nome }} {{ produto.user.ultimo_nome }}</strong></p>
-                        {% if produto.user.cidade != empty %}
-                        <p class="text-muted jomhuria-regular fs-3" style="line-height: 0;">          
-                            {{ produto.user.get_cidade_display }}
-                        </p>   
+{% include 'categorias.html' %}
+<div class="container-fluid p-5">
+    <div class="row gy-4 mb-5" id="productList">
+        {% for produto in produtos %}
+        <div class="col-xl-3 col-md-4 col-sm-6 product-item">
+            <div class="card shadow rounded-2" style="width: 100%;height:470px; background-color: white;">
+                <div class="p-0" style="width: 100%; height: 250px; background-color: white;">
+                    {% with produto.images.all|first as image %}
+                        {% if image %}
+                        <a href="{% url 'produto_detail' produto.id %}">
+                            <img src="{{ image.image.url }}" class="img-fluid" style="width: 100%; height: 250px; object-fit:cover;" alt="{{ produto.nome }}">
                         {% else %}
-                        <p class="text-muted jomhuria-regular fs-3" style="line-height: 0;"></p>   
-                        {% endif %}           
-                    </div>
+                            <img src="{% static 'imgs/default-product.jpg' %}" class="img-fluid" style="width: 100%; height: 100%; object-fit:cover;" alt="Sem imagem">
+                        {% endif %}
+                        </a>
+                    {% endwith %}
+                </div>
+
+                <div class="card-body" style="overflow: hidden;">
+                    <a href="{% url 'produto_detail' produto.id %}" class="h5 card-title jomhuria-regular fs-1" style="text-decoration: none; line-height: 0;">{{ produto.nome }}</a>
+                    <p class="card-text jomhuria-regular fs-2" style="line-height: 1;"><strong>Preço:</strong> €{{ produto.preco }}</p>
+                    <p class="text-muted mt-5 jomhuria-regular fs-3" style="line-height: 1;">Adicionado por: <strong>{{ produto.user.primeiro_nome }} {{ produto.user.ultimo_nome }}</strong></p>
+                    {% if produto.user.cidade != empty %}
+                    <p class="text-muted jomhuria-regular fs-3" style="line-height: 0;">{{ produto.user.get_cidade_display }}</p>
+                    {% else %}
+                    <p class="text-muted jomhuria-regular fs-3" style="line-height: 0;"></p>
+                    {% endif %}           
                 </div>
             </div>
-            {% endfor %}
-            
         </div>
+        {% endfor %}
+        
     </div>
-    <h1 class="text-center mt-5 mb-5 jomhuria-regular fs-custom3" style="color: rgba(150, 150, 150, 0.425);">Chegou ao fim...</h1>
+</div>
+<h1 class="text-center mt-5 mb-5 jomhuria-regular fs-custom3" style="color: rgba(150, 150, 150, 0.425);">Chegou ao fim...</h1>
 
-    <!-- Footer -->
-    {% include 'footer.html' %}
+<script>
+    function filterProducts() {
+        const input = document.getElementById('searchInput');
+        const filter = input.value.toLowerCase();
+        const productList = document.getElementById('productList');
+        const products = productList.getElementsByClassName('product-item');
 
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    <script>
-        function filterProducts() {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.toLowerCase();
-            const productList = document.getElementById('productList');
-            const products = productList.getElementsByClassName('product-item');
-
-            for (let i = 0; i < products.length; i++) {
-                const title = products[i].getElementsByClassName('card-title')[0].textContent;
-                if (title.toLowerCase().indexOf(filter) > -1) {
-                    products[i].style.display = "";
-                } else {
-                    products[i].style.display = "none";
-                }
+        for (let i = 0; i < products.length; i++) {
+            const title = products[i].getElementsByClassName('card-title')[0].textContent;
+            if (title.toLowerCase().indexOf(filter) > -1) {
+                products[i].style.display = "";
+            } else {
+                products[i].style.display = "none";
             }
         }
-    </script>
-</body>
-</html>
+    }
+</script>
+{% endblock %}
