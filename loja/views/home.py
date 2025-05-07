@@ -6,8 +6,12 @@ from django.views import View
 class Index(View):
     def get(self, request):
         categorias = Categoria.objects.all()
-        produtos = Product.objects.all()
-        
+        categoria_id = request.GET.get('categoria')
+                
+        if categoria_id:
+            produtos = Product.objects.filter(categoria__id=categoria_id)
+        else:
+            produtos = Product.objects.all()
         
         user = request.user
         return render(request, "index.html", {"categorias": categorias, "produtos": produtos, "user": user})

@@ -67,6 +67,19 @@ class ChatConsumer(AsyncWebsocketConsumer):
                     message_data
                 )
                 logger.debug(f"Sent message from user {self.user.id} to group {self.room_group_name}")
+                receiver = await self.get_receiver_user(saved_message)
+
+                if receiver.id != self.user.id:
+                    await self.channel_layer.group_send(
+                        f"user_{receiver.id}",
+                        {
+                            "type": "nova_mensagem",
+                            "message": saved_message.text,
+                            "sender": self.user.primeiro_nome,
+                            "conversation_id": saved_message.conversation.id,
+                        }
+                    )
+
             else:
                  logger.error(f"Failed to save message for user {self.user.id} in conversation {self.conversation_id}")
 
@@ -89,6 +102,20 @@ class ChatConsumer(AsyncWebsocketConsumer):
             "time": time,       
         }))
         logger.debug(f"Sent message event to client {self.channel_name}")
+
+    async def nova_mensagem(self, event):
+        await self.send(text_data=json.dumps({
+            "type": "nova_mensagem",
+            "message": event["message"],
+            "sender": event["sender"],
+            "conversation_id": event["conversation_id"],
+        }))
+    
+    @sync_to_async
+    def get_receiver_user(self, message_obj):
+        conv = message_obj.conversation
+        return conv.user1 if conv.user2 == self.user else conv.user2
+
 
     @sync_to_async
     def save_message(self, text):

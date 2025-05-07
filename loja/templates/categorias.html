@@ -1,7 +1,7 @@
 <div class="container py-3 mt-3">
     <div class="d-flex overflow-auto gap-5 px-2 scroll-categorias">
         {% for categoria in categorias %}
-            <a style="text-decoration: none; color: black;" class="btn text-center flex-shrink-0 snap-center">
+            <a href="?categoria={{ categoria.id }}" style="text-decoration: none; background-color: {% if categoria.id|stringformat:"s" == request.GET.categoria %}rgb(200, 200, 200){% else %}transparent{% endif %};" class="btn text-center flex-shrink-0 snap-center">
                 <img src="{{ categoria.icon.url }}" alt="{{ categoria.nome }}" class="categoria-icon mb-1">
                 <div class="fw-semibold small">{{ categoria.nome }}</div>
             </a>

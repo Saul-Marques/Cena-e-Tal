@@ -79,12 +79,18 @@
                         Conversa com 
                         {% if active_conversation.user1 == user %}
                             {% with active_conversation.user2 as other_user %}
-                            {{ other_user.primeiro_nome }}
-                            {% endwith %}
+                            {{ other_user.primeiro_nome }} 
+                            <img src="{% if other_user.profile_picture %}{{ other_user.profile_picture.url }}{% else %}{% static 'imgs/icons/account_circle.svg' %}{% endif %}" 
+                            alt="Foto de Perfil" 
+                            style="width: 4rem; height: 4rem; border-radius: 50%;">
+                        {% endwith %}
                         {% else %}
                             {% with active_conversation.user1 as other_user %}
                             {{ other_user.primeiro_nome }}
-                            {% endwith %}
+                            <img src="{% if other_user.profile_picture %}{{ other_user.profile_picture.url }}{% else %}{% static 'imgs/icons/account_circle.svg' %}{% endif %}" 
+                            alt="Foto de Perfil" 
+                            style="width: 4rem; height: 4rem; border-radius: 50%;">
+                        {% endwith %}
                         {% endif %}
                     </h2>
                     <!--
