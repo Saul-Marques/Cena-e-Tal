@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils import timezone
 
 class UserManager(BaseUserManager):
@@ -58,7 +58,7 @@ CIDADES_CHOICES = [
     ('viseu', 'Viseu'),
 ]
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
     primeiro_nome = models.CharField(max_length=50)
     ultimo_nome = models.CharField(max_length=50)
     telemovel = models.CharField(max_length=10, blank=True, null=True)

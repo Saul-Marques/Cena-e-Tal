@@ -1,19 +1,38 @@
 {% extends 'base.html' %}
-{% load static%}
+{% load static %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<div class="container-fluid p-0 rounded" style="background-color: transparent;">
-    <img class="object-fit-contain" src="{% static 'imgs/cover2.png' %}" style="width: 100%; height: 100%;" alt="">
-
-    <div class="input-group mt-3" style="position: absolute; bottom: 80%; left: 10%; width: 75%;">
-        <input type="text" id="searchInput" class="form-control rounded-start-pill border-end-0 border-black" placeholder="Pesquisa" aria-label="Pesquisa" onkeyup="filterProducts()">
-        <button class="btn rounded-end-pill border-black border-start-0" type="button" style="background-color: white; height: 55px;">
-            <img src="{% static 'imgs/icons/iconpesquisa.svg' %}" style="margin-bottom: 3px;" alt="">
-        </button>
+<style>
+    .hero-container {
+        width: 100%;
+        aspect-ratio: 21 / 9;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .hero-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+    </style>
+    
+    <div class="hero-container container-fluid p-0 rounded" style="background-color: transparent;">
+        <img src="{% static cover_image %}" alt="">
+    
+        <div class="input-group mt-3" style="position: absolute; bottom: 80%; left: 10%; width: 75%;">
+            <input type="text" id="searchInput" class="form-control rounded-start-pill border-end-0 border-black" placeholder="Pesquisa" aria-label="Pesquisa" onkeyup="filterProducts()">
+            <button class="btn rounded-end-pill border-black border-start-0" type="button" style="background-color: white; height: 55px;">
+                <img src="{% static 'imgs/icons/iconpesquisa.svg' %}" style="margin-bottom: 3px;" alt="">
+            </button>
+        </div>
     </div>
-</div>
+    
 
 {% include 'categorias.html' %}
+
+
 
 {% include 'toast.html' %}
 <div class="container-fluid p-5">

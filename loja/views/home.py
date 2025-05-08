@@ -1,3 +1,6 @@
+import random
+import os
+from django.conf import settings
 from django.shortcuts import render, redirect
 from loja.models import User, Product, Categoria
 from django.views import View
@@ -14,8 +17,19 @@ class Index(View):
             produtos = Product.objects.all()
         
         user = request.user
-        return render(request, "index.html", {"categorias": categorias, "produtos": produtos, "user": user})
 
+        covers_folder = os.path.join(settings.BASE_DIR, 'loja', 'static', 'imgs', 'covers')
+        all_images = [f for f in os.listdir(covers_folder) if f.lower().endswith(('.png', '.jpg', '.jpeg', '.gif'))]
+
+        selected_image = random.choice(all_images) if all_images else 'cover2.png'  # fallback se vazio
+        selected_image_url = f'imgs/covers/{selected_image}'
+
+
+        return render(request, "index.html", {
+            "categorias": categorias,
+            "produtos": produtos,
+            "user": user,
+            "cover_image": selected_image_url})
 
         
 def loja(request):
