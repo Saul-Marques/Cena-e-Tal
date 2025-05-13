@@ -1,5 +1,10 @@
+{% load static %}
 <div class="container py-3 mt-3">
     <div class="d-flex overflow-auto gap-5 px-2 scroll-categorias">
+        <a href="{% url 'homepage' %}" style="text-decoration: none;" class="btn text-center flex-shrink-0 snap-center">
+            <img src="{% static 'imgs/icons/grid.png' %}" alt="Mostrar tudo" class="categoria-icon mb-1">
+            <div class="fw-semibold small">Tudo</div>
+        </a>
         {% for categoria in categorias %}
             <a href="?categoria={{ categoria.id }}" style="text-decoration: none; background-color: {% if categoria.id|stringformat:"s" == request.GET.categoria %}rgb(200, 200, 200){% else %}transparent{% endif %};" class="btn text-center flex-shrink-0 snap-center">
                 <img src="{{ categoria.icon.url }}" alt="{{ categoria.nome }}" class="categoria-icon mb-1">

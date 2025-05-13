@@ -106,11 +106,11 @@ def product_image_upload_path(instance, filename):
 
 class Product(models.Model):
     ESTADO_CHOICES = [
-        ('1', '⭐'),
-        ('2', '⭐⭐'),
-        ('3', '⭐⭐⭐'),
-        ('4', '⭐⭐⭐⭐'),
-        ('5', '⭐⭐⭐⭐⭐'),
+        ('1', 'Mau'),
+        ('2', 'Muito Usado'),
+        ('3', 'Usado'),
+        ('4', 'Ligeiramente Usado'),
+        ('5', 'Como novo'),
     ]
     TIPO_VENDA_CHOICES = [
     ('venda', 'Venda Direta'),
@@ -143,6 +143,8 @@ class Product(models.Model):
     categoria = models.ForeignKey("Categoria", on_delete=models.CASCADE, default=1)
     descricao = models.CharField(max_length=250, blank=True, null=True)
     user = models.ForeignKey("User", on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
+
 
     @property
     def maior_licitacao(self):

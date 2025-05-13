@@ -107,15 +107,17 @@
             </div>
 
             <div class="mb-3 jomhuria-regular fs-2">
-                <label for="estado" class="form-label">Estado do Produto:</label> <br>
-                <div class="rating">
-                    <input type="radio" name="estado" id="star1" value="5"><label for="star1">★</label>
-                    <input type="radio" name="estado" id="star2" value="4"><label for="star2">★</label>
-                    <input type="radio" name="estado" id="star3" value="3"><label for="star3">★</label>
-                    <input type="radio" name="estado" id="star4" value="2"><label for="star4">★</label>
-                    <input type="radio" name="estado" id="star5" value="1"><label for="star5">★</label>
-                </div>
+                <label for="estado" class="form-label">Estado do Produto:</label>
+                <select class="form-select fs-2" name="estado" id="estado" required>
+                    <option value="" disabled selected>Escolhe o estado</option>
+                    <option value="1">Mau</option>
+                    <option value="2">Muito Usado</option>
+                    <option value="3">Usado</option>
+                    <option value="4">Ligeiramente Usado</option>
+                    <option value="5">Como Novo</option>
+                </select>
             </div>
+            
         
             <!-- Descrição -->
             <div class="mb-3">

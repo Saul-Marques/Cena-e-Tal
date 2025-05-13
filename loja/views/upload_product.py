@@ -4,7 +4,7 @@ from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from loja.models import Product, Categoria, ProductImage
+from loja.models import Product, Categoria, ProductImage, CIDADES_CHOICES
 from loja.forms import ProductForm
 from datetime import timedelta
 from django.utils import timezone
@@ -36,7 +36,7 @@ def upload_product_view(request):
             return render(request, "upload_product.html", {
                 "categorias": Categoria.objects.all(),
                 "user": user,
-                "error": "O preço inserido é inválido. Use números com até duas casas decimais."
+                "error": "O preço inserido é inválido. Use números com até duas casas decimais.",
             })
 
         try:
@@ -93,4 +93,4 @@ def upload_product_view(request):
         return redirect("homepage")
 
     categorias = Categoria.objects.all()
-    return render(request, "upload_product.html", {"categorias": categorias, "user": user})
+    return render(request, "upload_product.html", {"categorias": categorias, "user": user, "CIDADES_CHOICES": CIDADES_CHOICES},)
