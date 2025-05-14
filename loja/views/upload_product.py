@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 @login_required
 def upload_product_view(request):
     user = request.user
-
+    
     if request.method == "POST":
         nome = request.POST.get("nome")
         preco = request.POST.get("preco", "").replace(",", ".")

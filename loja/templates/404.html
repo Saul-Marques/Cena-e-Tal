@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div style="display: flex; align-items: center; justify-content: center; min-height: 70vh; flex-direction: column; text-align: center;">
+    <img src="{% static 'imgs/icons/cowboy.png' %}" alt="404" width="150" style="margin-bottom: 30px;">
+    <h1 style="font-size: 60px; margin-bottom: 10px; color: #e74c3c;">404</h1>
+    <h2 style="font-size: 24px; margin-bottom: 15px;">Ups! A página que procuras não existe.</h2>
+    <p style="color: #555;">Verifica se o endereço está correto ou volta para a página inicial.</p>
+    <a href="/" style="margin-top: 20px; display: inline-block; padding: 12px 25px; background-color: #3498db; color: #fff; border-radius: 5px; text-decoration: none;">Voltar à homepage</a>
+  </div>
+{% endblock %}
