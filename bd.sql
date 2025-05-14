@@ -172,7 +172,7 @@ CREATE TABLE `chat_message` (
   KEY `chat_message_sender_id_991c686c_fk_loja_user_id` (`sender_id`),
   CONSTRAINT `chat_message_conversation_id_a1207bf4_fk_chat_conversation_id` FOREIGN KEY (`conversation_id`) REFERENCES `chat_conversation` (`id`),
   CONSTRAINT `chat_message_sender_id_991c686c_fk_loja_user_id` FOREIGN KEY (`sender_id`) REFERENCES `loja_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=253 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=288 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,7 +196,7 @@ CREATE TABLE `django_admin_log` (
   KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,7 +228,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -280,7 +280,7 @@ CREATE TABLE `loja_licitacao` (
   KEY `loja_licitacao_user_id_ead856e0_fk_loja_user_id` (`user_id`),
   CONSTRAINT `loja_licitacao_produto_id_72523346_fk_loja_product_id` FOREIGN KEY (`produto_id`) REFERENCES `loja_product` (`id`),
   CONSTRAINT `loja_licitacao_user_id_ead856e0_fk_loja_user_id` FOREIGN KEY (`user_id`) REFERENCES `loja_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -320,12 +320,13 @@ CREATE TABLE `loja_product` (
   `inicio_leilao` datetime(6) DEFAULT NULL,
   `localidade` varchar(255) DEFAULT NULL,
   `data_adicionado` datetime(6) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `loja_product_categoria_id_95d83ee8_fk_loja_categoria_id` (`categoria_id`),
   KEY `loja_product_user_id_69b1f895_fk_loja_user_id` (`user_id`),
   CONSTRAINT `loja_product_categoria_id_95d83ee8_fk_loja_categoria_id` FOREIGN KEY (`categoria_id`) REFERENCES `loja_categoria` (`id`),
   CONSTRAINT `loja_product_user_id_69b1f895_fk_loja_user_id` FOREIGN KEY (`user_id`) REFERENCES `loja_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -342,7 +343,7 @@ CREATE TABLE `loja_productimage` (
   PRIMARY KEY (`id`),
   KEY `loja_productimage_product_id_e9bb3c50_fk_loja_product_id` (`product_id`),
   CONSTRAINT `loja_productimage_product_id_e9bb3c50_fk_loja_product_id` FOREIGN KEY (`product_id`) REFERENCES `loja_product` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -372,6 +373,44 @@ CREATE TABLE `loja_user` (
   UNIQUE KEY `loja_user_email_5a75d4a1_uniq` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `loja_user_groups`
+--
+
+DROP TABLE IF EXISTS `loja_user_groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `loja_user_groups` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL,
+  `group_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `loja_user_groups_user_id_group_id_ae5d1744_uniq` (`user_id`,`group_id`),
+  KEY `loja_user_groups_group_id_e26e34b0_fk_auth_group_id` (`group_id`),
+  CONSTRAINT `loja_user_groups_group_id_e26e34b0_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`),
+  CONSTRAINT `loja_user_groups_user_id_6bda011a_fk_loja_user_id` FOREIGN KEY (`user_id`) REFERENCES `loja_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `loja_user_user_permissions`
+--
+
+DROP TABLE IF EXISTS `loja_user_user_permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `loja_user_user_permissions` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL,
+  `permission_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `loja_user_user_permissions_user_id_permission_id_be22a674_uniq` (`user_id`,`permission_id`),
+  KEY `loja_user_user_permi_permission_id_a741ce5a_fk_auth_perm` (`permission_id`),
+  CONSTRAINT `loja_user_user_permi_permission_id_a741ce5a_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`),
+  CONSTRAINT `loja_user_user_permissions_user_id_f4843159_fk_loja_user_id` FOREIGN KEY (`user_id`) REFERENCES `loja_user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -382,4 +421,4 @@ CREATE TABLE `loja_user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-05-08 14:48:50
+-- Dump completed on 2025-05-14  7:31:49

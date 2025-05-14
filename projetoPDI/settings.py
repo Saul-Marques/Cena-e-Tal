@@ -37,7 +37,6 @@ CSRF_TRUSTED_ORIGINS = [
 
 INSTALLED_APPS = [
     'daphne',
-    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,16 +48,6 @@ INSTALLED_APPS = [
     'chat', 
 ]
 
-JAZZMIN_SETTINGS = {
-    "show_ui_builder": True,
-    "site_title": "Cena&Tal Admin",
-    "site_header": "Cena&Tal",
-    "site_brand": "Cena&Tal",
-    "site_logo": "imgs/favicon.svg",
-    "welcome_sign": "Bem vindo à administração!",
-    "copyright": "Todos os direitos reservados",
-    "user_avatar": "profile_picture",
-}
 
 AUTH_USER_MODEL = "loja.User"
 SESSION_ENGINE = "django.contrib.sessions.backends.db"  # Armazena sessões na BD
