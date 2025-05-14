@@ -36,11 +36,3 @@ env/
 # OS
 .DS_Store
 Thumbs.db
-
-# MySQL/MariaDB dumps
-
-# Google credentials
-*.json
-
-**/migrations/*.py
-!**/migrations/__init__.py

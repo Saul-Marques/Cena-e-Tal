@@ -1,0 +1,124 @@
+[
+{
+  "model": "loja.user",
+  "pk": 1,
+  "fields": {
+    "last_login": "2025-05-14T17:32:55.625Z",
+    "primeiro_nome": "Admin",
+    "ultimo_nome": "Cena&Tal",
+    "telemovel": "926382343",
+    "email": "projetopdi@mail.com",
+    "password": "pbkdf2_sha256$870000$fX57qGbSDSJK6zYinRBLoS$fwKWIxX3qlmCKuGY2fkdwZoZ+bOJVW0ZScn3CiCd+zE=",
+    "profile_picture": "uploads/profiles/1/admin.png",
+    "localidade": null,
+    "cidade": "coimbra",
+    "cp": null,
+    "biografia": "Sou o admin do Cena&Tal",
+    "is_active": true,
+    "is_staff": true,
+    "is_superuser": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "loja.categoria",
+  "pk": 3,
+  "fields": {
+    "nome": "Moda",
+    "icon": "uploads/categorias/t-shirt.png"
+  }
+},
+{
+  "model": "loja.categoria",
+  "pk": 11,
+  "fields": {
+    "nome": "Veículos",
+    "icon": "uploads/categorias/car-front_PEOozT9.svg"
+  }
+},
+{
+  "model": "loja.categoria",
+  "pk": 12,
+  "fields": {
+    "nome": "Animais",
+    "icon": "uploads/categorias/animais_Q3d2OtQ.png"
+  }
+},
+{
+  "model": "loja.categoria",
+  "pk": 13,
+  "fields": {
+    "nome": "Lazer",
+    "icon": "uploads/categorias/bullseye.svg"
+  }
+},
+{
+  "model": "loja.categoria",
+  "pk": 14,
+  "fields": {
+    "nome": "Outros",
+    "icon": "uploads/categorias/outros.png"
+  }
+},
+{
+  "model": "loja.categoria",
+  "pk": 15,
+  "fields": {
+    "nome": "Ferramentas",
+    "icon": "uploads/categorias/nut.svg"
+  }
+},
+{
+  "model": "loja.categoria",
+  "pk": 16,
+  "fields": {
+    "nome": "Decoração",
+    "icon": "uploads/categorias/lamp.svg"
+  }
+},
+{
+  "model": "loja.categoria",
+  "pk": 17,
+  "fields": {
+    "nome": "Entretenimento",
+    "icon": "uploads/categorias/dpad.svg"
+  }
+},
+{
+  "model": "loja.product",
+  "pk": 2,
+  "fields": {
+    "tipo_venda": "venda",
+    "data_adicionado": "2025-05-14T17:35:43.344Z",
+    "inicio_leilao": null,
+    "fim_leilao": null,
+    "localidade": "lisboa",
+    "estado": "5",
+    "nome": "Produto Inicial",
+    "preco": "100.00",
+    "categoria": 14,
+    "descricao": "Produto inical para testar as fixtures, será uma venda direta",
+    "user": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "loja.product",
+  "pk": 3,
+  "fields": {
+    "tipo_venda": "leilao",
+    "data_adicionado": "2025-05-14T17:36:36.959Z",
+    "inicio_leilao": "2025-05-14T17:36:36.958Z",
+    "fim_leilao": "2025-05-21T17:36:36.958Z",
+    "localidade": "castelo_branco",
+    "estado": "4",
+    "nome": "Produto Inicial 2",
+    "preco": "101.00",
+    "categoria": 15,
+    "descricao": "Produto inicial para testar os leiloes e categorias",
+    "user": 1,
+    "is_active": true
+  }
+}
+]
