@@ -66,6 +66,13 @@ git clone https://github.com/Saul-Marques/projetoPDI
 cd projetoPDI
 python manage.py runserver
 ```
+Utilizador inicial e admin:
+```plaintext
+Email: projetopdi@mail.com
+Password: projetopdi
+```
+
+
 
 ## 📂 Estrutura do Repositório
 
