@@ -66,11 +66,19 @@ git clone https://github.com/Saul-Marques/projetoPDI
 cd projetoPDI
 python manage.py runserver
 ```
-Utilizador inicial e admin:
+O projeto dispõe de dados "Boilerplate" ou iniciais.
+Para os utilizar basta correr o comando:
+```plaintext
+python manage.py loaddata fixtures/initial_data.json
+```
+Isto vai importar o user de admin, dois produtos iniciais e algumas categorias.
+
+Utilizador inicial/admin:
 ```plaintext
 Email: projetopdi@mail.com
 Password: projetopdi
 ```
+
 
 
 
