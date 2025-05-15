@@ -13,7 +13,7 @@ Este projeto é a continuação do projeto da cadeira de DPWEB do primeiro semes
 - [x] Inserção de produtos pelos utilizadores
 - [x] Formulário de contacto
 - [ ] FAQ
-- [ ] Tratamento de erros
+- [X] Tratamento de erros
 - [X] Login
 - [X] Signup
 ---
