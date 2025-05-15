@@ -1,20 +1,39 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
-from loja.models import User, CIDADES_CHOICES
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from loja.models import User, Product
 
+@method_decorator(login_required, name='dispatch')
 class UserView(View):
-    @method_decorator(login_required)
-    def get(self, request):
-        user = request.user
-        cidades = User._meta.get_field("cidade").choices
+    def get(self, request, user_id):
+        perfil = get_object_or_404(User, id=user_id)
+        produtos = Product.objects.filter(user=perfil)
+        return render(request, "users.html", {"perfil": perfil, "is_owner": perfil.id == request.user.id, "produtos": produtos})
 
-        return render(request, "users.html", {
-            "user": user,
-            "cidades": CIDADES_CHOICES
-})
+    def post(self, request, user_id):
+        perfil = get_object_or_404(User, id=user_id)
+        if perfil.id != request.user.id:
+            messages.error(request, "Não pode editar o perfil de outro utilizador.")
+            return render(request, "users.html", {"perfil": perfil, "is_owner": False})
+
+        perfil.primeiro_nome = request.POST.get("primeiro_nome", perfil.primeiro_nome)
+        if request.FILES.get("profile_picture"):
+            perfil.profile_picture = request.FILES["profile_picture"]        
+        perfil.ultimo_nome = request.POST.get("ultimo_nome", perfil.ultimo_nome)
+        perfil.biografia = request.POST.get("biografia", perfil.biografia)
+        perfil.localidade = request.POST.get("endereco", perfil.localidade)
+        perfil.cidade = request.POST.get("cidade", perfil.cidade)
+        perfil.cp = request.POST.get("cp", perfil.cp)
+        perfil.telemovel = request.POST.get("telemovel", perfil.telemovel)
+        perfil.email = request.POST.get("email", perfil.email)
+
+        perfil.save()
+        messages.success(request, "Perfil atualizado com sucesso!")
+
+        return render(request, "users.html", {"perfil": perfil, "is_owner": True})
+
     
     @method_decorator(login_required)
     def post(self, request):

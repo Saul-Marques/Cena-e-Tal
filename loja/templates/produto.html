@@ -31,7 +31,7 @@
                     <p class="jomhuria-regular fs-3" style="line-height: 1;">Publicado a: {{ produto.data_adicionado|date:"d/m/Y H:i" }} </p>
                 </div>
                 <div class="col">
-                    <p class="jomhuria-regular fs-3" style="line-height: 1;">Vendedor: <a href="" style="text-decoration: none;" class="text-dark">{{ produto.user.primeiro_nome }} {{ produto.user.ultimo_nome }}</a></p>
+                    <p class="jomhuria-regular fs-3" style="line-height: 1;">Vendedor: <a href="{% url 'user' produto.user.id %}" style="text-decoration: none;" class="text-dark">{{ produto.user.primeiro_nome }} {{ produto.user.ultimo_nome }}</a></p>
                 </div>
             </div>
 

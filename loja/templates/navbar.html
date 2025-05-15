@@ -18,7 +18,7 @@
                 </li>
                 <li class="nav-item">
 
-                    <a class="nav-link" href="{% url 'user' %}">
+                    <a class="nav-link" href="{% url 'user' request.user.id %}">
                         {% if request.user.profile_picture %}
                             <img src="{{ user.profile_picture.url }}" alt="Foto de Perfil" style="width: 40px; height: 40px; border-radius: 50%; background-color: white;">
                         {% else %}
