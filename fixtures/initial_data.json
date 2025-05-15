@@ -3,7 +3,7 @@
   "model": "loja.user",
   "pk": 1,
   "fields": {
-    "last_login": "2025-05-14T17:32:55.625Z",
+    "last_login": "2025-05-15T15:33:06.107Z",
     "primeiro_nome": "Admin",
     "ultimo_nome": "Cena&Tal",
     "telemovel": "926382343",
@@ -19,6 +19,106 @@
     "is_superuser": true,
     "groups": [],
     "user_permissions": []
+  }
+},
+{
+  "model": "loja.user",
+  "pk": 3,
+  "fields": {
+    "last_login": "2025-05-15T15:02:58.515Z",
+    "primeiro_nome": "Saul",
+    "ultimo_nome": "Marques",
+    "telemovel": null,
+    "email": "saul@mail.com",
+    "password": "pbkdf2_sha256$870000$GgPAyI6O3ilsWF99r3TXCJ$Qs9F5ivIZm6Mw9/cXo++hnH4l9ujTpGWpxuP1FmQPnA=",
+    "profile_picture": "uploads/profiles/3/peruca-70-s-homem.jpg",
+    "localidade": null,
+    "cidade": "coimbra",
+    "cp": null,
+    "biografia": "Já fui o admin, agora não sou...",
+    "is_active": true,
+    "is_staff": false,
+    "is_superuser": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "loja.product",
+  "pk": 2,
+  "fields": {
+    "tipo_venda": "venda",
+    "data_adicionado": "2025-05-14T17:35:43.344Z",
+    "inicio_leilao": null,
+    "fim_leilao": null,
+    "localidade": "lisboa",
+    "estado": "5",
+    "nome": "Produto Inicial",
+    "preco": "100.00",
+    "categoria": 14,
+    "descricao": "Produto inical para testar as fixtures, será uma venda direta",
+    "user": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "loja.product",
+  "pk": 3,
+  "fields": {
+    "tipo_venda": "leilao",
+    "data_adicionado": "2025-05-14T17:36:36.959Z",
+    "inicio_leilao": "2025-05-14T17:36:36.958Z",
+    "fim_leilao": "2025-05-21T17:36:36.958Z",
+    "localidade": "castelo_branco",
+    "estado": "4",
+    "nome": "Produto Inicial 2",
+    "preco": "101.00",
+    "categoria": 15,
+    "descricao": "Produto inicial para testar os leiloes e categorias",
+    "user": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "loja.product",
+  "pk": 4,
+  "fields": {
+    "tipo_venda": "venda",
+    "data_adicionado": "2025-05-15T14:42:34.570Z",
+    "inicio_leilao": null,
+    "fim_leilao": null,
+    "localidade": "coimbra",
+    "estado": "3",
+    "nome": "Pokemons",
+    "preco": "58.00",
+    "categoria": 12,
+    "descricao": "Pokemons à venda ou para alugar",
+    "user": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "loja.productimage",
+  "pk": 3,
+  "fields": {
+    "product": 2,
+    "image": "uploads/products/2/produto_teste.png"
+  }
+},
+{
+  "model": "loja.productimage",
+  "pk": 4,
+  "fields": {
+    "product": 3,
+    "image": "uploads/products/3/aguabenta.jpg"
+  }
+},
+{
+  "model": "loja.productimage",
+  "pk": 5,
+  "fields": {
+    "product": 4,
+    "image": "uploads/products/4/cover6.gif"
   }
 },
 {
@@ -83,42 +183,6 @@
   "fields": {
     "nome": "Entretenimento",
     "icon": "uploads/categorias/dpad.svg"
-  }
-},
-{
-  "model": "loja.product",
-  "pk": 2,
-  "fields": {
-    "tipo_venda": "venda",
-    "data_adicionado": "2025-05-14T17:35:43.344Z",
-    "inicio_leilao": null,
-    "fim_leilao": null,
-    "localidade": "lisboa",
-    "estado": "5",
-    "nome": "Produto Inicial",
-    "preco": "100.00",
-    "categoria": 14,
-    "descricao": "Produto inical para testar as fixtures, será uma venda direta",
-    "user": 1,
-    "is_active": true
-  }
-},
-{
-  "model": "loja.product",
-  "pk": 3,
-  "fields": {
-    "tipo_venda": "leilao",
-    "data_adicionado": "2025-05-14T17:36:36.959Z",
-    "inicio_leilao": "2025-05-14T17:36:36.958Z",
-    "fim_leilao": "2025-05-21T17:36:36.958Z",
-    "localidade": "castelo_branco",
-    "estado": "4",
-    "nome": "Produto Inicial 2",
-    "preco": "101.00",
-    "categoria": 15,
-    "descricao": "Produto inicial para testar os leiloes e categorias",
-    "user": 1,
-    "is_active": true
   }
 }
 ]
