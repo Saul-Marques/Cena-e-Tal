@@ -1,34 +1,30 @@
 import os
 import logging
+import imghdr
 from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from loja.models import Product, Categoria, ProductImage, CIDADES_CHOICES
-from loja.forms import ProductForm
 from datetime import timedelta
 from django.utils import timezone
+from django.contrib import messages
 
 logger = logging.getLogger(__name__)
-
-
 
 @login_required
 def upload_product_view(request):
     user = request.user
-    
+
     if request.method == "POST":
         nome = request.POST.get("nome")
         preco = request.POST.get("preco", "").replace(",", ".")
         descricao = request.POST.get("descricao")
         estado = request.POST.get("estado")
         categoria_id = request.POST.get("categoria")
-        localidade = request.POST.get("localidade")
-        if not localidade:
-            localidade = request.user.cidade
+        localidade = request.POST.get("localidade") or request.user.cidade
         images = request.FILES.getlist("images")
         tipo_venda = request.POST.get("tipo_venda")
-
 
         try:
             preco = Decimal(preco)
@@ -48,13 +44,29 @@ def upload_product_view(request):
                 "error": "Categoria inválida."
             })
 
+        # Validação estrita das imagens
+        for image in images:
+            if not image.content_type.startswith("image/"):
+                messages.error(request, f"O ficheiro '{image.name}' não é uma imagem válida.")
+                return render(request, "upload_product.html", {
+                    "categorias": Categoria.objects.all(),
+                    "user": user,
+                    "error": f"O ficheiro {image.name} não é uma imagem válida."
+                })
+            if imghdr.what(image) not in ["jpeg", "png", "gif", "bmp", "tiff", "webp"]:
+                messages.error(request, f"O ficheiro '{image.name}' tem uma assinatura inválida.")
+                return render(request, "upload_product.html", {
+                    "categorias": Categoria.objects.all(),
+                    "user": user,
+                    "error": f"O ficheiro {image.name} não tem uma assinatura válida de imagem."
+                })
+
         if tipo_venda == "leilao":
             inicio_leilao = timezone.now()
             fim_leilao = inicio_leilao + timedelta(days=7)
         else:
             inicio_leilao = None
             fim_leilao = None
-    
 
         product = Product.objects.create(
             nome=nome,
@@ -71,9 +83,6 @@ def upload_product_view(request):
 
         product_folder = os.path.join(settings.MEDIA_ROOT, "uploads", "products", str(product.id))
         os.makedirs(product_folder, exist_ok=True)
-
-        if not images:
-            logger.warning(f"⚠ Nenhuma imagem foi enviada para o produto {product.id}")
 
         for image in images:
             image_name = image.name.replace(" ", "_")
@@ -93,4 +102,8 @@ def upload_product_view(request):
         return redirect("homepage")
 
     categorias = Categoria.objects.all()
-    return render(request, "upload_product.html", {"categorias": categorias, "user": user, "CIDADES_CHOICES": CIDADES_CHOICES},)
+    return render(request, "upload_product.html", {
+        "categorias": categorias,
+        "user": user,
+        "CIDADES_CHOICES": CIDADES_CHOICES
+    })

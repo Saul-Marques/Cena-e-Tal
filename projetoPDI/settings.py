@@ -29,9 +29,6 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*']
 CSRF_COOKIE_SAMESITE = None
 CSRF_COOKIE_SECURE = False
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://*.ngrok-free.app'
-]
 
 # Application definition
 
@@ -146,7 +143,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "loja/static"),

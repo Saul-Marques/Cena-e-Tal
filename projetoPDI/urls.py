@@ -20,6 +20,8 @@ from django.conf.urls.static import static
 from . import settings 
 from loja.views.upload_product import upload_product_view
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('loja.urls')), 
@@ -29,5 +31,6 @@ urlpatterns = [
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 handler404 = 'loja.views.error_handlers.custom_404'
 handler500 = 'loja.views.error_handlers.custom_500'

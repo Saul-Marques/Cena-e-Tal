@@ -18,13 +18,13 @@
     /*Display static/imgs/icons/chat_branco.svg */
     width: 40px;  /* Define o tamanho do botão */
     height: 40px;
-    background-image: url("/static/imgs/icons/chat_branco.svg"); /* ✅ Ícone padrão */
+    background-image: url("/static/imgs/icons/chat_branco.svg");
     background-size: cover;
 }
 
 .chatbutton:hover {
     /*Display static/imgs/icons/chat.svg */
-    background-image: url("/static/imgs/icons/chat.svg"); /* ✅ Ícone no hover */
+    background-image: url("/static/imgs/icons/chat.svg");
 }
 
 
