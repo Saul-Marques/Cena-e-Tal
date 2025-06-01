@@ -46,6 +46,23 @@
         </div>
       </div>
         <div class="row rounded-bottom mb-5" style="background-color: white;">
+          {% if messages %}
+          <div class="container mt-4">
+            {% for message in messages %}
+              <div class="alert 
+                {% if message.tags %}
+                  alert-{{ message.tags }}
+                {% else %}
+                  alert-info
+                {% endif %}
+                alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
           <p class="jomhuria-regular fs-1 mt-4" style="line-height: 1;">Editar Perfil</p>
           <div class="col-4 ms-4 mt-2" style="line-height: 1;">
           </div>
@@ -81,6 +98,14 @@
               <input type="email" class="form-control rounded-4 mt-1" name="email" value="{{ user.email }}">
             </div>
           </div> <!--Email-->
+          <div class="row"> <!--Telemovel-->
+            <div class="col">
+              <p class="jomhuria-regular fs-2">Telemovel: </p>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control rounded-4 mt-1" name="telemovel" value="{{ user.telemovel }}">
+            </div>
+          </div> <!--Telemovel-->
           <!--Informação adicional-->
           <p class="jomhuria-regular fs-1 mt-4" style="line-height: 1;">Localização</p>
           <div class="row"> <!--Cidade-->
@@ -97,7 +122,7 @@
             </div>
           </div> <!--Cidade-->
 
-            <button type="submit" class="rounded-bottom-3 border-0 p-2 jomhuria-regular fs-1" style="background-color: black; color: white; line-height: 1;">
+            <button type="submit" onclick="setTimeout(() => location.reload(), 100);" class="rounded-bottom-3 border-0 p-2 jomhuria-regular fs-1" style="background-color: black; color: white; line-height: 1;">
               Atualizar
             </button>
             {% else %}

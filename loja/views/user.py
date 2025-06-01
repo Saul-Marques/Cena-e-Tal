@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from loja.models import User, Product, CIDADES_CHOICES
+import re
+from django.core.validators import ValidationError
 
 @method_decorator(login_required, name='dispatch')
 class UserView(View):
@@ -37,6 +39,14 @@ class UserView(View):
         perfil.cidade = request.POST.get("cidade", perfil.cidade)
         perfil.cp = request.POST.get("cp", perfil.cp)
         perfil.telemovel = request.POST.get("telemovel", perfil.telemovel)
+        if perfil.telemovel and not re.fullmatch(r"9\d{8}", perfil.telemovel):
+            messages.error(request, "Número de telemóvel inválido. Deve começar por 9 e ter 9 dígitos.")
+            return render(request, "users.html", {
+            "perfil": perfil,
+            "is_owner": True,
+            "cidades": CIDADES_CHOICES
+        })
+
         perfil.email = request.POST.get("email", perfil.email)
 
         perfil.save()
