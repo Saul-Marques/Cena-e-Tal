@@ -89,7 +89,7 @@
             </div>
             <div class="col">
               <select class="form-select jomhuria-regular fs-3" id="cidade" name="cidade" required>
-                <option selected disabled>Selecione uma Zona Metropolitana</option>
+                <option selected disabled>Selecione uma Cidade</option>
                 {% for value, label in cidades %}
                 <option value="{{ value }}" {% if user.cidade == value %}selected{% endif %}>{{ label }}</option>
               {% endfor %}

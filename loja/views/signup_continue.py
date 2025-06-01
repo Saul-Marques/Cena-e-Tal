@@ -28,6 +28,7 @@ class SignupContinue(View):
         telemovel = request.POST.get("telemovel")
         password = request.POST.get("password")
         confirm_password = request.POST.get("confirm_password")
+        cidade = request.POST.get("cidade")
 
         # Verificar se as passwords coincidem
         if password != confirm_password:
@@ -45,6 +46,7 @@ class SignupContinue(View):
             ultimo_nome=ultimo_nome,
             telemovel=telemovel,
             password=make_password(password),
+            cidade=cidade,
         )
         user.save()
         messages.success(request, "Conta criada com sucesso! Faça login.")
