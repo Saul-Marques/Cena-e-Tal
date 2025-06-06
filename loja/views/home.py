@@ -29,7 +29,8 @@ class Index(View):
             "categorias": categorias,
             "produtos": produtos,
             "user": user,
-            "cover_image": selected_image_url})
+            "cover_image": selected_image_url,
+            "graphics": list(range(1, 29)),})
 
         
 def loja(request):
@@ -40,6 +41,7 @@ def loja(request):
         products = Products.get_all_products_by_categoriaid(categoriaID)
     else:
         products = Products.get_all_products()
+
 
     data = {}
     data['products'] = products

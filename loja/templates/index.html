@@ -5,7 +5,7 @@
     <style>
     .hero-container {
         width: 100%;
-        aspect-ratio: 21 / 9;
+        aspect-ratio: 21 / 7;
         overflow: hidden;
         position: relative;
     }
@@ -38,33 +38,48 @@
 <div class="container-fluid p-5">
     <div class="row gy-4 mb-5" id="productList">
         {% for produto in produtos %}
-        <div class="col-xl-3 col-md-4 col-sm-6 product-item">
-            <div class="card shadow rounded-2" style="width: 100%;height:470px; background-color: white;">
-                <div class="p-0" style="width: 100%; height: 250px; background-color: white;">
-                    {% with produto.images.all|first as image %}
-                        {% if image %}
-                        <a href="{% url 'produto_detail' produto.id %}">
-                            <img src="{{ image.image.url }}" class="img-fluid" style="width: 100%; height: 250px; object-fit:cover;" alt="{{ produto.nome }}">
-                        {% else %}
-                            <img src="{% static 'imgs/default-product.jpg' %}" class="img-fluid" style="width: 100%; height: 100%; object-fit:cover;" alt="Sem imagem">
-                        {% endif %}
-                        </a>
-                    {% endwith %}
+            {% if forloop.counter0 == 8 %}
+                <!-- Banner único após 8 produtos -->
+                <div class="col-12">
+                    <div class="my-4 p-4 text-center rounded bg-light shadow">
+                        <h3 class="mb-3">🎉 Banner Especial 🎉</h3>
+                        <p>Meter aqui botoes e cenas fixes</p>
+                    </div>
                 </div>
+            {% endif %}
 
-                <div class="card-body" style="overflow: hidden;">
-                    <a href="{% url 'produto_detail' produto.id %}" class="h5 card-title jomhuria-regular fs-1" style="text-decoration: none; line-height: 0;">{{ produto.nome }}</a>
-                    <p class="card-text jomhuria-regular fs-2" style="line-height: 1;"><strong>Preço:</strong> €{{ produto.preco }}</p>
-                    <p class="text-muted mt-5 jomhuria-regular fs-3" style="line-height: 1;">Adicionado por: <strong>{{ produto.user.primeiro_nome }} {{ produto.user.ultimo_nome }}</strong></p>
-                    {% if produto.user.cidade != empty %}
-                    <p class="text-muted jomhuria-regular fs-3" style="line-height: 0;">{{ produto.user.get_cidade_display }}</p>
-                    {% else %}
-                    <p class="text-muted jomhuria-regular fs-3" style="line-height: 0;"></p>
-                    {% endif %}           
+            <div class="col-xl-3 col-md-4 col-sm-6 product-item">
+                <div class="card shadow rounded-2" style="width: 100%;height:470px; background-color: white;">
+                    <div class="p-0" style="width: 100%; height: 250px; background-color: white;">
+                        {% with produto.images.all|first as image %}
+                            {% if image %}
+                                <a href="{% url 'produto_detail' produto.id %}">
+                                    <img src="{{ image.image.url }}" class="img-fluid" style="width: 100%; height: 250px; object-fit:cover;" alt="{{ produto.nome }}">
+                                </a>
+                            {% else %}
+                                <img src="{% static 'imgs/default-product.jpg' %}" class="img-fluid" style="width: 100%; height: 100%; object-fit:cover;" alt="Sem imagem">
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+
+                    <div class="card-body" style="overflow: hidden;">
+                        <a href="{% url 'produto_detail' produto.id %}" class="h5 card-title jomhuria-regular fs-1" style="text-decoration: none; line-height: 0;">{{ produto.nome }}</a>
+                        <p class="card-text jomhuria-regular fs-2" style="line-height: 1;"><strong>Preço:</strong> €{{ produto.preco }}</p>
+                        {% if produto.tipo_venda == "leilao" %}
+                        <p class="card-text jomhuria-regular fs-2" style="line-height: 0;"> Licitação atual: €{{ produto.maior_licitacao }}</p>
+                        {% endif %}
+                        <p class="text-muted mt-5 jomhuria-regular fs-3" style="line-height: 1;">Adicionado por: <strong>{{ produto.user.primeiro_nome }} {{ produto.user.ultimo_nome }}</strong></p>
+                        {% if produto.user.cidade %}
+                            <p class="text-muted jomhuria-regular fs-3" style="line-height: 0;">{{ produto.user.get_cidade_display }}</p>
+                        {% else %}
+                            <p class="text-muted jomhuria-regular fs-3" style="line-height: 0;"></p>
+                        {% endif %}
+                                   
+                    </div>
                 </div>
             </div>
-        </div>
         {% endfor %}
+
         
     </div>
 </div>
@@ -87,4 +102,42 @@
         }
     }
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const imagens = [
+        {% for i in graphics %}
+            "{% static 'imgs/graphics/graphic' %}{{ i }}.png"{% if not forloop.last %},{% endif %}
+        {% endfor %}
+        ];
+
+    
+      const NUM_ELEMENTOS = 10;
+      const fundo = document.createElement("div");
+      fundo.style.position = "absolute";
+      fundo.style.top = 0;
+      fundo.style.left = 0;
+      fundo.style.width = "100%";
+      fundo.style.height = "100vh";
+      fundo.style.zIndex = "-1";
+      fundo.style.pointerEvents = "none";
+      document.body.appendChild(fundo);
+    
+      for (let i = 0; i < NUM_ELEMENTOS; i++) {
+        const img = document.createElement("img");
+        img.src = imagens[Math.floor(Math.random() * imagens.length)];
+        const size = Math.floor(Math.random() * 100) + 150;
+        img.style.opacity = "50%" ;
+        img.style.width = `${size}px`;
+        img.style.height = "auto";
+        img.style.position = "absolute";
+        img.style.top = `${Math.random() * document.body.scrollHeight}px`;
+        const maxLeft = window.innerWidth - size;
+        img.style.left = `${Math.random() * maxLeft}px`;
+        fundo.appendChild(img);
+      }
+    });
+    </script>
+    
+    
 {% endblock %}
