@@ -130,7 +130,6 @@ class Product(models.Model):
         choices = CIDADES_CHOICES,
         blank = True,
         null = True
-
     )
 
     estado = models.CharField(

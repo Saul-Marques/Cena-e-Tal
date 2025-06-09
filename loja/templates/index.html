@@ -21,7 +21,7 @@
     <div class="hero-container container-fluid p-0 rounded" style="background-color: transparent;">
         <img src="{% static cover_image %}" alt="">
     
-        <div class="input-group mt-3" style="position: absolute; bottom: 80%; left: 10%; width: 75%;">
+        <div class="input-group mt-3" style="position: absolute; top:20%; left: 10%; width: 75%;">
             <input type="text" id="searchInput" class="form-control rounded-start-pill border-end-0 border-black" placeholder="Pesquisa" aria-label="Pesquisa" onkeyup="filterProducts()">
             <button class="btn rounded-end-pill border-black border-start-0" type="button" style="background-color: white; height: 55px;">
                 <img src="{% static 'imgs/icons/iconpesquisa.svg' %}" style="margin-bottom: 3px;" alt="">
@@ -40,12 +40,18 @@
         {% for produto in produtos %}
             {% if forloop.counter0 == 8 %}
                 <!-- Banner único após 8 produtos -->
-                <div class="col-12">
-                    <div class="my-4 p-4 text-center rounded bg-light shadow">
-                        <h3 class="mb-3">🎉 Banner Especial 🎉</h3>
-                        <p>Meter aqui botoes e cenas fixes</p>
+                <div class="col-12 rounded-3 position-relative mt-5" style="height: 300px;">
+                    <img src="{% static 'imgs/banner.jpg' %}" class="rounded-3 w-100 h-100" style="object-fit: cover;" alt="Banner">
+                    <div class="ms-5 jomhuria-regular fs-1 rounded-3" style="position: absolute; top: 8%; color: black; background-color: #cac33ff1;">
+                        <p class="ms-2 me-2 mt-3" style="line-height: 0.75;">Dá uma nova vida aos teus aos teus artigos usados!</p>
+                    </div>
+                    <div class="ms-5" style="position: absolute; top: 70%;">
+                        <a href="/upload-product/" class="btn btn-lg shadowm jomhuria-regular fs-2" style="background-color: white; line-height: 1;">
+                            Começar a vender.
+                        </a>
                     </div>
                 </div>
+                
             {% endif %}
 
             <div class="col-xl-3 col-md-4 col-sm-6 product-item">
