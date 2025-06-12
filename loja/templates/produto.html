@@ -76,6 +76,17 @@
             </div>
 
             {% if produto.tipo_venda == "leilao" %}
+            {% if not produto.is_active and vencedor %}
+            <div class="alert alert-success mt-3 fs-2 jomhuria-regular">
+                🏆 Leilão terminado! Vencedor: 
+                <strong>
+                    <a href="{% url 'user' vencedor.id %}" class="text-dark" style="text-decoration: none;">
+                        {{ vencedor.primeiro_nome }} {{ vencedor.ultimo_nome }}
+                    </a>
+                </strong>
+            </div>
+        {% endif %}
+        
             <p class="jomhuria-regular fs-1">
                 Licitação Atual: <strong>{{ produto.maior_licitacao }} €</strong>
             </p>

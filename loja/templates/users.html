@@ -126,7 +126,17 @@
               Atualizar
             </button>
             {% else %}
-            <p class="jomhuria-regular fs-custom" style="line-height: 1;">Bem-vindo ao perfil de {{ perfil.primeiro_nome }}!</p>
+            <div class="row">
+              <div class="col">
+                <p class="jomhuria-regular fs-custom" style="line-height: 1;">Bem-vindo ao perfil de {{ perfil.primeiro_nome }}!</p>
+              </div>
+              <div class="col-4 mb-3">
+                <div>
+                  <img src="{% if perfil.profile_picture %}{{ perfil.profile_picture.url }}{% else %}{% static 'imgs/icons/account_circle.svg' %}{% endif %}" alt="Foto de Perfil" style="width: 85px; height: 85px; border-radius: 50%;">
+                </div>
+              </div>
+            </div>
+            
             <div class="row rounded mb-5" style="background-color: white;">
               <div class="col-10 ms-4">
                 <p class="jomhuria-regular fs-2" style="line-height: 1;">{{ perfil.email }}</p>

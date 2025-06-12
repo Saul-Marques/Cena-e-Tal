@@ -12,9 +12,9 @@ class Index(View):
         categoria_id = request.GET.get('categoria')
                 
         if categoria_id:
-            produtos = Product.objects.filter(categoria__id=categoria_id)
+            produtos = Product.objects.filter(categoria__id=categoria_id, is_active=True)
         else:
-            produtos = Product.objects.all()
+            produtos = Product.objects.filter(is_active=True)
         
         user = request.user
 

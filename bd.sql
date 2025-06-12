@@ -341,7 +341,7 @@ CREATE TABLE `django_admin_log` (
   KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -354,7 +354,24 @@ INSERT INTO `django_admin_log` VALUES
 (100,'2025-05-14 17:33:09.103589','2','saul_marques10@hotmail.com',3,'',7,1),
 (101,'2025-05-27 15:19:32.796346','5','Produto com imagem manhosa - Mau',3,'',8,1),
 (102,'2025-05-27 15:28:51.631782','6','Produto com imagem manhosa - Mau',3,'',8,1),
-(103,'2025-05-27 15:28:51.631899','7','Produto com imagem manhosa - Mau',3,'',8,1);
+(103,'2025-05-27 15:28:51.631899','7','Produto com imagem manhosa - Mau',3,'',8,1),
+(104,'2025-06-12 12:42:05.811637','8','Mercedes S500 W220 V8 - Usado',2,'[{\"changed\": {\"fields\": [\"Inicio leilao\", \"Fim leilao\", \"Is active\"]}}]',8,1),
+(105,'2025-06-12 12:42:50.822855','9','Furão não registado - Ligeiramente Usado',2,'[{\"changed\": {\"fields\": [\"Inicio leilao\", \"Fim leilao\", \"Is active\"]}}]',8,1),
+(106,'2025-06-12 12:44:17.108343','9','Furão não registado - Ligeiramente Usado',2,'[{\"changed\": {\"fields\": [\"Descricao\"]}}]',8,1),
+(107,'2025-06-12 12:52:42.247680','9','Furão não registado - Ligeiramente Usado',2,'[{\"changed\": {\"fields\": [\"Is active\"]}}]',8,1),
+(108,'2025-06-12 13:45:17.457178','4','Filme de pokemon - Usado',2,'[{\"changed\": {\"fields\": [\"Nome\", \"Categoria\", \"Descricao\"]}}]',8,1),
+(109,'2025-06-12 13:45:48.458507','9','Furão - Ligeiramente Usado',2,'[{\"changed\": {\"fields\": [\"Nome\", \"Descricao\"]}}]',8,1),
+(110,'2025-06-12 13:47:48.739429','10','Cavalo Sorraia - Mau',2,'[{\"changed\": {\"fields\": [\"Nome\", \"Preco\", \"Descricao\"]}}]',8,1),
+(111,'2025-06-12 13:48:24.646230','12','Carro para peças - Mau',2,'[{\"changed\": {\"fields\": [\"Nome\", \"Descricao\"]}}]',8,1),
+(112,'2025-06-12 13:48:36.332053','13','Sofá em bom estado - Usado',2,'[{\"changed\": {\"fields\": [\"Nome\"]}}]',8,1),
+(113,'2025-06-12 13:49:15.644700','14','Materiais de construção - Ligeiramente Usado',2,'[{\"changed\": {\"fields\": [\"Nome\", \"Descricao\"]}}]',8,1),
+(114,'2025-06-12 13:50:15.099076','5','Image for Filme de pokemon',2,'[{\"changed\": {\"fields\": [\"Image\"]}}]',11,1),
+(115,'2025-06-12 13:52:18.612054','10','Cavalo espécie \"Sorraia\" - Mau',2,'[{\"changed\": {\"fields\": [\"Nome\"]}}]',8,1),
+(116,'2025-06-12 14:01:52.579121','21','Image for Materiais de construção',2,'[{\"changed\": {\"fields\": [\"Image\"]}}]',11,1),
+(117,'2025-06-12 14:03:13.208459','13','Image for Cavalo espécie \"Sorraia\"',2,'[{\"changed\": {\"fields\": [\"Image\"]}}]',11,1),
+(118,'2025-06-12 14:03:45.316832','10','Sela para cavalo - Mau',2,'[{\"changed\": {\"fields\": [\"Nome\", \"Preco\", \"Descricao\"]}}]',8,1),
+(119,'2025-06-12 14:04:38.865955','15','Comida para gato - Como novo',2,'[{\"changed\": {\"fields\": [\"Nome\", \"Descricao\"]}}]',8,1),
+(120,'2025-06-12 14:04:50.368192','23','Image for Comida para gato',2,'[{\"changed\": {\"fields\": [\"Image\"]}}]',11,1);
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -500,7 +517,6 @@ INSERT INTO `django_session` VALUES
 ('0uigywjgqr7c83eiipec3v2d2w9znisk','eyJ1c2VyX2lkIjoyfQ:1tsmOp:zK-4N8HoJ3rYlMrarMo6jC0PykSxFFkR73WXJu9SMRo','2025-03-14 17:31:15.630563'),
 ('436e3emoq7tu9rlke9evxi5pi4868phz','eyJ1c2VyX2lkIjoxfQ:1twgYP:1K5b_WfYKCn0IQgPqehxigsDSqKnUYzMfXz1NPilKmc','2025-04-07 12:05:17.641018'),
 ('4fg7njqu7iu3v4pftj6rv7xr0e2szh9j','.eJxVjMsOwiAQRf-FtSFQXoNL934DGRiQqoGktCvjv2uTLnR7zzn3xQJuaw3byEuYiZ2ZZKffLWJ65LYDumO7dZ56W5c58l3hBx382ik_L4f7d1Bx1G9tkipGgFdosyxFO0JSCFEoN3kBepLKaCxUXEYBwnpEkKgjkCIrgNj7A933N84:1u0Lkl:Ckn6-H6pQNtnhkQNUglXhlT2A9TPIjyKIhGkoh6m7D4','2025-04-17 14:41:11.417160'),
-('5psjxag3b13d9x4gv3oxonux2sp1ffum','.eJxVjDsOwjAQRO_iGlnGP7SU9JzBWnt3cQA5UpxUEXcnkVJAOfPezKoSLnNNS-cpDaSuyqnTb5exvLjtgJ7YHqMuY5unIetd0Qft-j4Sv2-H-3dQsddtHVgMOYhgUKw4IBM9e0MYyEcjkQSNsxyLRSEokItH3vLljJIhkPp8Afo4OPM:1uNCW8:DgLnnq8IhjOZ0ReyqTk7l_tCorVnhGElhjTscngTQM4','2025-06-19 15:28:32.357122'),
 ('60d1lm10e1d3q3ckzgl3rrcubzkttbsn','.eJxVjMsOwiAQRf-FtSFD5VFcuu83kBkYpGogKe3K-O_apAvd3nPOfYmA21rC1nkJcxIXocTpdyOMD647SHestyZjq-syk9wVedAup5b4eT3cv4OCvXxrQ9ECMUdNzqGKpLIZB9DKoCECdJYtgB8x66xT8uTteUD2ng0kh1m8P_u-OIs:1uHlyY:bYXxnMrZyG482eOcnFRBv0-EwueJc4wtFlz1EGMZHOU','2025-06-04 16:07:26.668144'),
 ('6oh0wiees9iqwwrl3k8zvmze9boc3ohf','.eJxVjsEOgyAYg9-F80JAUHGnZfc9Ayn-oGwOF9HTsncfJl48tv3a9MtyHNL2sf6NOLErI1Am3HbF-_nNLsxiW0e7Zb_YSIWQZ8-hf_m0B_REGubSSusSHd8RfqSZP2by0_1gTwMj8ljada9CLUyn0HgZgm7LEwXjhGqrThhdSVVrBAqthzCi6QAjoZ0hRY0wxH5_b_RDag:1u2X72:A73X_XK_3xNz5-1PNZFwm8Sqgkv5u_dMTGFqouPjpHs','2025-04-23 15:13:12.351568'),
 ('ckc9i7qz2yxhcnvnx0n83iefwvltfmw6','.eJxVjEEOwiAQRe_C2hCgAwWX7j0DGZhBqoYmpV0Z765NutDtf-_9l4i4rTVunZc4kTiLIE6_W8L84LYDumO7zTLPbV2mJHdFHrTL60z8vBzu30HFXr-1YbIAyXEZAZQBrT2PztuUWCsFAZRmMIWDLYgBseiByCbOIZMbPIn3B9mkODc:1u7EgL:HFKaSsu5-Gv3IjvsfGxuwhQytKd1s3iFsrqvzggeY4A','2025-05-06 14:33:05.622886'),
@@ -513,6 +529,7 @@ INSERT INTO `django_session` VALUES
 ('kx7ekrm5glnwgd4sh7cgt7qlctlqesxu','.eJxVjEEOwiAQRe_C2hBgOnVw6d4zEBgmUjWQlHZlvLtt0oVu_3v_vVWI61LC2mUOU1YXNarT75YiP6XuID9ivTfNrS7zlPSu6IN2fWtZXtfD_QuU2Mv2lgRIhtA4SMkN3g7sLRBZztaDIdpSYpMjRkRCYIijN5BR5OwjG_X5ArvmNxI:1uMNGB:Asz83A9_ZYhczlnemid5ZpiNArjSYY6vLI_o-mWHAHk','2025-06-17 08:44:39.939023'),
 ('llgf31ayrrj55nbcizpv3fb9x7p2w43m','.eJxVjDEOwyAUQ-_CXCHgQ4CO3XMGBHwoaSuQQjJVvXuJlKFdLNnP9ps4v2_F7T2tbkFyJZyTy28YfHymehB8-HpvNLa6rUugR4WetNO5YXrdzu7fQfG9jLVkFpiaWIYspBYMFBcCsxEY0VhrjFVhskGbYcEkPTR6rrSEzMcMyOcLy6Y2nw:1uChYK:oVpfM69kDPUyouqMoSBy8KDjjF1887pqgAuNgvafjIM','2025-05-21 16:23:24.996315'),
 ('niy1tbv35f890gk3j74rpaf3vu31yb40','.eJxVjMsOwiAQRf-FtSFD5VFcuu83kBkYpGogKe3K-O_apAvd3nPOfYmA21rC1nkJcxIXocTpdyOMD647SHestyZjq-syk9wVedAup5b4eT3cv4OCvXxrQ9ECMUdNzqGKpLIZB9DKoCECdJYtgB8x66xT8uTteUD2ng0kh1m8P_u-OIs:1uOerp:vJheUIc6bAAUYSYmDj78bQu8YwPHD-keRQaKCtPoA5U','2025-06-23 15:56:57.034750'),
+('of9egxmhd1lpj1ypur00u56hj0l6jxzz','.eJxVjDsOwjAQRO_iGlnGP7SU9JzBWnt3cQA5UpxUEXcnkVJAOfPezKoSLnNNS-cpDaSuyqnTb5exvLjtgJ7YHqMuY5unIetd0Qft-j4Sv2-H-3dQsddtHVgMOYhgUKw4IBM9e0MYyEcjkQSNsxyLRSEokItH3vLljJIhkPp8Afo4OPM:1uPhz3:7FxIG9NudtW-GDPAWVg5YTSuN25DZa5BZ9EXX_ChRKI','2025-06-26 13:28:45.631697'),
 ('px3ax17v5tcywy2aqmrj7ai4u7dzt4g5','eyJ1c2VyX2lkIjoxfQ:1tta1N:42PDVmnGxss3Imfnzr6iPdpy62j9sWce2tUKFrRGGpE','2025-03-16 22:30:21.445013'),
 ('tm2xpm46d9ajvzgu01xqkygg0bfwtzrg','.eJxVjMsOwiAQRf-FtSFYGIa6dN9vIDM8pGogKe3K-O_apAvd3nPOfQlP21r81tPi5yguAsXpd2MKj1R3EO9Ub02GVtdlZrkr8qBdTi2m5_Vw_w4K9fKtKYSkUKFLFuzggBgzcXSYdUY6R2OB1ADGmYwjutFoCAoSa2KVSYF4fwDujjfe:1u0M6F:llKohG91PykA2G8ZwUEJNP1F8QkpOvl05U0RXYuVbCI','2025-04-17 15:03:23.107509'),
 ('twcctiky59axm0qils0drmnij8av9cv2','.eJxVjDsOwjAQBe_iGln-Z0NJzxkse3eNA8iR4qRC3B0ipYD2zcx7iZi2tcat8xInEmcRxOl3ywkf3HZA99Rus8S5rcuU5a7Ig3Z5nYmfl8P9O6ip12-taNQDEHhUrhgNyhs0WJzLniwyhwSgA0HmkG3R1hY1WPZADLqMwYn3B9owN7Y:1tzv9H:BnTB8H6K_XdbUdKpGDsym-qrHmWRRUTIAShCiEe-H9E','2025-04-16 10:16:43.309326'),
@@ -571,7 +588,7 @@ CREATE TABLE `loja_licitacao` (
   KEY `loja_licitacao_user_id_ead856e0_fk_loja_user_id` (`user_id`),
   CONSTRAINT `loja_licitacao_produto_id_72523346_fk_loja_product_id` FOREIGN KEY (`produto_id`) REFERENCES `loja_product` (`id`),
   CONSTRAINT `loja_licitacao_user_id_ead856e0_fk_loja_user_id` FOREIGN KEY (`user_id`) REFERENCES `loja_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -583,7 +600,8 @@ LOCK TABLES `loja_licitacao` WRITE;
 INSERT INTO `loja_licitacao` VALUES
 (1,100.00,'2025-06-01 06:44:26.134787',8,3),
 (2,50.00,'2025-06-01 07:00:22.263495',9,1),
-(3,51.00,'2025-06-03 08:44:55.740640',9,6);
+(3,51.00,'2025-06-03 08:44:55.740640',9,6),
+(4,52.00,'2025-06-12 12:44:31.336245',9,5);
 /*!40000 ALTER TABLE `loja_licitacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -641,7 +659,7 @@ CREATE TABLE `loja_product` (
   KEY `loja_product_user_id_69b1f895_fk_loja_user_id` (`user_id`),
   CONSTRAINT `loja_product_categoria_id_95d83ee8_fk_loja_categoria_id` FOREIGN KEY (`categoria_id`) REFERENCES `loja_categoria` (`id`),
   CONSTRAINT `loja_product_user_id_69b1f895_fk_loja_user_id` FOREIGN KEY (`user_id`) REFERENCES `loja_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -653,13 +671,15 @@ LOCK TABLES `loja_product` WRITE;
 INSERT INTO `loja_product` VALUES
 (2,'Produto Inicial',100.00,'Produto inical para testar as fixtures, será uma venda direta',14,1,'5','venda',NULL,NULL,'lisboa','2025-05-14 17:35:43.344690',1),
 (3,'Produto Inicial 2',101.00,'Produto inicial para testar os leiloes e categorias',15,1,'4','leilao','2025-05-21 17:36:36.958966','2025-05-14 17:36:36.958966','castelo_branco','2025-05-14 17:36:36.959965',0),
-(4,'Pokemons',58.00,'Pokemons à venda ou para alugar',12,3,'3','venda',NULL,NULL,'coimbra','2025-05-15 14:42:34.570638',1),
-(8,'Mercedes S500 W220 V8',10000.00,'Automóvel em hasta pública',11,5,'3','leilao','2025-06-08 06:30:10.302170','2025-06-01 06:30:10.302170','coimbra','2025-06-01 06:30:10.302765',1),
-(9,'Furão não registado',200.00,'Furão não é legal, deve ter imigrado do norte de África, através de barco',12,4,'4','leilao','2025-06-08 06:46:56.961291','2025-06-01 06:46:56.961291','coimbra','2025-06-01 06:46:56.961911',0),
-(10,'Cão',20.00,'Cão mau',12,4,'1','venda',NULL,NULL,'coimbra','2025-06-05 14:00:24.585819',1),
+(4,'Filme de pokemon',58.00,'Filme de pokemon à venda para quem quiser mostrar aos filhos. Edição muito rara',17,3,'3','venda',NULL,NULL,'coimbra','2025-05-15 14:42:34.570638',1),
+(8,'Mercedes S500 W220 V8',10000.00,'Automóvel em hasta pública',11,5,'3','leilao',NULL,'2025-06-12 12:41:59.000000','coimbra','2025-06-01 06:30:10.302765',1),
+(9,'Furão',200.00,'Faço criação de furões, para quem quiser está aqui.',12,4,'4','leilao',NULL,'2025-06-12 12:42:43.000000','coimbra','2025-06-01 06:46:56.961911',0),
+(10,'Sela para cavalo',400.00,'Sela para andar de cavalo',12,4,'1','venda',NULL,NULL,'coimbra','2025-06-05 14:00:24.585819',1),
 (11,'Bom preço',1000.00,'Seat Ibiza 6k, conta com 318.000 km.\r\nCarro em estado modesto de conservação.\r\nCarro de garagem desde há um ano para cá. ',11,3,'3','venda',NULL,NULL,'coimbra','2025-06-05 14:03:30.503554',1),
-(12,'Carro mal estacionado',500.00,'Este carro está mal estacionado em via pública, por favor alguém o venha cá buscar.',11,5,'1','leilao','2025-06-12 15:27:51.745752','2025-06-05 15:27:51.745752','coimbra','2025-06-05 15:27:51.746536',1),
-(13,'Sofá mal parado',200.00,'Este sofá está aqui a ocupar espaço, por favor venham buscar...',16,3,'3','venda',NULL,NULL,'aveiro','2025-06-05 15:29:19.305267',1);
+(12,'Carro para peças',500.00,'Bati com carro da minha mulher, agora estou a vender para peças para pagar o arranjo da via',11,5,'1','leilao','2025-06-12 15:27:51.000000','2025-06-05 15:27:51.000000','coimbra','2025-06-05 15:27:51.746536',1),
+(13,'Sofá em bom estado',200.00,'Este sofá está aqui a ocupar espaço, por favor venham buscar...',16,3,'3','venda',NULL,NULL,'aveiro','2025-06-05 15:29:19.305267',1),
+(14,'Materiais de construção',2.50,'Materiais de construção que sobraram das obras do metrobus',14,5,'4','venda',NULL,NULL,'coimbra','2025-06-12 12:41:09.421507',1),
+(15,'Comida para gato',0.00,'Comida para gato chique, ainda por abrir',12,4,'5','venda',NULL,NULL,'santarem','2025-06-12 13:27:35.403551',1);
 /*!40000 ALTER TABLE `loja_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -677,7 +697,7 @@ CREATE TABLE `loja_productimage` (
   PRIMARY KEY (`id`),
   KEY `loja_productimage_product_id_e9bb3c50_fk_loja_product_id` (`product_id`),
   CONSTRAINT `loja_productimage_product_id_e9bb3c50_fk_loja_product_id` FOREIGN KEY (`product_id`) REFERENCES `loja_product` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -689,20 +709,23 @@ LOCK TABLES `loja_productimage` WRITE;
 INSERT INTO `loja_productimage` VALUES
 (3,'uploads/products/2/produto_teste.png',2),
 (4,'uploads/products/3/aguabenta.jpg',3),
-(5,'uploads/products/4/cover6.gif',4),
+(5,'uploads/products/pokemon.jpg',4),
 (8,'uploads/products/8/Carro-em-Hasta-Publica-3-scaled_1920x1080_acf_cropped-1095x616.jpg',8),
 (9,'uploads/products/8/Carro-em-Hasta-Publica-1-1620x1080.jpg',8),
 (10,'uploads/products/8/Carro-em-Hasta-Publica-7-1620x1080.jpg',8),
 (11,'uploads/products/9/furao1.jpg',9),
 (12,'uploads/products/9/furao2.jpg',9),
-(13,'uploads/products/10/beatriz.jpg',10),
+(13,'uploads/products/sela.jpg',10),
 (14,'uploads/products/11/465574201_3850455068500096_343345367352257547_n.jpg',11),
 (15,'uploads/products/11/a67484147bae5b62c7b522653ee14229-1-600x630.jpg',11),
 (16,'uploads/products/12/465541280_10226387419460389_8685852876173240736_n.jpg',12),
 (17,'uploads/products/13/sofa1.jpg',13),
 (18,'uploads/products/13/sofa3.jpg',13),
 (19,'uploads/products/13/sofa2.jpg',13),
-(20,'uploads/products/13/sofa4.jpg',13);
+(20,'uploads/products/13/sofa4.jpg',13),
+(21,'uploads/products/ferro.jpg',14),
+(22,'uploads/products/14/calcada.jpg',14),
+(23,'uploads/products/comidapragato.jpg',15);
 /*!40000 ALTER TABLE `loja_productimage` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -741,10 +764,10 @@ CREATE TABLE `loja_user` (
 LOCK TABLES `loja_user` WRITE;
 /*!40000 ALTER TABLE `loja_user` DISABLE KEYS */;
 INSERT INTO `loja_user` VALUES
-(1,'Admin','Cena&Tal','926382343','projetopdi@mail.com','pbkdf2_sha256$870000$fX57qGbSDSJK6zYinRBLoS$fwKWIxX3qlmCKuGY2fkdwZoZ+bOJVW0ZScn3CiCd+zE=','2025-06-09 15:56:57.023987','uploads/profiles/1/admin.png',1,1,1,'Sou o admin do Cena&Tal','coimbra',NULL,NULL),
-(3,'Saul','Marques',NULL,'saul@mail.com','pbkdf2_sha256$870000$GgPAyI6O3ilsWF99r3TXCJ$Qs9F5ivIZm6Mw9/cXo++hnH4l9ujTpGWpxuP1FmQPnA=','2025-06-05 15:28:32.351016','uploads/profiles/3/peruca-70-s-homem.jpg',1,0,0,'Já fui o admin, agora não sou...','coimbra',NULL,NULL),
-(4,'Beatriz','Vilão','938499457','beatriz@mail.com','pbkdf2_sha256$870000$8js43b8KefUQgNsmkEjNYk$A+ZIBZX9SkYUYnNCYCruixIEKf/oEz9lsRkzJ2s+1e4=','2025-06-03 08:45:04.051101','uploads/profiles/4/Kookaburra-best.jpeg',1,0,0,'Boas, gosto de animais','coimbra',NULL,NULL),
-(5,'José Manuel','Silva','969696969','cmcoimbra@mail.com','pbkdf2_sha256$870000$il32tRi84gCMrYwnFZx51Q$I/HWAFHkvKk2WN3hoHRxbBAUeqTUicT/REPRLer5HCo=','2025-06-05 15:26:41.279865','uploads/profiles/5/Coimbra_-_Jose_Manuel_Silva_8NVPGUq.png',1,0,0,'Camera de Coimbra, vendemos mercedes','coimbra',NULL,NULL),
+(1,'Admin','Cena&Tal','926382343','projetopdi@mail.com','pbkdf2_sha256$870000$fX57qGbSDSJK6zYinRBLoS$fwKWIxX3qlmCKuGY2fkdwZoZ+bOJVW0ZScn3CiCd+zE=','2025-06-12 12:45:09.602426','uploads/profiles/1/admin.png',1,1,1,'Sou o admin do Cena&Tal','coimbra',NULL,NULL),
+(3,'Saul','Marques',NULL,'saul@mail.com','pbkdf2_sha256$870000$GgPAyI6O3ilsWF99r3TXCJ$Qs9F5ivIZm6Mw9/cXo++hnH4l9ujTpGWpxuP1FmQPnA=','2025-06-12 13:28:45.626352','uploads/profiles/3/peruca-70-s-homem.jpg',1,0,0,'Já fui o admin, agora não sou...','coimbra',NULL,NULL),
+(4,'Beatriz','Vilão','938499457','beatriz@mail.com','pbkdf2_sha256$870000$8js43b8KefUQgNsmkEjNYk$A+ZIBZX9SkYUYnNCYCruixIEKf/oEz9lsRkzJ2s+1e4=','2025-06-12 12:52:28.149645','uploads/profiles/4/Kookaburra-best.jpeg',1,0,0,'Boas, gosto de animais','coimbra',NULL,NULL),
+(5,'José Manuel','Silva','969696969','cmcoimbra@mail.com','pbkdf2_sha256$870000$il32tRi84gCMrYwnFZx51Q$I/HWAFHkvKk2WN3hoHRxbBAUeqTUicT/REPRLer5HCo=','2025-06-12 12:37:38.143298','uploads/profiles/5/Coimbra_-_Jose_Manuel_Silva_8NVPGUq.png',1,0,0,'Camera de Coimbra, vendemos mercedes','coimbra',NULL,NULL),
 (6,'Ze','Cataerva','','zecataerva@gmail.com','pbkdf2_sha256$870000$njHs9gVHH9xiRmbIvN4Pam$zOIP6S3VxBMAjwFZZRw3nArIscLe0Sx71Kjw7AYO9wU=','2025-06-03 08:44:39.933604','',1,0,0,NULL,'cidade',NULL,NULL);
 /*!40000 ALTER TABLE `loja_user` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -814,4 +837,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-06-09 17:13:18
+-- Dump completed on 2025-06-12 15:07:05

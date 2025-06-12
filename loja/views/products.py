@@ -15,11 +15,14 @@ def produto_detail(request, id):
     
 
     licitacoes = produto.licitacoes.order_by('-licitado_a')  # Ordena por data descrescente (mais recente primeiro)
+    vencedor = licitacoes.first().user if not produto.is_active and licitacoes.exists() else None
+    
     return render(request, 'produto.html', {
         'produto': produto,
         'licitacoes': licitacoes,
         'user': user,
         'tipo_venda': produto.tipo_venda,
+        'vencedor': vencedor,
     })
 @login_required
 def fazer_licitacao(request, id):
