@@ -1,0 +1,2019 @@
+[
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "loja",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "loja",
+        "model": "product"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "loja",
+        "model": "categoria"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "loja",
+        "model": "mensagens_de_contactos"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "loja",
+        "model": "productimage"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "chat",
+        "model": "message"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "chat",
+        "model": "conversation"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "loja",
+        "model": "licitacao"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "0uigywjgqr7c83eiipec3v2d2w9znisk",
+    "fields": {
+        "session_data": "eyJ1c2VyX2lkIjoyfQ:1tsmOp:zK-4N8HoJ3rYlMrarMo6jC0PykSxFFkR73WXJu9SMRo",
+        "expire_date": "2025-03-14T17:31:15.630Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "436e3emoq7tu9rlke9evxi5pi4868phz",
+    "fields": {
+        "session_data": "eyJ1c2VyX2lkIjoxfQ:1twgYP:1K5b_WfYKCn0IQgPqehxigsDSqKnUYzMfXz1NPilKmc",
+        "expire_date": "2025-04-07T12:05:17.641Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "4fg7njqu7iu3v4pftj6rv7xr0e2szh9j",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFQXoNL934DGRiQqoGktCvjv2uTLnR7zzn3xQJuaw3byEuYiZ2ZZKffLWJ65LYDumO7dZ56W5c58l3hBx382ik_L4f7d1Bx1G9tkipGgFdosyxFO0JSCFEoN3kBepLKaCxUXEYBwnpEkKgjkCIrgNj7A933N84:1u0Lkl:Ckn6-H6pQNtnhkQNUglXhlT2A9TPIjyKIhGkoh6m7D4",
+        "expire_date": "2025-04-17T14:41:11.417Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "60d1lm10e1d3q3ckzgl3rrcubzkttbsn",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFD5VFcuu83kBkYpGogKe3K-O_apAvd3nPOfYmA21rC1nkJcxIXocTpdyOMD647SHestyZjq-syk9wVedAup5b4eT3cv4OCvXxrQ9ECMUdNzqGKpLIZB9DKoCECdJYtgB8x66xT8uTteUD2ng0kh1m8P_u-OIs:1uHlyY:bYXxnMrZyG482eOcnFRBv0-EwueJc4wtFlz1EGMZHOU",
+        "expire_date": "2025-06-04T16:07:26.668Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "6oh0wiees9iqwwrl3k8zvmze9boc3ohf",
+    "fields": {
+        "session_data": ".eJxVjsEOgyAYg9-F80JAUHGnZfc9Ayn-oGwOF9HTsncfJl48tv3a9MtyHNL2sf6NOLErI1Am3HbF-_nNLsxiW0e7Zb_YSIWQZ8-hf_m0B_REGubSSusSHd8RfqSZP2by0_1gTwMj8ljada9CLUyn0HgZgm7LEwXjhGqrThhdSVVrBAqthzCi6QAjoZ0hRY0wxH5_b_RDag:1u2X72:A73X_XK_3xNz5-1PNZFwm8Sqgkv5u_dMTGFqouPjpHs",
+        "expire_date": "2025-04-23T15:13:12.351Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ckc9i7qz2yxhcnvnx0n83iefwvltfmw6",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCgAwWX7j0DGZhBqoYmpV0Z765NutDtf-_9l4i4rTVunZc4kTiLIE6_W8L84LYDumO7zTLPbV2mJHdFHrTL60z8vBzu30HFXr-1YbIAyXEZAZQBrT2PztuUWCsFAZRmMIWDLYgBseiByCbOIZMbPIn3B9mkODc:1u7EgL:HFKaSsu5-Gv3IjvsfGxuwhQytKd1s3iFsrqvzggeY4A",
+        "expire_date": "2025-05-06T14:33:05.622Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "cn7swkpaeuee52mq0sezronqr8yxp963",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFD5VFcuu83kBkYpGogKe3K-O_apAvd3nPOfYmA21rC1nkJcxIXocTpdyOMD647SHestyZjq-syk9wVedAup5b4eT3cv4OCvXxrQ9ECMUdNzqGKpLIZB9DKoCECdJYtgB8x66xT8uTteUD2ng0kh1m8P_u-OIs:1uHv5z:4j3pDaSof3p5EJkfLb1oNps62re3wx05SKiLak0PrEU",
+        "expire_date": "2025-06-05T01:51:43.992Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "dezcn5nn173w9e6mpn8wj8juja3jm3ff",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFYGIa6dN9vIDM8pGogKe3K-O_apAvd3nPOfQlP21r81tPi5yguAsXpd2MKj1R3EO9Ub02GVtdlZrkr8qBdTi2m5_Vw_w4K9fKtKYSkUKFLFuzggBgzcXSYdUY6R2OB1ADGmYwjutFoCAoSa2KVSYF4fwDujjfe:1uChP6:S4IFriCsLG-sgyHnZgCa3DdJhmXMZaSxWSmfWNPskuE",
+        "expire_date": "2025-05-21T16:13:52.052Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "hbtf7po877unacjqhw7v2pm5x7j1kk1f",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFYGIa6dN9vIDM8pGogKe3K-O_apAvd3nPOfQlP21r81tPi5yguAsXpd2MKj1R3EO9Ub02GVtdlZrkr8qBdTi2m5_Vw_w4K9fKtKYSkUKFLFuzggBgzcXSYdUY6R2OB1ADGmYwjutFoCAoSa2KVSYF4fwDujjfe:1uA8kp:nUhXl-aZYv7WftjLwqdg1hMOXUuIytFkH8UMzv_YCmM",
+        "expire_date": "2025-05-14T14:49:43.282Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "j69ji7a0wxn8w279z2gtywipa73r6obt",
+    "fields": {
+        "session_data": ".eJxVjDEOwjAMRe-SGUUxpm7CyM4ZIjtOSQGlUtNOiLtDpQ6w_vfef5nI61Li2vIcRzVnA84cfkfh9Mh1I3rneptsmuoyj2I3xe602euk-XnZ3b-Dwq186yACkhDxJBQEvAqLknZ0JFQIEiBJJvUheICuz-z6waUBQYkZkzfvDxkiOI4:1uChPt:U88LYs59QlANxsOMyajYKfOXQHR24FXmvFJnJ-gSI-s",
+        "expire_date": "2025-05-21T16:14:41.887Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "j99h90kuyullsjuairge1wn4xphwkfrc",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFD5VFcuu83kBkYpGogKe3K-O_apAvd3nPOfYmA21rC1nkJcxIXocTpdyOMD647SHestyZjq-syk9wVedAup5b4eT3cv4OCvXxrQ9ECMUdNzqGKpLIZB9DKoCECdJYtgB8x66xT8uTteUD2ng0kh1m8P_u-OIs:1uFaa2:LmSgjWVygVRs-D5zhM4B2Tv-Bo3DcVRejlyinRfJ9Ko",
+        "expire_date": "2025-05-29T15:33:06.116Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "kvdijpz1gn16i1lyg389y6v6kjmcdexf",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQAP_C2RB32xTw6N03EHYXpGogKe2p8e9K0oNeZyazKx-2NfutxcXPoi4K1OmXUeBnLF3II5R71VzLusyke6IP2_StSnxdj_ZvkEPLfWusI5azQxhAWFAmi4asOIbEBu1XI8WBrRUaDRqhEIcIk3OQEo3q_QHlbDhI:1u0LR7:ukJ6HL1-9y71cm6M75EM6ql3oR9E5zH2cx_UHiHcFLg",
+        "expire_date": "2025-04-17T14:20:53.524Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "kx7ekrm5glnwgd4sh7cgt7qlctlqesxu",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hBgOnVw6d4zEBgmUjWQlHZlvLtt0oVu_3v_vVWI61LC2mUOU1YXNarT75YiP6XuID9ivTfNrS7zlPSu6IN2fWtZXtfD_QuU2Mv2lgRIhtA4SMkN3g7sLRBZztaDIdpSYpMjRkRCYIijN5BR5OwjG_X5ArvmNxI:1uMNGB:Asz83A9_ZYhczlnemid5ZpiNArjSYY6vLI_o-mWHAHk",
+        "expire_date": "2025-06-17T08:44:39.939Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "llgf31ayrrj55nbcizpv3fb9x7p2w43m",
+    "fields": {
+        "session_data": ".eJxVjDEOwyAUQ-_CXCHgQ4CO3XMGBHwoaSuQQjJVvXuJlKFdLNnP9ps4v2_F7T2tbkFyJZyTy28YfHymehB8-HpvNLa6rUugR4WetNO5YXrdzu7fQfG9jLVkFpiaWIYspBYMFBcCsxEY0VhrjFVhskGbYcEkPTR6rrSEzMcMyOcLy6Y2nw:1uChYK:oVpfM69kDPUyouqMoSBy8KDjjF1887pqgAuNgvafjIM",
+        "expire_date": "2025-05-21T16:23:24.996Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "niy1tbv35f890gk3j74rpaf3vu31yb40",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFD5VFcuu83kBkYpGogKe3K-O_apAvd3nPOfYmA21rC1nkJcxIXocTpdyOMD647SHestyZjq-syk9wVedAup5b4eT3cv4OCvXxrQ9ECMUdNzqGKpLIZB9DKoCECdJYtgB8x66xT8uTteUD2ng0kh1m8P_u-OIs:1uOerp:vJheUIc6bAAUYSYmDj78bQu8YwPHD-keRQaKCtPoA5U",
+        "expire_date": "2025-06-23T15:56:57.034Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "of9egxmhd1lpj1ypur00u56hj0l6jxzz",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQRO_iGlnGP7SU9JzBWnt3cQA5UpxUEXcnkVJAOfPezKoSLnNNS-cpDaSuyqnTb5exvLjtgJ7YHqMuY5unIetd0Qft-j4Sv2-H-3dQsddtHVgMOYhgUKw4IBM9e0MYyEcjkQSNsxyLRSEokItH3vLljJIhkPp8Afo4OPM:1uPhz3:7FxIG9NudtW-GDPAWVg5YTSuN25DZa5BZ9EXX_ChRKI",
+        "expire_date": "2025-06-26T13:28:45.631Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "px3ax17v5tcywy2aqmrj7ai4u7dzt4g5",
+    "fields": {
+        "session_data": "eyJ1c2VyX2lkIjoxfQ:1tta1N:42PDVmnGxss3Imfnzr6iPdpy62j9sWce2tUKFrRGGpE",
+        "expire_date": "2025-03-16T22:30:21.445Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "tm2xpm46d9ajvzgu01xqkygg0bfwtzrg",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFYGIa6dN9vIDM8pGogKe3K-O_apAvd3nPOfQlP21r81tPi5yguAsXpd2MKj1R3EO9Ub02GVtdlZrkr8qBdTi2m5_Vw_w4K9fKtKYSkUKFLFuzggBgzcXSYdUY6R2OB1ADGmYwjutFoCAoSa2KVSYF4fwDujjfe:1u0M6F:llKohG91PykA2G8ZwUEJNP1F8QkpOvl05U0RXYuVbCI",
+        "expire_date": "2025-04-17T15:03:23.107Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "twcctiky59axm0qils0drmnij8av9cv2",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQBe_iGln-Z0NJzxkse3eNA8iR4qRC3B0ipYD2zcx7iZi2tcat8xInEmcRxOl3ywkf3HZA99Rus8S5rcuU5a7Ig3Z5nYmfl8P9O6ip12-taNQDEHhUrhgNyhs0WJzLniwyhwSgA0HmkG3R1hY1WPZADLqMwYn3B9owN7Y:1tzv9H:BnTB8H6K_XdbUdKpGDsym-qrHmWRRUTIAShCiEe-H9E",
+        "expire_date": "2025-04-16T10:16:43.309Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "uhrc28f5nl68kjjlbr8qxekhxr9g0ybb",
+    "fields": {
+        "session_data": ".eJxVjMEOwiAQBf-Fs2moLWzryXj3G8gCS0ERTGnjwfjv0qSXXt_MvC8rYUrrW9ELQ2QXtnj65Oiyc8EEjO112kBj8oudmMJ18WotNKtgq9wfN43mSWkD9oFpyrVKyxx0synNTktzz5bibXcPBx6LrzXSCEZq5KAFCssdIIEciHTfDSMAh_FssZPEN0N2ugXhiEsQtaou-_0BI6hIHQ:1uA9Kt:xQ4sAia8PQ7zjsydHuAPRTiAlwHXXYHhwY9y3xGRORc",
+        "expire_date": "2025-05-14T15:26:59.900Z"
+    }
+},
+{
+    "model": "loja.categoria",
+    "pk": 3,
+    "fields": {
+        "nome": "Moda",
+        "icon": "uploads/categorias/t-shirt.png"
+    }
+},
+{
+    "model": "loja.categoria",
+    "pk": 11,
+    "fields": {
+        "nome": "Veículos",
+        "icon": "uploads/categorias/car-front_PEOozT9.svg"
+    }
+},
+{
+    "model": "loja.categoria",
+    "pk": 12,
+    "fields": {
+        "nome": "Animais",
+        "icon": "uploads/categorias/animais_Q3d2OtQ.png"
+    }
+},
+{
+    "model": "loja.categoria",
+    "pk": 13,
+    "fields": {
+        "nome": "Lazer",
+        "icon": "uploads/categorias/bullseye.svg"
+    }
+},
+{
+    "model": "loja.categoria",
+    "pk": 14,
+    "fields": {
+        "nome": "Outros",
+        "icon": "uploads/categorias/outros.png"
+    }
+},
+{
+    "model": "loja.categoria",
+    "pk": 15,
+    "fields": {
+        "nome": "Ferramentas",
+        "icon": "uploads/categorias/nut.svg"
+    }
+},
+{
+    "model": "loja.categoria",
+    "pk": 16,
+    "fields": {
+        "nome": "Decoração",
+        "icon": "uploads/categorias/lamp.svg"
+    }
+},
+{
+    "model": "loja.categoria",
+    "pk": 17,
+    "fields": {
+        "nome": "Entretenimento",
+        "icon": "uploads/categorias/dpad.svg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 3,
+    "fields": {
+        "product": 2,
+        "image": "uploads/products/2/produto_teste.png"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 4,
+    "fields": {
+        "product": 3,
+        "image": "uploads/products/3/aguabenta.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 5,
+    "fields": {
+        "product": 4,
+        "image": "uploads/products/pokemon.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 8,
+    "fields": {
+        "product": 8,
+        "image": "uploads/products/8/Carro-em-Hasta-Publica-3-scaled_1920x1080_acf_cropped-1095x616.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 9,
+    "fields": {
+        "product": 8,
+        "image": "uploads/products/8/Carro-em-Hasta-Publica-1-1620x1080.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 10,
+    "fields": {
+        "product": 8,
+        "image": "uploads/products/8/Carro-em-Hasta-Publica-7-1620x1080.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 11,
+    "fields": {
+        "product": 9,
+        "image": "uploads/products/9/furao1.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 12,
+    "fields": {
+        "product": 9,
+        "image": "uploads/products/9/furao2.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 13,
+    "fields": {
+        "product": 10,
+        "image": "uploads/products/sela.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 14,
+    "fields": {
+        "product": 11,
+        "image": "uploads/products/11/465574201_3850455068500096_343345367352257547_n.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 15,
+    "fields": {
+        "product": 11,
+        "image": "uploads/products/11/a67484147bae5b62c7b522653ee14229-1-600x630.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 16,
+    "fields": {
+        "product": 12,
+        "image": "uploads/products/12/465541280_10226387419460389_8685852876173240736_n.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 17,
+    "fields": {
+        "product": 13,
+        "image": "uploads/products/13/sofa1.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 18,
+    "fields": {
+        "product": 13,
+        "image": "uploads/products/13/sofa3.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 19,
+    "fields": {
+        "product": 13,
+        "image": "uploads/products/13/sofa2.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 20,
+    "fields": {
+        "product": 13,
+        "image": "uploads/products/13/sofa4.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 21,
+    "fields": {
+        "product": 14,
+        "image": "uploads/products/ferro.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 22,
+    "fields": {
+        "product": 14,
+        "image": "uploads/products/14/calcada.jpg"
+    }
+},
+{
+    "model": "loja.productimage",
+    "pk": 23,
+    "fields": {
+        "product": 15,
+        "image": "uploads/products/comidapragato.jpg"
+    }
+},
+{
+    "model": "loja.mensagens_de_contactos",
+    "pk": 1,
+    "fields": {
+        "nome": "Saul",
+        "email": "saul@maildecontacto.com",
+        "mensagem": "Adorei",
+        "data_envio": "2025-02-17T10:35:28.703Z"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add user",
+        "content_type": [
+            "loja",
+            "user"
+        ],
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change user",
+        "content_type": [
+            "loja",
+            "user"
+        ],
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete user",
+        "content_type": [
+            "loja",
+            "user"
+        ],
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view user",
+        "content_type": [
+            "loja",
+            "user"
+        ],
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add product",
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "codename": "add_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change product",
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "codename": "change_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete product",
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "codename": "delete_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view product",
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "codename": "view_product"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add categoria",
+        "content_type": [
+            "loja",
+            "categoria"
+        ],
+        "codename": "add_categoria"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change categoria",
+        "content_type": [
+            "loja",
+            "categoria"
+        ],
+        "codename": "change_categoria"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete categoria",
+        "content_type": [
+            "loja",
+            "categoria"
+        ],
+        "codename": "delete_categoria"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view categoria",
+        "content_type": [
+            "loja",
+            "categoria"
+        ],
+        "codename": "view_categoria"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add contact message",
+        "content_type": [
+            "loja",
+            "mensagens_de_contactos"
+        ],
+        "codename": "add_contactmessage"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change contact message",
+        "content_type": [
+            "loja",
+            "mensagens_de_contactos"
+        ],
+        "codename": "change_contactmessage"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete contact message",
+        "content_type": [
+            "loja",
+            "mensagens_de_contactos"
+        ],
+        "codename": "delete_contactmessage"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view contact message",
+        "content_type": [
+            "loja",
+            "mensagens_de_contactos"
+        ],
+        "codename": "view_contactmessage"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add mensagens_de_ contactos",
+        "content_type": [
+            "loja",
+            "mensagens_de_contactos"
+        ],
+        "codename": "add_mensagens_de_contactos"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change mensagens_de_ contactos",
+        "content_type": [
+            "loja",
+            "mensagens_de_contactos"
+        ],
+        "codename": "change_mensagens_de_contactos"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete mensagens_de_ contactos",
+        "content_type": [
+            "loja",
+            "mensagens_de_contactos"
+        ],
+        "codename": "delete_mensagens_de_contactos"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view mensagens_de_ contactos",
+        "content_type": [
+            "loja",
+            "mensagens_de_contactos"
+        ],
+        "codename": "view_mensagens_de_contactos"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add product image",
+        "content_type": [
+            "loja",
+            "productimage"
+        ],
+        "codename": "add_productimage"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change product image",
+        "content_type": [
+            "loja",
+            "productimage"
+        ],
+        "codename": "change_productimage"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete product image",
+        "content_type": [
+            "loja",
+            "productimage"
+        ],
+        "codename": "delete_productimage"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view product image",
+        "content_type": [
+            "loja",
+            "productimage"
+        ],
+        "codename": "view_productimage"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add message",
+        "content_type": [
+            "chat",
+            "message"
+        ],
+        "codename": "add_message"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change message",
+        "content_type": [
+            "chat",
+            "message"
+        ],
+        "codename": "change_message"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete message",
+        "content_type": [
+            "chat",
+            "message"
+        ],
+        "codename": "delete_message"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view message",
+        "content_type": [
+            "chat",
+            "message"
+        ],
+        "codename": "view_message"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add conversation",
+        "content_type": [
+            "chat",
+            "conversation"
+        ],
+        "codename": "add_conversation"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change conversation",
+        "content_type": [
+            "chat",
+            "conversation"
+        ],
+        "codename": "change_conversation"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete conversation",
+        "content_type": [
+            "chat",
+            "conversation"
+        ],
+        "codename": "delete_conversation"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view conversation",
+        "content_type": [
+            "chat",
+            "conversation"
+        ],
+        "codename": "view_conversation"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add licitacao",
+        "content_type": [
+            "loja",
+            "licitacao"
+        ],
+        "codename": "add_licitacao"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change licitacao",
+        "content_type": [
+            "loja",
+            "licitacao"
+        ],
+        "codename": "change_licitacao"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete licitacao",
+        "content_type": [
+            "loja",
+            "licitacao"
+        ],
+        "codename": "delete_licitacao"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view licitacao",
+        "content_type": [
+            "loja",
+            "licitacao"
+        ],
+        "codename": "view_licitacao"
+    }
+},
+{
+    "model": "loja.user",
+    "fields": {
+        "last_login": "2025-06-12T12:45:09.602Z",
+        "primeiro_nome": "Admin",
+        "ultimo_nome": "Cena&Tal",
+        "telemovel": "926382343",
+        "email": "projetopdi@mail.com",
+        "password": "pbkdf2_sha256$870000$fX57qGbSDSJK6zYinRBLoS$fwKWIxX3qlmCKuGY2fkdwZoZ+bOJVW0ZScn3CiCd+zE=",
+        "profile_picture": "uploads/profiles/1/admin.png",
+        "localidade": null,
+        "cidade": "coimbra",
+        "cp": null,
+        "biografia": "Sou o admin do Cena&Tal",
+        "is_active": true,
+        "is_staff": true,
+        "is_superuser": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "loja.user",
+    "fields": {
+        "last_login": "2025-06-12T13:28:45.626Z",
+        "primeiro_nome": "Saul",
+        "ultimo_nome": "Marques",
+        "telemovel": null,
+        "email": "saul@mail.com",
+        "password": "pbkdf2_sha256$870000$GgPAyI6O3ilsWF99r3TXCJ$Qs9F5ivIZm6Mw9/cXo++hnH4l9ujTpGWpxuP1FmQPnA=",
+        "profile_picture": "uploads/profiles/3/peruca-70-s-homem.jpg",
+        "localidade": null,
+        "cidade": "coimbra",
+        "cp": null,
+        "biografia": "Já fui o admin, agora não sou...",
+        "is_active": true,
+        "is_staff": false,
+        "is_superuser": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "loja.user",
+    "fields": {
+        "last_login": "2025-06-12T12:52:28.149Z",
+        "primeiro_nome": "Beatriz",
+        "ultimo_nome": "Vilão",
+        "telemovel": "938499457",
+        "email": "beatriz@mail.com",
+        "password": "pbkdf2_sha256$870000$8js43b8KefUQgNsmkEjNYk$A+ZIBZX9SkYUYnNCYCruixIEKf/oEz9lsRkzJ2s+1e4=",
+        "profile_picture": "uploads/profiles/4/Kookaburra-best.jpeg",
+        "localidade": null,
+        "cidade": "coimbra",
+        "cp": null,
+        "biografia": "Boas, gosto de animais",
+        "is_active": true,
+        "is_staff": false,
+        "is_superuser": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "loja.user",
+    "fields": {
+        "last_login": "2025-06-12T12:37:38.143Z",
+        "primeiro_nome": "José Manuel",
+        "ultimo_nome": "Silva",
+        "telemovel": "969696969",
+        "email": "cmcoimbra@mail.com",
+        "password": "pbkdf2_sha256$870000$il32tRi84gCMrYwnFZx51Q$I/HWAFHkvKk2WN3hoHRxbBAUeqTUicT/REPRLer5HCo=",
+        "profile_picture": "uploads/profiles/5/Coimbra_-_Jose_Manuel_Silva_8NVPGUq.png",
+        "localidade": null,
+        "cidade": "coimbra",
+        "cp": null,
+        "biografia": "Camera de Coimbra, vendemos mercedes",
+        "is_active": true,
+        "is_staff": false,
+        "is_superuser": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "loja.user",
+    "fields": {
+        "last_login": "2025-06-03T08:44:39.933Z",
+        "primeiro_nome": "Ze",
+        "ultimo_nome": "Cataerva",
+        "telemovel": "",
+        "email": "zecataerva@gmail.com",
+        "password": "pbkdf2_sha256$870000$njHs9gVHH9xiRmbIvN4Pam$zOIP6S3VxBMAjwFZZRw3nArIscLe0Sx71Kjw7AYO9wU=",
+        "profile_picture": "",
+        "localidade": null,
+        "cidade": "cidade",
+        "cp": null,
+        "biografia": null,
+        "is_active": true,
+        "is_staff": false,
+        "is_superuser": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "loja.product",
+    "pk": 2,
+    "fields": {
+        "tipo_venda": "venda",
+        "data_adicionado": "2025-05-14T17:35:43.344Z",
+        "inicio_leilao": null,
+        "fim_leilao": null,
+        "localidade": "lisboa",
+        "estado": "5",
+        "nome": "Produto Inicial",
+        "preco": "100.00",
+        "categoria": 14,
+        "descricao": "Produto inical para testar as fixtures, será uma venda direta",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "is_active": true
+    }
+},
+{
+    "model": "loja.product",
+    "pk": 3,
+    "fields": {
+        "tipo_venda": "leilao",
+        "data_adicionado": "2025-05-14T17:36:36.959Z",
+        "inicio_leilao": "2025-05-14T17:36:36.958Z",
+        "fim_leilao": "2025-05-21T17:36:36.958Z",
+        "localidade": "castelo_branco",
+        "estado": "4",
+        "nome": "Produto Inicial 2",
+        "preco": "101.00",
+        "categoria": 15,
+        "descricao": "Produto inicial para testar os leiloes e categorias",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "is_active": false
+    }
+},
+{
+    "model": "loja.product",
+    "pk": 4,
+    "fields": {
+        "tipo_venda": "venda",
+        "data_adicionado": "2025-05-15T14:42:34.570Z",
+        "inicio_leilao": null,
+        "fim_leilao": null,
+        "localidade": "coimbra",
+        "estado": "3",
+        "nome": "Filme de pokemon",
+        "preco": "58.00",
+        "categoria": 17,
+        "descricao": "Filme de pokemon à venda para quem quiser mostrar aos filhos. Edição muito rara",
+        "user": [
+            "saul@mail.com"
+        ],
+        "is_active": true
+    }
+},
+{
+    "model": "loja.product",
+    "pk": 8,
+    "fields": {
+        "tipo_venda": "leilao",
+        "data_adicionado": "2025-06-01T06:30:10.302Z",
+        "inicio_leilao": "2025-06-12T12:41:59Z",
+        "fim_leilao": null,
+        "localidade": "coimbra",
+        "estado": "3",
+        "nome": "Mercedes S500 W220 V8",
+        "preco": "10000.00",
+        "categoria": 11,
+        "descricao": "Automóvel em hasta pública",
+        "user": [
+            "cmcoimbra@mail.com"
+        ],
+        "is_active": true
+    }
+},
+{
+    "model": "loja.product",
+    "pk": 9,
+    "fields": {
+        "tipo_venda": "leilao",
+        "data_adicionado": "2025-06-01T06:46:56.961Z",
+        "inicio_leilao": "2025-06-12T12:42:43Z",
+        "fim_leilao": null,
+        "localidade": "coimbra",
+        "estado": "4",
+        "nome": "Furão",
+        "preco": "200.00",
+        "categoria": 12,
+        "descricao": "Faço criação de furões, para quem quiser está aqui.",
+        "user": [
+            "beatriz@mail.com"
+        ],
+        "is_active": false
+    }
+},
+{
+    "model": "loja.product",
+    "pk": 10,
+    "fields": {
+        "tipo_venda": "venda",
+        "data_adicionado": "2025-06-05T14:00:24.585Z",
+        "inicio_leilao": null,
+        "fim_leilao": null,
+        "localidade": "coimbra",
+        "estado": "1",
+        "nome": "Sela para cavalo",
+        "preco": "400.00",
+        "categoria": 12,
+        "descricao": "Sela para andar de cavalo",
+        "user": [
+            "beatriz@mail.com"
+        ],
+        "is_active": true
+    }
+},
+{
+    "model": "loja.product",
+    "pk": 11,
+    "fields": {
+        "tipo_venda": "venda",
+        "data_adicionado": "2025-06-05T14:03:30.503Z",
+        "inicio_leilao": null,
+        "fim_leilao": null,
+        "localidade": "coimbra",
+        "estado": "3",
+        "nome": "Bom preço",
+        "preco": "1000.00",
+        "categoria": 11,
+        "descricao": "Seat Ibiza 6k, conta com 318.000 km.\r\nCarro em estado modesto de conservação.\r\nCarro de garagem desde há um ano para cá. ",
+        "user": [
+            "saul@mail.com"
+        ],
+        "is_active": true
+    }
+},
+{
+    "model": "loja.product",
+    "pk": 12,
+    "fields": {
+        "tipo_venda": "leilao",
+        "data_adicionado": "2025-06-05T15:27:51.746Z",
+        "inicio_leilao": "2025-06-05T15:27:51Z",
+        "fim_leilao": "2025-06-12T15:27:51Z",
+        "localidade": "coimbra",
+        "estado": "1",
+        "nome": "Carro para peças",
+        "preco": "500.00",
+        "categoria": 11,
+        "descricao": "Bati com carro da minha mulher, agora estou a vender para peças para pagar o arranjo da via",
+        "user": [
+            "cmcoimbra@mail.com"
+        ],
+        "is_active": true
+    }
+},
+{
+    "model": "loja.product",
+    "pk": 13,
+    "fields": {
+        "tipo_venda": "venda",
+        "data_adicionado": "2025-06-05T15:29:19.305Z",
+        "inicio_leilao": null,
+        "fim_leilao": null,
+        "localidade": "aveiro",
+        "estado": "3",
+        "nome": "Sofá em bom estado",
+        "preco": "200.00",
+        "categoria": 16,
+        "descricao": "Este sofá está aqui a ocupar espaço, por favor venham buscar...",
+        "user": [
+            "saul@mail.com"
+        ],
+        "is_active": true
+    }
+},
+{
+    "model": "loja.product",
+    "pk": 14,
+    "fields": {
+        "tipo_venda": "venda",
+        "data_adicionado": "2025-06-12T12:41:09.421Z",
+        "inicio_leilao": null,
+        "fim_leilao": null,
+        "localidade": "coimbra",
+        "estado": "4",
+        "nome": "Materiais de construção",
+        "preco": "2.50",
+        "categoria": 14,
+        "descricao": "Materiais de construção que sobraram das obras do metrobus",
+        "user": [
+            "cmcoimbra@mail.com"
+        ],
+        "is_active": true
+    }
+},
+{
+    "model": "loja.product",
+    "pk": 15,
+    "fields": {
+        "tipo_venda": "venda",
+        "data_adicionado": "2025-06-12T13:27:35.403Z",
+        "inicio_leilao": null,
+        "fim_leilao": null,
+        "localidade": "santarem",
+        "estado": "5",
+        "nome": "Comida para gato",
+        "preco": "11.00",
+        "categoria": 12,
+        "descricao": "Comida para gato chique, ainda por abrir",
+        "user": [
+            "beatriz@mail.com"
+        ],
+        "is_active": true
+    }
+},
+{
+    "model": "loja.licitacao",
+    "pk": 1,
+    "fields": {
+        "produto": 8,
+        "user": [
+            "saul@mail.com"
+        ],
+        "valor": "100.00",
+        "licitado_a": "2025-06-01T06:44:26.134Z"
+    }
+},
+{
+    "model": "loja.licitacao",
+    "pk": 2,
+    "fields": {
+        "produto": 9,
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "valor": "50.00",
+        "licitado_a": "2025-06-01T07:00:22.263Z"
+    }
+},
+{
+    "model": "loja.licitacao",
+    "pk": 3,
+    "fields": {
+        "produto": 9,
+        "user": [
+            "zecataerva@gmail.com"
+        ],
+        "valor": "51.00",
+        "licitado_a": "2025-06-03T08:44:55.740Z"
+    }
+},
+{
+    "model": "loja.licitacao",
+    "pk": 4,
+    "fields": {
+        "produto": 9,
+        "user": [
+            "cmcoimbra@mail.com"
+        ],
+        "valor": "52.00",
+        "licitado_a": "2025-06-12T12:44:31.336Z"
+    }
+},
+{
+    "model": "chat.conversation",
+    "pk": 20,
+    "fields": {
+        "user1": [
+            "saul@mail.com"
+        ],
+        "user2": [
+            "projetopdi@mail.com"
+        ],
+        "product": 3,
+        "created_at": "2025-05-15T14:37:15.709Z"
+    }
+},
+{
+    "model": "chat.conversation",
+    "pk": 21,
+    "fields": {
+        "user1": [
+            "saul@mail.com"
+        ],
+        "user2": [
+            "projetopdi@mail.com"
+        ],
+        "product": 2,
+        "created_at": "2025-05-22T14:13:59.929Z"
+    }
+},
+{
+    "model": "chat.conversation",
+    "pk": 22,
+    "fields": {
+        "user1": [
+            "saul@mail.com"
+        ],
+        "user2": [
+            "cmcoimbra@mail.com"
+        ],
+        "product": 8,
+        "created_at": "2025-06-01T06:44:33.100Z"
+    }
+},
+{
+    "model": "chat.conversation",
+    "pk": 23,
+    "fields": {
+        "user1": [
+            "zecataerva@gmail.com"
+        ],
+        "user2": [
+            "beatriz@mail.com"
+        ],
+        "product": 9,
+        "created_at": "2025-06-03T08:44:58.532Z"
+    }
+},
+{
+    "model": "chat.message",
+    "pk": 288,
+    "fields": {
+        "conversation": 20,
+        "sender": [
+            "saul@mail.com"
+        ],
+        "text": "boas",
+        "timestamp": "2025-05-22T01:52:04.394Z"
+    }
+},
+{
+    "model": "chat.message",
+    "pk": 289,
+    "fields": {
+        "conversation": 20,
+        "sender": [
+            "projetopdi@mail.com"
+        ],
+        "text": "Boas, boa noite",
+        "timestamp": "2025-05-22T01:52:28.505Z"
+    }
+},
+{
+    "model": "chat.message",
+    "pk": 290,
+    "fields": {
+        "conversation": 22,
+        "sender": [
+            "saul@mail.com"
+        ],
+        "text": "Podes me oferecer o Mercedes? Tenho 10€ e um big mac!",
+        "timestamp": "2025-06-01T06:44:52.389Z"
+    }
+},
+{
+    "model": "chat.message",
+    "pk": 291,
+    "fields": {
+        "conversation": 23,
+        "sender": [
+            "beatriz@mail.com"
+        ],
+        "text": "nga",
+        "timestamp": "2025-06-03T08:46:03.314Z"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 100,
+    "fields": {
+        "action_time": "2025-05-14T17:33:09.103Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "user"
+        ],
+        "object_id": "2",
+        "object_repr": "saul_marques10@hotmail.com",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 101,
+    "fields": {
+        "action_time": "2025-05-27T15:19:32.796Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "5",
+        "object_repr": "Produto com imagem manhosa - Mau",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 102,
+    "fields": {
+        "action_time": "2025-05-27T15:28:51.631Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "6",
+        "object_repr": "Produto com imagem manhosa - Mau",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 103,
+    "fields": {
+        "action_time": "2025-05-27T15:28:51.631Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "7",
+        "object_repr": "Produto com imagem manhosa - Mau",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 104,
+    "fields": {
+        "action_time": "2025-06-12T12:42:05.811Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "8",
+        "object_repr": "Mercedes S500 W220 V8 - Usado",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Inicio leilao\", \"Fim leilao\", \"Is active\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 105,
+    "fields": {
+        "action_time": "2025-06-12T12:42:50.822Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "9",
+        "object_repr": "Furão não registado - Ligeiramente Usado",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Inicio leilao\", \"Fim leilao\", \"Is active\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 106,
+    "fields": {
+        "action_time": "2025-06-12T12:44:17.108Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "9",
+        "object_repr": "Furão não registado - Ligeiramente Usado",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Descricao\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 107,
+    "fields": {
+        "action_time": "2025-06-12T12:52:42.247Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "9",
+        "object_repr": "Furão não registado - Ligeiramente Usado",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is active\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 108,
+    "fields": {
+        "action_time": "2025-06-12T13:45:17.457Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "4",
+        "object_repr": "Filme de pokemon - Usado",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Nome\", \"Categoria\", \"Descricao\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 109,
+    "fields": {
+        "action_time": "2025-06-12T13:45:48.458Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "9",
+        "object_repr": "Furão - Ligeiramente Usado",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Nome\", \"Descricao\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 110,
+    "fields": {
+        "action_time": "2025-06-12T13:47:48.739Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "10",
+        "object_repr": "Cavalo Sorraia - Mau",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Nome\", \"Preco\", \"Descricao\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 111,
+    "fields": {
+        "action_time": "2025-06-12T13:48:24.646Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "12",
+        "object_repr": "Carro para peças - Mau",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Nome\", \"Descricao\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 112,
+    "fields": {
+        "action_time": "2025-06-12T13:48:36.332Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "13",
+        "object_repr": "Sofá em bom estado - Usado",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 113,
+    "fields": {
+        "action_time": "2025-06-12T13:49:15.644Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "14",
+        "object_repr": "Materiais de construção - Ligeiramente Usado",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Nome\", \"Descricao\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 114,
+    "fields": {
+        "action_time": "2025-06-12T13:50:15.099Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "productimage"
+        ],
+        "object_id": "5",
+        "object_repr": "Image for Filme de pokemon",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 115,
+    "fields": {
+        "action_time": "2025-06-12T13:52:18.612Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "10",
+        "object_repr": "Cavalo espécie \"Sorraia\" - Mau",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Nome\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 116,
+    "fields": {
+        "action_time": "2025-06-12T14:01:52.579Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "productimage"
+        ],
+        "object_id": "21",
+        "object_repr": "Image for Materiais de construção",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 117,
+    "fields": {
+        "action_time": "2025-06-12T14:03:13.208Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "productimage"
+        ],
+        "object_id": "13",
+        "object_repr": "Image for Cavalo espécie \"Sorraia\"",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 118,
+    "fields": {
+        "action_time": "2025-06-12T14:03:45.316Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "10",
+        "object_repr": "Sela para cavalo - Mau",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Nome\", \"Preco\", \"Descricao\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 119,
+    "fields": {
+        "action_time": "2025-06-12T14:04:38.865Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "15",
+        "object_repr": "Comida para gato - Como novo",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Nome\", \"Descricao\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 120,
+    "fields": {
+        "action_time": "2025-06-12T14:04:50.368Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "productimage"
+        ],
+        "object_id": "23",
+        "object_repr": "Image for Comida para gato",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 121,
+    "fields": {
+        "action_time": "2025-06-12T14:10:58.735Z",
+        "user": [
+            "projetopdi@mail.com"
+        ],
+        "content_type": [
+            "loja",
+            "product"
+        ],
+        "object_id": "15",
+        "object_repr": "Comida para gato - Como novo",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Preco\"]}}]"
+    }
+}
+]
