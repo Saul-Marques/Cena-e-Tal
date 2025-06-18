@@ -102,13 +102,12 @@
                     </form>
                 {% endif %}
             {% else %}
-                <p class="text-muted">Faça <a href="{% url 'login' %}">login</a> para licitar.</p>
+                {% if produto.tipo_venda == "leilao" %}
+                    <p class="text-muted">Faça <a href="{% url 'login' %}">login</a> para licitar ou enviar mensagem.</p>
+                {% else %}
+                    <p class="text-muted">Faça <a href="{% url 'login' %}">login</a> para Enviar mensagem.</p>
+                {% endif %}
             {% endif %}
-        {% endif %}
-        
-        <!-- Botão de Enviar Mensagem (para qualquer tipo de venda) -->
-        {% if user.is_authenticated and produto.user != user %}
-            <a href="{% url 'iniciar_conversa_produto' produto.id %}" class="btn jomhuria-regular fs-1" style="background-color: black; color: white;">Enviar Mensagem</a>
         {% endif %}
         
         
@@ -116,7 +115,7 @@
     </div>
 
     <!-- Descrição do produto -->
-    <div class="row mt-4">
+    <div class="row mt-4 mb-2">
         <div class="col rounded-3" style="background-color: white;">
             <h3 class="jomhuria-regular fs-custom" style="line-height: 1;">{{ produto.nome }}.</h3>
             <h5 class="jomhuria-regular fs-1" style="line-height: 0; color: grey;">Descrição. </h5>
@@ -125,7 +124,8 @@
     </div>
 
     <!-- Histórico de licitações -->
-    <div class="row mt-4">
+    {% if produto.tipo_venda == "leilao" %}
+    <div class="row mt-2">
         <div class="col rounded-3 mb-5" style="background-color: white;">
             <h3 class="jomhuria-regular fs-1 mt-1">Últimas Licitações:</h3>
             <ul class="list-group mb-3">
@@ -140,5 +140,6 @@
             </ul>
         </div>
     </div>
+    {% endif %}
 </div>
 {% endblock %}

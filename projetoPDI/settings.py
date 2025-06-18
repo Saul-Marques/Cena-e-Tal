@@ -99,7 +99,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'projetoPDI',
-        'USER': 'saul',
+        'USER': 'root',
         'PASSWORD': 'projetopdi',
         'HOST': 'localhost',
         'PORT': '3306',  # Default MariaDB port
