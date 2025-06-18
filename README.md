@@ -64,6 +64,8 @@ Clonar o repositório e iniciar o servidor
 ```plaintext
 git clone https://github.com/Saul-Marques/projetoPDI
 cd projetoPDI
+python manage.py makemigrations
+python manage.py migrate
 python manage.py runserver
 ```
 O projeto dispõe de dados "Boilerplate" ou iniciais.
