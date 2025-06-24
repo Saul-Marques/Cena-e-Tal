@@ -27,4 +27,16 @@
     background-image: url("/static/imgs/icons/chat.svg");
 }
 
+.notifbutton{
+    /*Display static/imgs/icons/chat_branco.svg */
+    width: 40px;  /* Define o tamanho do botão */
+    height: 40px;
+    background-image: url("/static/imgs/icons/bell-fill-branco.svg");
+    background-size: cover;
+}
+
+.notifbutton:hover {
+    /*Display static/imgs/icons/chat.svg */
+    background-image: url("/static/imgs/icons/bell-branco.svg");
+}
 

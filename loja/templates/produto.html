@@ -76,23 +76,26 @@
             </div>
 
             {% if produto.tipo_venda == "leilao" %}
-            {% if not produto.is_active and vencedor %}
-            <div class="alert alert-success mt-3 fs-2 jomhuria-regular">
-                🏆 Leilão terminado! Vencedor: 
-                <strong>
-                    <a href="{% url 'user' vencedor.id %}" class="text-dark" style="text-decoration: none;">
-                        {{ vencedor.primeiro_nome }} {{ vencedor.ultimo_nome }}
-                    </a>
-                </strong>
-            </div>
-        {% endif %}
-        
+                {% if not produto.is_active and vencedor %}
+                <div class="alert alert-success mt-3 fs-2 jomhuria-regular">
+                    🏆 Leilão terminado! Vencedor: 
+                    <strong>
+                        <a href="{% url 'user' vencedor.id %}" class="text-dark" style="text-decoration: none;">
+                            {{ vencedor.primeiro_nome }} {{ vencedor.ultimo_nome }}
+                        </a>
+                    </strong>
+                </div>
+                {% endif %}
+            {% endif %}
+            
+            {% if produto.tipo_venda == "leilao" %}
             <p class="jomhuria-regular fs-1">
                 Licitação Atual: <strong>{{ produto.maior_licitacao }} €</strong>
             </p>
-        
+            {% endif %}
+
             {% if user.is_authenticated %}
-                {% if produto.user != user %}
+                {% if produto.user != user and produto.is_active %}
                     <form method="POST" action="{% url 'fazer_licitacao' produto.id %}">
                         {% csrf_token %}
                         <div class="input-group mb-3">
@@ -102,14 +105,14 @@
                     </form>
                 {% endif %}
             {% else %}
+            
+                {% if produto.tipo_venda == "venda" %}
+                    <p class="text-muted jomhuria-regular fs-2">Faça <a href="{% url 'login' %}">login</a> para Enviar mensagem.</p>
+                {% endif %}
                 {% if produto.tipo_venda == "leilao" %}
-                    <p class="text-muted">Faça <a href="{% url 'login' %}">login</a> para licitar ou enviar mensagem.</p>
-                {% else %}
-                    <p class="text-muted">Faça <a href="{% url 'login' %}">login</a> para Enviar mensagem.</p>
+                    <p class="text-muted jomhuria-regular fs-2">Faça <a href="{% url 'login' %}">login</a> para licitar ou enviar mensagem.</p>
                 {% endif %}
             {% endif %}
-        {% endif %}
-        
         
         </div>
     </div>

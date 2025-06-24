@@ -11,6 +11,10 @@
                 {% if request.user.is_authenticated %}
                 <!--User com login-->
                 <li class="nav-item">
+                    <a class="nav-link mt-2 me-3 notifbutton" href="#"> <img src="" alt=""></a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link mt-2 me-3 chatbutton" href="{% url 'chat_list' %}"> <img src="" alt=""></a>
                 </li>
                 <li class="nav-item me-4">
