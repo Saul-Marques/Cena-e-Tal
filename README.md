@@ -35,7 +35,7 @@ Criar um _Virtual Environment _ python e instalar as packages necessárias
 ```plaintext
 python -m venv <venv>
 git clone https://github.com/Saul-Marques/projetoPDI/
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 Instalar e iniciar uma engine de base de dados, neste projeto foi usada a mariaDB
 Archlinux:
