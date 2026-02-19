@@ -1,7 +1,8 @@
-# Cena&Tal 🛒
+# Cena&Tal 🛒 
+![alt text](https://github.com/Saul-Marques/Cena-e-Tal/blob/main/loja/static/imgs/favicon.svg)
 
 
-O Cena&Tal vai ser um website de compra, vendas e de leilões.
+O Cena&Tal é um website de compras, vendas e leilões.
 Este projeto é a continuação do projeto da cadeira de DPWEB do primeiro semestre do 3º ano de LIG.
 
 ---
