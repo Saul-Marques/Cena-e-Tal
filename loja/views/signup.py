@@ -1,20 +1,26 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.hashers import make_password
 from loja.models import User
 from django.views import View
 from django.contrib import messages
+from ..utils.validators import (
+    validate_name, validate_phone_number, validate_email, validate_password
+)
+from ..utils.sanitizers import sanitize_user_input
+
 
 class Signup(View):
     def get(self, request):
         return render(request, 'signup.html')
 
     def post(self, request):
-        postData = request.POST
-        primeiro_nome = postData.get('primeironome')
-        ultimo_nome = postData.get('ultimonome')
-        telemovel = postData.get('telemovel')
-        email = postData.get('email')
-        password = postData.get('password')
+        # Get and sanitize form data
+        post_data = sanitize_user_input(request.POST.dict())
+
+        primeiro_nome = post_data.get('primeironome', '').strip()
+        ultimo_nome = post_data.get('ultimonome', '').strip()
+        telemovel = post_data.get('telemovel', '').strip()
+        email = post_data.get('email', '').strip().lower()
+        password = post_data.get('password', '')
 
         # Preserve form values in case of an error
         value = {
@@ -24,49 +30,61 @@ class Signup(View):
             'email': email
         }
 
-        # Instantiate user correctly
-        user = User(
-            primeiro_nome=primeiro_nome,
-            ultimo_nome=ultimo_nome,
-            telemovel=telemovel,
-            email=email,
-            password=password
-        )
+        # Validate all inputs
+        validation_errors = []
 
-        # Validate user input
-        error_message = self.validateUser(user)
+        # Validate first name
+        is_valid, error = validate_name(primeiro_nome, "Primeiro nome")
+        if not is_valid:
+            validation_errors.append(error)
 
-        if not error_message:
-            user.password = make_password(user.password)  # Hash password
-            user.save()  # Save user to database
+        # Validate last name
+        is_valid, error = validate_name(ultimo_nome, "Último nome")
+        if not is_valid:
+            validation_errors.append(error)
+
+        # Validate phone
+        is_valid, error = validate_phone_number(telemovel)
+        if not is_valid:
+            validation_errors.append(error)
+
+        # Validate email
+        is_valid, error = validate_email(email)
+        if not is_valid:
+            validation_errors.append(error)
+        elif User.objects.filter(email=email).exists():
+            validation_errors.append("Este email já está registado!")
+
+        # Validate password
+        is_valid, error = validate_password(password)
+        if not is_valid:
+            validation_errors.append(error)
+
+        # If validation errors, return to form
+        if validation_errors:
+            messages.error(request, " ".join(validation_errors))
+            return render(request, 'signup.html', {'values': value})
+
+        try:
+            # Create user using UserManager (password is hashed automatically)
+            user = User.objects.create_user(
+                email=email,
+                primeiro_nome=primeiro_nome,
+                ultimo_nome=ultimo_nome,
+                telemovel=telemovel,
+                password=password
+            )
+
             messages.success(request, "Registro concluído com sucesso! Faça login.")
             return redirect('homepage')
-        else:
-            data = {
-                'error': error_message,
-                'values': value
-            }
-            return render(request, 'signup.html', data)
 
-    def validateUser(self, user):
-        error_message = None
-        if not user.primeiro_nome:
-            error_message = "Por favor, insira o seu primeiro nome!"
-        elif len(user.primeiro_nome) < 3:
-            error_message = "O primeiro nome deve ter pelo menos 3 caracteres."
-        elif not user.ultimo_nome:
-            error_message = "Por favor, insira o seu último nome!"
-        elif len(user.ultimo_nome) < 3:
-            error_message = "O último nome deve ter pelo menos 3 caracteres."
-        elif not user.telemovel:
-            error_message = "Por favor, insira o seu número de telemóvel!"
-        elif len(user.telemovel) < 9:
-            error_message = "O número de telemóvel deve ter 9 caracteres."
-        elif len(user.password) < 5:
-            error_message = "A senha deve ter pelo menos 5 caracteres."
-        elif len(user.email) < 5:
-            error_message = "O email deve ter pelo menos 5 caracteres."
-        elif User.objects.filter(email=user.email).exists():
-            error_message = "Este email já está registado!"
-
-        return error_message
+        except ValueError as e:
+            messages.error(request, str(e))
+            return render(request, 'signup.html', {'values': value})
+        except Exception as e:
+            messages.error(request, "Ocorreu um erro durante o registo. Tente novamente.")
+            # Log the actual error for debugging
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f"Signup error: {str(e)}")
+            return render(request, 'signup.html', {'values': value})

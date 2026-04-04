@@ -15,6 +15,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Environment detection
+ENVIRONMENT = os.environ.get('DJANGO_ENV', 'development')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -25,9 +28,44 @@ SECRET_KEY = 'django-insecure-s6#@*xr_2j##&q!+w9d%3f%2hw!x(ld&eul-jx2#@%5vws5xf%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*']
-CSRF_COOKIE_SAMESITE = None
-CSRF_COOKIE_SECURE = False
+# Security settings
+if ENVIRONMENT == 'production':
+    DEBUG = False
+    ALLOWED_HOSTS = ['yourdomain.com', 'www.yourdomain.com']
+
+    # Production security settings
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+
+else:
+    # Development settings
+    DEBUG = True
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0']
+
+    # Development security settings (less strict)
+    CSRF_COOKIE_SECURE = False
+    SESSION_COOKIE_SECURE = False
+    SECURE_SSL_REDIRECT = False
+
+# Common security settings
+CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_HTTPONLY = True
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000', 'https://yourdomain.com']
+
+# Session settings
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 1209600  # 2 weeks in seconds
+
+# Security middleware settings
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = 'DENY'
 
 
 # Application definition
@@ -100,7 +138,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'projetoPDI',
         'USER': 'root',
-        'PASSWORD': 'projetopdi',
+        'PASSWORD': '6120',
         'HOST': 'localhost',
         'PORT': '3306',  # Default MariaDB port
         'OPTIONS': {

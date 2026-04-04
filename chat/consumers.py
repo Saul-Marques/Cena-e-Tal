@@ -1,9 +1,10 @@
 import json
 import logging
 from channels.generic.websocket import AsyncWebsocketConsumer
-from chat.models import Conversation, Message 
+from chat.models import Conversation, Message
 from asgiref.sync import sync_to_async
 from django.utils import timezone
+from loja.utils.sanitizers import sanitize_chat_message
 
 logger = logging.getLogger(__name__)
 
@@ -49,7 +50,14 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 logger.warning(f"Received empty message from user {self.user.id}")
                 return
 
-            saved_message = await self.save_message(message_text)
+            # Sanitize message to prevent XSS
+            sanitized_message = sanitize_chat_message(message_text)
+
+            if not sanitized_message.strip():
+                logger.warning(f"Message from user {self.user.id} was empty after sanitization")
+                return
+
+            saved_message = await self.save_message(sanitized_message)
 
             if saved_message:
                 formatted_time = timezone.localtime(saved_message.timestamp).strftime('%H:%M')
